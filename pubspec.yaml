@@ -1,6 +1,6 @@
 name: custom_alert_popup
-description: "CustomAlertPopup is a customizable alert dialog widget for Flutter applications. It offers various features, including support for Image and Video, custom widgets, animations, countdown timers,loading button and responsive design. This widget is highly configurable to fit a wide range of use cases in your application"
-version: 0.0.3
+description: "A versatile Flutter alert dialog with images, videos, animations, and Loading state for buttons etc."
+version: 0.0.4
 homepage: https://github.com/fazil-kp/custom_alert_popup
 
 environment:
