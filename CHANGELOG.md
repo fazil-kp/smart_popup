@@ -1,3 +1,10 @@
+## 0.0.7
+
+- Added support for adaptive layouts, improving responsiveness across different screen sizes.
+- Enhanced video playback controls for better user interaction and experience.
+- Fixed layout issues on desktop screens to ensure consistent appearance.
+- Updated documentation for improved clarity and usability.
+
 ## 0.0.6
 
 - Introduced `TooltipPosition` enum to allow customizable tooltip positioning within buttons.
