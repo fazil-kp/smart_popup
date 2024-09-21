@@ -16,7 +16,20 @@ CustomAlertPopup is a customizable alert dialog widget for Flutter applications.
 
 
 
-## Example Code
+## Installation
+
+Add this package to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  custom_alert_popup: ^1.0.0
+```
+
+
+## Usage of Code
+
+
+Example Code:
 
 
 ```
@@ -40,14 +53,4 @@ Center(
   ),
 )
 
-```
-
-
-## Installation
-
-Add this package to your `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  custom_alert_popup: ^1.0.0
 ```
