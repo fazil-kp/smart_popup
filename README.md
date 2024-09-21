@@ -4,15 +4,14 @@ CustomAlertPopup is a customizable alert dialog widget for Flutter applications.
 
 ## Features
 
-- Support Image and Video
-- Custom title, description, and widgets
-- Countdown timer with delay
-- Support for images and videos
-- Configurable buttons with custom actions
-- Multiple animation types (fade, scale, slide, none)
-- Responsive design for different screen sizes
-- Hidable close button
-- Loading state for buttons
+- Media Support: Display images or videos within the dialog, providing rich content experiences.
+- Customizable Dialog: Easily adjust the title, description, and buttons to fit your app's needs.
+- Animations: Choose from various animation types (fade, scale, slide) to create engaging transitions.
+- Countdown Timer: Integrate a countdown timer to add urgency to user interactions.
+- Responsive Design: The widget adapts to different screen sizes, ensuring a seamless experience on both mobile and desktop platforms.
+- Custom Widgets: Include additional custom widgets within the dialog for enhanced functionality.
+- Loading Indicators: Show loading states on buttons to inform users of ongoing processes
+- Close Button: Hidable close button
 
 
 
@@ -22,35 +21,31 @@ Add this package to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  custom_alert_popup: ^1.0.0
+  custom_alert_popup: ^latest_version
 ```
 
 
-## Usage of Code
+## Usage
 
 
-Example Code:
+To use the CustomAlertPopup, simply create an instance of the widget and configure the desired properties, such as video, image, title, description, media paths, button texts, and animations.
 
 
 ```
-Center(
-  child: ElevatedButton(
-    onPressed: () {
-      showDialog(
-        context: context,
-        builder: (context) => const CustomAlertPopup(
-          title: "Hello",
-          description: "This is a custom alert dialog box",
-          firstButtonText: "Ok",
-          secondButtonText: "Cancel",
-          // Do not pass image and video simultaneously; pass one at a time.
-          // imagePath: "assets/images/demo_image.png", 
-          videoPath: "assets/videos/demo_video.mp4", 
-        ),
-      );
-    },
-    child: const Text("Custom Alert Box"),
+showDialog(
+  context: context,
+  builder: (context) => CustomAlertPopup(
+    title: "Alert Title",
+    description: "This is an alert message.",
+    firstButtonText: "Confirm",
+    secondButtonText: "Cancel",
+    // Do not pass image and video simultaneously; pass one at a time.
+    //imagePath: "assets/images/your_image.png",
+    videoPath: "assets/videos/your_video.mp4",
+    timerDelay: 10,
+    animationType: AnimationType.scale,
   ),
-)
+);
+
 
 ```
