@@ -46,6 +46,4 @@ showDialog(
     animationType: AnimationType.scale,
   ),
 );
-
-
 ```
