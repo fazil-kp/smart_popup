@@ -14,14 +14,6 @@ CustomAlertPopup is a customizable alert dialog widget for Flutter applications.
 - Hidable close button
 - Loading state for buttons
 
-## Installation
-
-Add this package to your `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  custom_alert_popup: ^1.0.0
-```
 
 
 ## Example Code
@@ -48,4 +40,14 @@ Center(
   ),
 )
 
+```
+
+
+## Installation
+
+Add this package to your `pubspec.yaml` file:
+
+```yaml
+dependencies:
+  custom_alert_popup: ^1.0.0
 ```
