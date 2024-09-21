@@ -13,3 +13,11 @@
 ## 0.0.4
 
 * Enhanced CustomAlertPopup with additional configuration options for images and videos. Improved performance and responsiveness across various devices. Added new animations for a more engaging user experience.
+
+
+## 0.0.5
+
+* Added improved support for custom widgets within the dialog, enhancing flexibility for developers.
+* Optimized performance for media loading, ensuring faster rendering of images and videos.
+* Enhanced animations with new options for smoother transitions and effects.
+* Fixed minor bugs related to button interactions and timer functionality for a more seamless user experience.
