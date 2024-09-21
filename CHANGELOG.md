@@ -9,3 +9,7 @@
 ## 0.0.3
 
 * Minor bug fixes and performance improvements. Improved the layout of the dialog to ensure better responsiveness across different screen sizes.
+
+## 0.0.4
+
+* Enhanced CustomAlertPopup with additional configuration options for images and videos. Improved performance and responsiveness across various devices. Added new animations for a more engaging user experience.
