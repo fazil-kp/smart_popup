@@ -28,7 +28,7 @@ dependencies:
 ## Usage
 
 
-To use the CustomAlertPopup, simply create an instance of the widget and configure the desired properties, such as video, image, title, description, media paths, button texts, and animations.
+To use the CustomAlertPopup, simply create an instance of the widget and configure the desired properties, such as media paths, title, description, button texts, and animations.
 
 
 ```
