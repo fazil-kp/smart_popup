@@ -54,8 +54,12 @@ class CustomTooltip extends HookWidget {
       overlayEntry.value = OverlayEntry(
         builder: (context) => Positioned(
           left: offset!.dx,
-          top: position == TooltipPosition.bottom ? offset.dy + size!.height + 5.0 : null,
-          bottom: position == TooltipPosition.top ? (MediaQuery.of(context).size.height - offset.dy) + 0 : null,
+          top: position == TooltipPosition.bottom
+              ? offset.dy + size!.height + 5.0
+              : null,
+          bottom: position == TooltipPosition.top
+              ? (MediaQuery.of(context).size.height - offset.dy) + 0
+              : null,
           child: Material(
             color: backgroundColor ?? Colors.transparent,
             borderRadius: BorderRadius.circular(cornerRadius ?? 4.0),

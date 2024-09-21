@@ -73,7 +73,8 @@ class _PopupVideoState extends State<PopupVideo> {
               ),
               child: VideoPlayer(_controller!), // Display the video player
             )
-          : const Center(child: CircularProgressIndicator()), // Show loading indicator
+          : const Center(
+              child: CircularProgressIndicator()), // Show loading indicator
     );
   }
 

@@ -16,23 +16,23 @@ import 'package:flutter/material.dart';
 ///   (screen width >= 1024 pixels).
 class ResponsiveHelper {
   //* Functions to check & breakpoints checking for different screen sizes (Mobile, Tablet, Desktop)
-  
+
   /// Checks if the current device is a mobile device.
   ///
   /// Returns true if the screen width is less than 600 pixels.
-  static bool isMobile(BuildContext context) => 
+  static bool isMobile(BuildContext context) =>
       MediaQuery.of(context).size.width < 600;
 
   /// Checks if the current device is a tablet.
   ///
   /// Returns true if the screen width is between 600 and 1024 pixels.
-  static bool isTablet(BuildContext context) => 
-      MediaQuery.of(context).size.width >= 600 && 
+  static bool isTablet(BuildContext context) =>
+      MediaQuery.of(context).size.width >= 600 &&
       MediaQuery.of(context).size.width < 1024;
 
   /// Checks if the current device is a desktop.
   ///
   /// Returns true if the screen width is 1024 pixels or more.
-  static bool isDesktop(BuildContext context) => 
+  static bool isDesktop(BuildContext context) =>
       MediaQuery.of(context).size.width >= 1024;
 }
