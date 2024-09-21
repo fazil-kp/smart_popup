@@ -1,3 +1,9 @@
+## 0.0.6
+
+- Introduced `TooltipPosition` enum to allow customizable tooltip positioning within buttons.
+- Enhanced user interaction by providing clearer tooltip guidance.
+- Implemented minor bug fixes and performance improvements for a smoother user experience.
+
 ## 0.0.5
 
 - Added improved support for custom widgets within the dialog, enhancing flexibility for developers.
