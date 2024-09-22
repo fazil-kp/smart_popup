@@ -1,3 +1,12 @@
+## 1.0.0
+
+- Official stable release with comprehensive features for customizable alert dialogs.
+- Introduced advanced video adjust speed.
+- Added enhanced responsiveness, ensuring optimal display across mobile, tablet, and desktop devices.
+- Streamlined API for easier integration and usage within Flutter applications.
+- Comprehensive documentation and examples to support developers in utilizing the widget effectively.
+- Fixed various bugs and performance issues to ensure a smooth user experience.
+
 ## 0.0.9
 
 - Introduced a new feedback system for user interactions, allowing for better engagement and response tracking.
