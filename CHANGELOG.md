@@ -1,3 +1,10 @@
+## 0.0.8
+
+- Advanced the video section with additional playback options and customization features.
+- Improved video loading performance and added error handling for unsupported formats.
+- Enhanced user controls for video playback, including play/pause, volume control, and playback speed adjustment.
+- Fixed minor bugs related to video rendering and stability across different devices.
+
 ## 0.0.7
 
 - Added support for adaptive layouts, improving responsiveness across different screen sizes.
