@@ -37,6 +37,7 @@ class CustomAlertPopupExample extends StatelessWidget {
                 secondButtonText: "Cancel",
                 // Do not pass image and video simultaneously; pass one at a time.
                 // imagePath: "assets/images/demo_image.png",
+                
                 videoPath: "assets/videos/demo_video.mp4",
               ),
             );
