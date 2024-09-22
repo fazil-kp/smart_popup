@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
-import 'elements/custom_button.dart';
-import 'elements/popup_video.dart';
-import 'elements/responsive_helper.dart';
+import 'src/custom_button.dart';
+import 'src/popup_video.dart';
+import 'src/responsive_helper.dart';
 
 /// A customizable alert dialog widget for Flutter applications.
 ///

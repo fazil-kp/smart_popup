@@ -1,5 +1,5 @@
-import 'package:custom_alert_popup/elements/common_enums.dart';
-import 'package:custom_alert_popup/elements/custom_tool_tip.dart';
+import 'package:custom_alert_popup/src/common_enums.dart';
+import 'package:custom_alert_popup/src/custom_tool_tip.dart';
 import 'package:flutter/material.dart';
 
 /// A customizable button widget for Flutter applications.

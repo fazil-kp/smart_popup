@@ -1,4 +1,4 @@
-import 'package:custom_alert_popup/elements/common_enums.dart';
+import 'package:custom_alert_popup/src/common_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
