@@ -1,3 +1,10 @@
+## 0.0.9
+
+- Introduced a new feedback system for user interactions, allowing for better engagement and response tracking.
+- Enhanced tooltip functionality with customizable styles and positions for improved UI clarity.
+- Improved documentation and examples for better developer guidance.
+- Fixed layout issues on larger screens to ensure consistent appearance across devices.
+
 ## 0.0.8
 
 - Advanced the video section.
