@@ -50,6 +50,8 @@ import 'src/responsive_helper.dart';
 /// - `animationType`: The type of animation to use for the dialog's appearance.
 /// - `animationDuration`: The duration of the animation effect.
 /// - `fadeBegin`: Starting value for fade animation.
+/// - `videoVolume`: adjust video volume.
+/// - `videoPlayBackSpeed`: adjust video speed.
 ///
 /// ## Usage:
 /// To use the [CustomAlertPopup], simply create an instance and provide the

@@ -1,6 +1,6 @@
 name: custom_alert_popup
 description: "A versatile Flutter alert dialog with images, videos, animations, countdown timer, and Loading state for buttons etc."
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/fazil-kp/custom_alert_popup.git
 
 environment:

@@ -53,7 +53,7 @@ class _PopupVideoState extends State<PopupVideo> {
           _controller?.setVolume(widget.videoVolume ?? 0.0); // Mute the video
           _controller?.play(); // Start playing the video
           _controller?.setPlaybackSpeed(
-              widget.videoPlayBackSpeed ?? 0.0); // Set playback speed
+              widget.videoPlayBackSpeed ?? 1.0); // Set playback speed
           _controller?.setLooping(true); // Loop the video
           setState(() {
             _isControllerInitialized = true; // Update state
