@@ -22,8 +22,14 @@ import 'package:video_player/video_player.dart';
 /// automatically.
 class PopupVideo extends StatefulWidget {
   final String videoPath;
+  final double? videoVolume;
+  final double? videoPlayBackSpeed;
 
-  const PopupVideo({super.key, required this.videoPath});
+  const PopupVideo(
+      {super.key,
+      required this.videoPath,
+      this.videoPlayBackSpeed,
+      this.videoVolume});
 
   @override
   State<PopupVideo> createState() => _PopupVideoState();
@@ -44,9 +50,10 @@ class _PopupVideoState extends State<PopupVideo> {
     try {
       _controller = VideoPlayerController.file(File(widget.videoPath))
         ..initialize().then((_) {
-          _controller?.setVolume(0.0); // Mute the video
+          _controller?.setVolume(widget.videoVolume ?? 0.0); // Mute the video
           _controller?.play(); // Start playing the video
-          _controller?.setPlaybackSpeed(2.5); // Set playback speed
+          _controller?.setPlaybackSpeed(
+              widget.videoPlayBackSpeed ?? 0.0); // Set playback speed
           _controller?.setLooping(true); // Loop the video
           setState(() {
             _isControllerInitialized = true; // Update state

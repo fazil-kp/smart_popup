@@ -11,9 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Custom Alert Popup Demo',
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
       home: const CustomAlertPopupExample(),
     );
   }
@@ -38,6 +36,9 @@ class CustomAlertPopupExample extends StatelessWidget {
                 // Do not pass image and video simultaneously; pass one at a time.
                 // imagePath: "assets/images/demo_image.png",
                 videoPath: "assets/videos/demo_video.mp4",
+                videoVolume: 100,
+                videoPlayBackSpeed: 2.5,
+                hideFirstButton: true,
               ),
             );
           },
