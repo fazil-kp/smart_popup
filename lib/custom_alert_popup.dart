@@ -3,6 +3,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 
 import 'src/custom_button.dart';
+import 'src/popup_video.dart';
 import 'src/responsive_helper.dart';
 
 /// A customizable alert dialog widget for Flutter applications.
@@ -214,7 +215,7 @@ class CustomAlertPopup extends StatelessWidget {
                   )
                 ],
                 if (imageWidget != null) ...[imageWidget!],
-                // if (videoPath != null) PopupVideo(videoPath: videoPath ?? ''),
+                if (videoPath != null) PopupVideo(videoPath: videoPath ?? ''),
                 const SizedBox(height: 20),
                 Column(
                   mainAxisAlignment:
