@@ -215,7 +215,7 @@ class CustomAlertPopup extends StatelessWidget {
                   )
                 ],
                 if (imageWidget != null) ...[imageWidget!],
-                if (videoPath != null) PopupVideo(videoPath: videoPath ?? ''),
+                // if (videoPath != null) PopupVideo(videoPath: videoPath ?? ''),
                 const SizedBox(height: 20),
                 Column(
                   mainAxisAlignment:
