@@ -22,7 +22,7 @@ import 'src/responsive_helper.dart';
 ///
 /// ## Parameters:
 /// - `title`: The title of the alert dialog.
-/// - `description`: The description text to display in the alert dialog.
+/// - `subTitle`: The subTitle text to display in the alert dialog.
 /// - `customWidget`: A custom widget that can be displayed within the dialog.
 /// - `width`: The width of the alert dialog.
 /// - `height`: The height of the alert dialog.
@@ -60,8 +60,8 @@ class CustomAlertPopup extends StatelessWidget {
   // Title of the alert dialog
   final String? title;
 
-  // Description text of the alert dialog
-  final String? description;
+  // SubTitle text of the alert dialog
+  final String? subTitle;
 
   // Custom widget to display in the alert dialog
   final Widget? customWidget;
@@ -157,7 +157,7 @@ class CustomAlertPopup extends StatelessWidget {
     this.imageWidget,
     this.buttonRadius,
     this.buttonSpacing,
-    this.description,
+    this.subTitle,
     this.firstButtonTap,
     this.secondButtonTap,
     this.customWidget,
@@ -251,12 +251,12 @@ class CustomAlertPopup extends StatelessWidget {
                                     fontSize: 20))),
                     const SizedBox(height: 5),
                     const Divider(color: Color.fromARGB(255, 238, 238, 238)),
-                    if (description != null) ...[
+                    if (subTitle != null) ...[
                       const SizedBox(height: 25),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 50),
                         child: Text(
-                          description.toString(),
+                          subTitle.toString(),
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge
