@@ -37,8 +37,11 @@ showDialog(
     // Do not pass image and video simultaneously; pass one at a time.
     //imagePath: "assets/images/your_image.png",
     videoPath: "assets/videos/your_video.mp4",
+    videoVolume: 100,
+    videoPlayBackSpeed: 2.5,
     timerDelay: 10,
     animationType: AnimationType.scale,
+
   ),
 );
 ```
