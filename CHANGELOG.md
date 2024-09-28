@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Fixed minor bugs related to media playback and user interactions.
+
 ## 1.0.2
 
 - Added video volume control, allowing users to adjust the audio level during video playback.
@@ -15,7 +19,6 @@
 - Enhanced performance and stability for video-related features.
 - Updated documentation with examples showcasing the new video volume and playback speed functionalities.
 - Fixed minor bugs related to media playback and user interactions.
-
 
 ## 1.0.0
 
