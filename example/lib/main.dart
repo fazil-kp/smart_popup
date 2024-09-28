@@ -32,7 +32,7 @@ class CustomAlertPopupExample extends StatelessWidget {
               context: context,
               builder: (context) => const CustomAlertPopup(
                 title: "Hello",
-                description: "This is a custom alert dialog box",
+                subTitle: "This is a custom alert dialog box",
                 firstButtonText: "Ok",
                 secondButtonText: "Cancel",
                 // Do not pass image and video simultaneously; pass one at a time.
