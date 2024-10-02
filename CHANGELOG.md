@@ -1,3 +1,7 @@
+## 2.0.0
+
+- README.md Updated
+
 ## 1.0.9
 
 - README.md Updated
