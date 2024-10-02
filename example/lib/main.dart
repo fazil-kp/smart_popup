@@ -29,6 +29,9 @@ class CustomAlertPopupExample extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) => SmartPopup(
+                showButtons: false,
+                hideFirstButton: true,
+                showCloseButton: false,
                 title: "Smart Popup",
                 subTitle: "This is a smart popup. It can display alerts and messages",
                 firstButtonText: "Ok",
@@ -41,7 +44,7 @@ class CustomAlertPopupExample extends StatelessWidget {
                 },
                 // Do not pass image and video path 5simultaneously; pass one at a time.
                 // imagePath: "assets/images/demo_image.png",
-                videoPath: "assets/videos/demo_video.mp4",
+                // videoPath: "assets/videos/demo_video.mp4",
                 videoVolume: 100,
                 videoPlayBackSpeed: 2.5,
               ),

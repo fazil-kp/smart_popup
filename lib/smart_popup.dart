@@ -133,6 +133,7 @@ class SmartPopup extends StatelessWidget {
 
   // Whether to hide the close button
   final bool? showCloseButton;
+  final bool? showButtons;
 
   // Type of animation for the dialog
   final AnimationType animationType;
@@ -181,6 +182,7 @@ class SmartPopup extends StatelessWidget {
     this.animationDuration,
     this.fadeBegin = 0.0,
     this.showCloseButton = true,
+    this.showButtons = true,
     this.videoVolume,
     this.videoPlayBackSpeed,
   });
@@ -228,7 +230,7 @@ class SmartPopup extends StatelessWidget {
                     const SizedBox(height: 5),
                     const Divider(color: Color.fromARGB(255, 238, 238, 238)),
                     if (subTitle != null) ...[
-                      const SizedBox(height: 20),
+                      SizedBox(height: showButtons == true ? 20 : 10),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
@@ -239,98 +241,101 @@ class SmartPopup extends StatelessWidget {
                       ),
                     ],
                     if (customWidget != null) ...[const SizedBox(height: 10), customWidget ?? const SizedBox.shrink()],
-                    const SizedBox(height: 30),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20, right: 20),
-                      child: Row(
-                        children: [
-                          if (timerDelay != null)
-                            Expanded(
-                              child: FutureBuilder(
-                                future: enableYesButton,
-                                builder: (context, snapshot) {
-                                  return Stack(
-                                    children: [
-                                      CustomButton(
-                                        width: isDesktop ? 190 : null,
-                                        height: 45,
-                                        text: firstButtonText ?? "Yes",
-                                        color: snapshot.data == true ? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
-                                        textColor: Colors.white,
-                                        border: const Border(),
-                                        borderRadius: BorderRadius.circular(14),
-                                        onTap: () {
-                                          if (snapshot.data == true) {
-                                            firstButtonTap!();
-                                          }
-                                        },
-                                      ),
-                                      if (snapshot.data != true)
-                                        Positioned(
-                                          top: 0,
-                                          right: 0,
-                                          left: 0,
-                                          bottom: 0,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: snapshot.data == true ? Colors.white : const Color(0xFFC4283C),
-                                              borderRadius: BorderRadius.circular(14),
-                                            ),
-                                            width: isDesktop
-                                                ? width == null
-                                                    ? MediaQuery.of(context).size.width * 0.13
-                                                    : (width! - 150)
-                                                : 100,
-                                            height: 40,
-                                            child: Center(
-                                              child: TimerCountdown(
-                                                enableDescriptions: false,
-                                                timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-                                                format: CountDownTimerFormat.secondsOnly,
-                                                endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
+                    if (showButtons == true) ...[
+                      const SizedBox(height: 30),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 20, right: 20),
+                        child: Row(
+                          children: [
+                            if (timerDelay != null)
+                              Expanded(
+                                child: FutureBuilder(
+                                  future: enableYesButton,
+                                  builder: (context, snapshot) {
+                                    return Stack(
+                                      children: [
+                                        CustomButton(
+                                          width: isDesktop ? 190 : null,
+                                          height: 45,
+                                          text: firstButtonText ?? "Yes",
+                                          color: snapshot.data == true ? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
+                                          textColor: Colors.white,
+                                          border: const Border(),
+                                          borderRadius: BorderRadius.circular(14),
+                                          onTap: () {
+                                            if (snapshot.data == true) {
+                                              firstButtonTap!();
+                                            }
+                                          },
+                                        ),
+                                        if (snapshot.data != true)
+                                          Positioned(
+                                            top: 0,
+                                            right: 0,
+                                            left: 0,
+                                            bottom: 0,
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: snapshot.data == true ? Colors.white : const Color(0xFFC4283C),
+                                                borderRadius: BorderRadius.circular(14),
+                                              ),
+                                              width: isDesktop
+                                                  ? width == null
+                                                      ? MediaQuery.of(context).size.width * 0.13
+                                                      : (width! - 150)
+                                                  : 100,
+                                              height: 40,
+                                              child: Center(
+                                                child: TimerCountdown(
+                                                  enableDescriptions: false,
+                                                  timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                                                  format: CountDownTimerFormat.secondsOnly,
+                                                  endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
+                                                ),
                                               ),
                                             ),
                                           ),
-                                        ),
-                                    ],
-                                  );
-                                },
+                                      ],
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                          if (timerDelay == null)
-                            if (hideFirstButton != true)
+                            if (timerDelay == null)
+                              if (hideFirstButton != true) ...[
+                                Expanded(
+                                  child: CustomButton(
+                                    isLoading: loading ?? false,
+                                    width: firstButtonWidth ?? (isDesktop ? 190 : 125),
+                                    height: 45,
+                                    text: firstButtonText ?? "Yes",
+                                    color: const Color(0xFFC4283C),
+                                    textColor: Colors.white,
+                                    border: const Border(),
+                                    borderRadius: BorderRadius.circular(buttonRadius ?? 14),
+                                    onTap: () => {firstButtonTap!()},
+                                  ),
+                                ),
+                                const SizedBox(width: 15),
+                              ],
+                            if (secondButtonText?.isNotEmpty == true) ...[
                               Expanded(
                                 child: CustomButton(
                                   isLoading: loading ?? false,
-                                  width: firstButtonWidth ?? (isDesktop ? 190 : 125),
+                                  width: secondButtonWidth ?? (isDesktop ? (hideFirstButton != true ? 185 : 350) : (hideFirstButton != true ? 100 : MediaQuery.of(context).size.width / 1.65)),
                                   height: 45,
-                                  text: firstButtonText ?? "Yes",
-                                  color: const Color(0xFFC4283C),
-                                  textColor: Colors.white,
+                                  text: secondButtonText ?? "Cancel",
+                                  color: const Color(0XFFFFF1F1),
+                                  textColor: const Color(0xFFC4283C),
                                   border: const Border(),
                                   borderRadius: BorderRadius.circular(buttonRadius ?? 14),
-                                  onTap: () => {firstButtonTap!()},
+                                  onTap: () => {secondButtonTap!()},
                                 ),
                               ),
-                          if (secondButtonText?.isNotEmpty == true) ...[
-                            const SizedBox(width: 15),
-                            Expanded(
-                              child: CustomButton(
-                                isLoading: loading ?? false,
-                                width: secondButtonWidth ?? (isDesktop ? (hideFirstButton != true ? 185 : 350) : (hideFirstButton != true ? 100 : MediaQuery.of(context).size.width / 1.65)),
-                                height: 45,
-                                text: secondButtonText ?? "Cancel",
-                                color: const Color(0XFFFFF1F1),
-                                textColor: const Color(0xFFC4283C),
-                                border: const Border(),
-                                borderRadius: BorderRadius.circular(buttonRadius ?? 14),
-                                onTap: () => {secondButtonTap!()},
-                              ),
-                            ),
+                            ],
                           ],
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ],
                 ),
                 if (height == null) const SizedBox(height: 20),
