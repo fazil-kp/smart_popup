@@ -149,6 +149,10 @@ class SmartPopup extends StatelessWidget {
   // adjust  video speed
 
   final double? videoPlayBackSpeed;
+  final Color? firstButtonColor;
+  final Color? firstButtonTextColor;
+  final Color? secondButtonColor;
+  final Color? secondButtonTextColor;
 
   /// Creates a [SmartPopup] widget.
   const SmartPopup({
@@ -185,6 +189,10 @@ class SmartPopup extends StatelessWidget {
     this.showButtons = true,
     this.videoVolume,
     this.videoPlayBackSpeed,
+    this.firstButtonColor,
+    this.firstButtonTextColor,
+    this.secondButtonColor,
+    this.secondButtonTextColor,
   });
 
   @override
@@ -258,8 +266,8 @@ class SmartPopup extends StatelessWidget {
                                           width: isDesktop ? 190 : null,
                                           height: 45,
                                           text: firstButtonText ?? "Yes",
-                                          color: snapshot.data == true ? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
-                                          textColor: Colors.white,
+                                          color: snapshot.data == true ? firstButtonColor ?? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
+                                          textColor: firstButtonTextColor ?? Colors.white,
                                           border: const Border(),
                                           borderRadius: BorderRadius.circular(14),
                                           onTap: () {
@@ -308,8 +316,8 @@ class SmartPopup extends StatelessWidget {
                                     width: firstButtonWidth ?? (isDesktop ? 190 : 125),
                                     height: 45,
                                     text: firstButtonText ?? "Yes",
-                                    color: const Color(0xFFC4283C),
-                                    textColor: Colors.white,
+                                    color: firstButtonColor ?? const Color(0xFFC4283C),
+                                    textColor: firstButtonTextColor ?? Colors.white,
                                     border: const Border(),
                                     borderRadius: BorderRadius.circular(buttonRadius ?? 14),
                                     onTap: () => {firstButtonTap!()},
@@ -324,8 +332,8 @@ class SmartPopup extends StatelessWidget {
                                   width: secondButtonWidth ?? (isDesktop ? (hideFirstButton != true ? 185 : 350) : (hideFirstButton != true ? 100 : MediaQuery.of(context).size.width / 1.65)),
                                   height: 45,
                                   text: secondButtonText ?? "Cancel",
-                                  color: const Color(0XFFFFF1F1),
-                                  textColor: const Color(0xFFC4283C),
+                                  color: secondButtonColor ?? const Color(0XFFFFF1F1),
+                                  textColor: secondButtonTextColor ?? const Color(0xFFC4283C),
                                   border: const Border(),
                                   borderRadius: BorderRadius.circular(buttonRadius ?? 14),
                                   onTap: () => {secondButtonTap!()},
