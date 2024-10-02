@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Smart Popup Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true),
       home: const CustomAlertPopupExample(),
     );
   }
@@ -28,7 +30,11 @@ class CustomAlertPopupExample extends StatelessWidget {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            image: DecorationImage(
+                image: AssetImage("assets/images/bg_image.png"),
+                fit: BoxFit.fill)),
         child: Center(
           child: ElevatedButton(
             onPressed: () {
@@ -36,7 +42,8 @@ class CustomAlertPopupExample extends StatelessWidget {
                 context: context,
                 builder: (context) => SmartPopup(
                   title: "Smart Popup",
-                  subTitle: "This is a smart popup. It can display alerts and messages",
+                  subTitle:
+                      "This is a smart popup. It can display alerts and messages",
                   // hideFirstButton: true,
                   // showCloseButton: false,
                   // showButtons: false,

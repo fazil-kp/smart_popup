@@ -1,3 +1,9 @@
+## 1.0.7
+
+- Improved user interface for video controls, providing a more intuitive and seamless experience.
+- Added video volume control, allowing users to adjust the audio level during video playback.
+- Introduced playback speed adjustments, enabling users to change the speed of video playback.
+
 ## 1.0.6
 
 - Improved user interface for video controls, providing a more intuitive and seamless experience.

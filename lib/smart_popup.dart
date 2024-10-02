@@ -201,12 +201,15 @@ class SmartPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Future<bool> enableYesButton = Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
+    final Future<bool> enableYesButton =
+        Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
     final isDesktop = ResponsiveHelper.isDesktop(context);
     Widget dialogContent = AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22), side: const BorderSide(color: Color(0xFFD9D9D9), width: 0.1)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(22),
+          side: const BorderSide(color: Color(0xFFD9D9D9), width: 0.1)),
       shadowColor: const Color.fromARGB(255, 238, 238, 238).withOpacity(0.4),
       elevation: 15,
       content: Stack(
@@ -222,23 +225,44 @@ class SmartPopup extends StatelessWidget {
                 if (imagePath != null) ...[
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22)),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(22),
+                          topRight: Radius.circular(22)),
                       color: Colors.white,
-                      image: DecorationImage(image: AssetImage(imagePath ?? ''), fit: BoxFit.cover),
+                      image: DecorationImage(
+                          image: AssetImage(imagePath ?? ''),
+                          fit: BoxFit.cover),
                     ),
                     width: width ?? 430,
                     height: imageHeight ?? 210,
                   )
                 ],
                 if (imageWidget != null) ...[imageWidget!],
-                if (videoPath != null) PopupVideo(videoPath: videoPath ?? '', videoPlayBackSpeed: videoPlayBackSpeed, videoVolume: videoVolume),
+                if (videoPath != null)
+                  PopupVideo(
+                      videoPath: videoPath ?? '',
+                      videoPlayBackSpeed: videoPlayBackSpeed,
+                      videoVolume: videoVolume),
                 const SizedBox(height: 20),
                 Column(
-                  mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
-                  crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
+                  mainAxisAlignment:
+                      mainAxisAlignment ?? MainAxisAlignment.center,
+                  crossAxisAlignment:
+                      crossAxisAlignment ?? CrossAxisAlignment.center,
                   children: [
-                    if (widget != null) ...[const SizedBox(height: 10), widget ?? const SizedBox.shrink()],
-                    Padding(padding: EdgeInsets.only(left: titleSpacing ?? 0), child: Text(title ?? '', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 20))),
+                    if (widget != null) ...[
+                      const SizedBox(height: 10),
+                      widget ?? const SizedBox.shrink()
+                    ],
+                    Padding(
+                        padding: EdgeInsets.only(left: titleSpacing ?? 0),
+                        child: Text(title ?? '',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20))),
                     const SizedBox(height: 5),
                     const Divider(color: Color.fromARGB(255, 238, 238, 238)),
                     if (subTitle != null) ...[
@@ -247,12 +271,21 @@ class SmartPopup extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
                           subTitle.toString(),
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400, fontSize: 14, color: const Color(0xFF909090)),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14,
+                                  color: const Color(0xFF909090)),
                           textAlign: TextAlign.center,
                         ),
                       ),
                     ],
-                    if (customWidget != null) ...[const SizedBox(height: 10), customWidget ?? const SizedBox.shrink()],
+                    if (customWidget != null) ...[
+                      const SizedBox(height: 10),
+                      customWidget ?? const SizedBox.shrink()
+                    ],
                     if (showButtons == true) ...[
                       const SizedBox(height: 30),
                       Padding(
@@ -270,10 +303,15 @@ class SmartPopup extends StatelessWidget {
                                           width: isDesktop ? 190 : null,
                                           height: 45,
                                           text: firstButtonText ?? "Yes",
-                                          color: snapshot.data == true ? firstButtonColor ?? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
-                                          textColor: firstButtonTextColor ?? Colors.white,
+                                          color: snapshot.data == true
+                                              ? firstButtonColor ??
+                                                  const Color(0xFFC4283C)
+                                              : Colors.grey.withOpacity(.5),
+                                          textColor: firstButtonTextColor ??
+                                              Colors.white,
                                           border: const Border(),
-                                          borderRadius: BorderRadius.circular(14),
+                                          borderRadius:
+                                              BorderRadius.circular(14),
                                           onTap: () {
                                             if (snapshot.data == true) {
                                               firstButtonTap!();
@@ -288,21 +326,38 @@ class SmartPopup extends StatelessWidget {
                                             bottom: 0,
                                             child: Container(
                                               decoration: BoxDecoration(
-                                                color: snapshot.data == true ? Colors.white : const Color(0xFFC4283C),
-                                                borderRadius: BorderRadius.circular(14),
+                                                color: snapshot.data == true
+                                                    ? Colors.white
+                                                    : const Color(0xFFC4283C),
+                                                borderRadius:
+                                                    BorderRadius.circular(14),
                                               ),
                                               width: isDesktop
                                                   ? width == null
-                                                      ? MediaQuery.of(context).size.width * 0.13
+                                                      ? MediaQuery.of(context)
+                                                              .size
+                                                              .width *
+                                                          0.13
                                                       : (width! - 150)
                                                   : 100,
                                               height: 40,
                                               child: Center(
                                                 child: TimerCountdown(
                                                   enableDescriptions: false,
-                                                  timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-                                                  format: CountDownTimerFormat.secondsOnly,
-                                                  endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
+                                                  timeTextStyle: Theme.of(
+                                                          context)
+                                                      .textTheme
+                                                      .titleSmall!
+                                                      .copyWith(
+                                                          color: Colors.white,
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                  format: CountDownTimerFormat
+                                                      .secondsOnly,
+                                                  endTime: DateTime.now().add(
+                                                      Duration(
+                                                          seconds: timerDelay ??
+                                                              10)),
                                                 ),
                                               ),
                                             ),
@@ -317,13 +372,17 @@ class SmartPopup extends StatelessWidget {
                                 Expanded(
                                   child: CustomButton(
                                     isLoading: loading ?? false,
-                                    width: firstButtonWidth ?? (isDesktop ? 190 : 125),
+                                    width: firstButtonWidth ??
+                                        (isDesktop ? 190 : 125),
                                     height: 45,
                                     text: firstButtonText ?? "Yes",
-                                    color: firstButtonColor ?? const Color(0xFFC4283C),
-                                    textColor: firstButtonTextColor ?? Colors.white,
+                                    color: firstButtonColor ??
+                                        const Color(0xFFC4283C),
+                                    textColor:
+                                        firstButtonTextColor ?? Colors.white,
                                     border: const Border(),
-                                    borderRadius: BorderRadius.circular(buttonRadius ?? 14),
+                                    borderRadius: BorderRadius.circular(
+                                        buttonRadius ?? 14),
                                     onTap: () => {firstButtonTap!()},
                                   ),
                                 ),
@@ -333,13 +392,26 @@ class SmartPopup extends StatelessWidget {
                               Expanded(
                                 child: CustomButton(
                                   isLoading: loading ?? false,
-                                  width: secondButtonWidth ?? (isDesktop ? (hideFirstButton != true ? 185 : 350) : (hideFirstButton != true ? 100 : MediaQuery.of(context).size.width / 1.65)),
+                                  width: secondButtonWidth ??
+                                      (isDesktop
+                                          ? (hideFirstButton != true
+                                              ? 185
+                                              : 350)
+                                          : (hideFirstButton != true
+                                              ? 100
+                                              : MediaQuery.of(context)
+                                                      .size
+                                                      .width /
+                                                  1.65)),
                                   height: 45,
                                   text: secondButtonText ?? "Cancel",
-                                  color: secondButtonColor ?? const Color(0XFFFFF1F1),
-                                  textColor: secondButtonTextColor ?? const Color(0xFFC4283C),
+                                  color: secondButtonColor ??
+                                      const Color(0XFFFFF1F1),
+                                  textColor: secondButtonTextColor ??
+                                      const Color(0xFFC4283C),
                                   border: const Border(),
-                                  borderRadius: BorderRadius.circular(buttonRadius ?? 14),
+                                  borderRadius:
+                                      BorderRadius.circular(buttonRadius ?? 14),
                                   onTap: () => {secondButtonTap!()},
                                 ),
                               ),
@@ -364,8 +436,13 @@ class SmartPopup extends StatelessWidget {
                 child: Container(
                   height: 30,
                   width: 30,
-                  decoration: BoxDecoration(shape: BoxShape.circle, color: closeButtonBackgroundColor ?? const Color(0XFFFFF1F1)),
-                  child: Icon(Icons.close, size: 20, color: closeButtonIconColor ?? const Color(0xFFC4283C)),
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: closeButtonBackgroundColor ??
+                          const Color(0XFFFFF1F1)),
+                  child: Icon(Icons.close,
+                      size: 20,
+                      color: closeButtonIconColor ?? const Color(0xFFC4283C)),
                 ),
               ),
             ),
@@ -375,13 +452,36 @@ class SmartPopup extends StatelessWidget {
 
     switch (animationType) {
       case AnimationType.fade:
-        dialogContent = dialogContent.animate().fade(duration: animationDuration ?? const Duration(milliseconds: 500), begin: fadeBegin ?? 0.0, end: 1.0, curve: Curves.easeIn);
+        dialogContent = dialogContent.animate().fade(
+            duration: animationDuration ?? const Duration(milliseconds: 500),
+            begin: fadeBegin ?? 0.0,
+            end: 1.0,
+            curve: Curves.easeIn);
         break;
       case AnimationType.scale:
-        dialogContent = dialogContent.animate().fade(begin: 0, end: 1, duration: const Duration(microseconds: 300)).scale(duration: animationDuration ?? const Duration(milliseconds: 140), begin: const Offset(.8, .8), end: const Offset(1, 1), curve: Curves.easeIn);
+        dialogContent = dialogContent
+            .animate()
+            .fade(begin: 0, end: 1, duration: const Duration(microseconds: 300))
+            .scale(
+                duration:
+                    animationDuration ?? const Duration(milliseconds: 140),
+                begin: const Offset(.8, .8),
+                end: const Offset(1, 1),
+                curve: Curves.easeIn);
         break;
       case AnimationType.slide:
-        dialogContent = dialogContent.animate().scale(duration: animationDuration ?? const Duration(milliseconds: 250), begin: const Offset(.95, .95), end: const Offset(1, 1), curve: Curves.easeInOut).fade(begin: 0.2, end: 1, duration: const Duration(milliseconds: 200));
+        dialogContent = dialogContent
+            .animate()
+            .scale(
+                duration:
+                    animationDuration ?? const Duration(milliseconds: 250),
+                begin: const Offset(.95, .95),
+                end: const Offset(1, 1),
+                curve: Curves.easeInOut)
+            .fade(
+                begin: 0.2,
+                end: 1,
+                duration: const Duration(milliseconds: 200));
         break;
       case AnimationType.none:
         dialogContent = dialogContent;
