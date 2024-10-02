@@ -15,10 +15,10 @@ Smart Popup is a customizable alert dialog widget for Flutter applications. It o
 
 ## Examples
 
-![main](https://github.com/user-attachments/assets/f2b84a22-f615-4f03-8fd9-def7c32097ee)
-![main 2](https://github.com/user-attachments/assets/ae18e459-0787-4fa2-9793-851c8230e00f)
-![main 3](https://github.com/user-attachments/assets/504ea3f3-fc7e-4818-9d6d-8e188532400a)
-![main 4](https://github.com/user-attachments/assets/306049fa-0155-40ee-8dc7-3e17abdf4ead)
+![mains](https://github.com/user-attachments/assets/3dc41040-42df-4c4a-aefa-fb10d63aa51c)
+![mains2](https://github.com/user-attachments/assets/f6c66419-13a9-469a-82f7-2cd0cad9b2c3)
+![mains3](https://github.com/user-attachments/assets/67d0586b-9d93-4078-9b28-e11c19755853)
+![mains4](https://github.com/user-attachments/assets/d2005876-5d6e-4346-a7ca-a9eb85b5aca4)
 
 
 ## Installation
