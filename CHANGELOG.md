@@ -1,3 +1,7 @@
+## 1.0.8
+
+- README.md Updated
+
 ## 1.0.7
 
 - Improved user interface for video controls, providing a more intuitive and seamless experience.
