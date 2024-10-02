@@ -31,7 +31,7 @@ showDialog(
   context: context,
   builder: (context) => SmartPopup(
     title: "Alert Title",
-    description: "This is an alert message.",
+    subTitle: "This is an alert message.",
     firstButtonText: "Confirm",
     secondButtonText: "Cancel",
     // Do not pass image and video simultaneously; pass one at a time.
