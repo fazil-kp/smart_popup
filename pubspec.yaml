@@ -1,4 +1,4 @@
-name: custom_alert_popup
+name: smart_popup
 description: "A versatile Flutter alert dialog with images, videos, animations, countdown timer, and Loading state for buttons etc."
 version: 1.0.3
 homepage: https://github.com/fazil-kp/custom_alert_popup.git

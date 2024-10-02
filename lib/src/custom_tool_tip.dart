@@ -1,6 +1,7 @@
-import 'package:custom_alert_popup/src/common_enums.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+
+import 'common_enums.dart';
 
 /// A customizable tooltip widget for Flutter applications.
 ///
