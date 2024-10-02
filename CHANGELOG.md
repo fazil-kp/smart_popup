@@ -1,8 +1,11 @@
-## 1.0.4
+## 1.0.5
 
 - Added video volume control, allowing users to adjust the audio level during video playback.
 - Introduced playback speed adjustments, enabling users to change the speed of video playback.
 - Improved user interface for video controls, providing a more intuitive and seamless experience.
+
+## 1.0.4
+
 - Enhanced performance and stability for video-related features.
 - Updated documentation with examples showcasing the new video volume and playback speed functionalities.
 - Fixed minor bugs related to media playback and user interactions.
