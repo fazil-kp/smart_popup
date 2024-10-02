@@ -29,3 +29,15 @@
 ## 1.0.3
 
 - Fixed minor bugs related to media playback and user interactions.
+
+## 1.0.2
+
+- Fixed minor bugs related to media playback and user interactions.
+
+## 1.0.1
+
+- Fixed minor bugs related to media playback and user interactions.
+
+## 1.0.0
+
+- Fixed minor bugs related to media playback and user interactions.
