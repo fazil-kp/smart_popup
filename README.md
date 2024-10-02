@@ -34,6 +34,12 @@ showDialog(
     subTitle: "This is an alert message.",
     firstButtonText: "Confirm",
     secondButtonText: "Cancel",
+    firstButtonTap: () {
+      Navigator.of(context).pop();
+    },
+    secondButtonTap: () {
+      Navigator.of(context).pop();
+    },
     // Do not pass image and video simultaneously; pass one at a time.
     //imagePath: "assets/images/your_image.png",
     videoPath: "assets/videos/your_video.mp4",

@@ -11,9 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Custom Alert Popup Demo',
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
       home: const CustomAlertPopupExample(),
     );
   }
@@ -30,11 +28,17 @@ class CustomAlertPopupExample extends StatelessWidget {
           onPressed: () {
             showDialog(
               context: context,
-              builder: (context) => const SmartPopup(
+              builder: (context) => SmartPopup(
                 title: "Smart Popup",
                 subTitle: "This is a smart popup",
                 firstButtonText: "Ok",
                 secondButtonText: "Cancel",
+                firstButtonTap: () {
+                  Navigator.of(context).pop();
+                },
+                secondButtonTap: () {
+                  Navigator.of(context).pop();
+                },
                 // Do not pass image and video simultaneously; pass one at a time.
                 // imagePath: "assets/images/demo_image.png",
                 videoPath: "assets/videos/demo_video.mp4",
