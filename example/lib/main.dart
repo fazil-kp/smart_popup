@@ -23,6 +23,7 @@ class CustomAlertPopupExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: ElevatedButton(
           onPressed: () {
@@ -40,10 +41,10 @@ class CustomAlertPopupExample extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
                 // Do not pass image and video path 5simultaneously; pass one at a time.
-                // imagePath: "assets/images/demo_image.png",
-                videoPath: "assets/videos/demo_video.mp4",
-                videoVolume: 100,
-                videoPlayBackSpeed: 2.5,
+                imagePath: "assets/images/demo_image.png",
+                // videoPath: "assets/videos/demo_video.mp4",
+                // videoVolume: 100,
+                // videoPlayBackSpeed: 2.5,
               ),
             );
           },
