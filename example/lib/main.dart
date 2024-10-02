@@ -39,7 +39,7 @@ class CustomAlertPopupExample extends StatelessWidget {
                 secondButtonTap: () {
                   Navigator.of(context).pop();
                 },
-                // Do not pass image and video simultaneously; pass one at a time.
+                // Do not pass image and video path simultaneously; pass one at a time.
                 // imagePath: "assets/images/demo_image.png",
                 videoPath: "assets/videos/demo_video.mp4",
                 videoVolume: 100,
