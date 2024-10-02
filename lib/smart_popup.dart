@@ -21,38 +21,38 @@ import 'src/responsive_helper.dart';
 /// - **Responsive design:** Automatically adjust to different screen sizes, especially for desktop.
 ///
 /// ## Parameters:
-/// - `title`: The title of the alert dialog.
-/// - `subTitle`: The subTitle text to display in the alert dialog.
-/// - `customWidget`: A custom widget that can be displayed within the dialog.
-/// - `width`: The width of the alert dialog.
-/// - `height`: The height of the alert dialog.
-/// - `imageHeight`: Height of the image displayed in the alert dialog.
-/// - `firstButtonText`: Text for the first action button.
-/// - `secondButtonText`: Text for the second action button.
-/// - `imagePath`: Path to the image to be displayed in the alert dialog.
-/// - `videoPath`: Path to the video to be displayed in the alert dialog.
-/// - `firstButtonTap`: Callback function for the first button tap.
-/// - `secondButtonTap`: Callback function for the second button tap.
-/// - `timerDelay`: Delay for the countdown timer in seconds.
-/// - `hideButton`: Whether to hide the buttons.
-/// - `widget`: Additional widget to display in the alert dialog.
-/// - `descriptionAlign`: Text alignment for the description text.
-/// - `mainAxisAlignment`: Main axis alignment for the dialog content.
-/// - `crossAxisAlignment`: Cross axis alignment for the dialog content.
-/// - `titleSpacing`: Spacing before the title text.
-/// - `firstButtonWidth`: Width of the first button.
-/// - `secondButtonWidth`: Width of the second button.
-/// - `buttonRadius`: Radius of the buttons for rounded corners.
-/// - `buttonSpacing`: Spacing between the buttons.
-/// - `imageWidget`: A custom image widget to display.
-/// - `loading`: Whether to show a loading indicator on the buttons.
-/// - `hideCloseButton`: Whether to hide the close button.
-/// - `animationType`: The type of animation to use for the dialog's appearance.
-/// - `animationDuration`: The duration of the animation effect.
-/// - `fadeBegin`: Starting value for fade animation.
-/// - `videoVolume`: adjust video volume.
-/// - `videoPlayBackSpeed`: adjust video speed.
-///
+/// - [title] : The title of the alert dialog.
+/// - [subTitle] : The subTitle text to display in the alert dialog.
+/// - [customWidget] : A custom widget that can be displayed within the dialog.
+/// - [width] : The width of the alert dialog.
+/// - [height] : The height of the alert dialog.
+/// - [imageHeight] : Height of the image displayed in the alert dialog.
+/// - [firstButtonText] : Text for the first action button.
+/// - [secondButtonText] : Text for the second action button.
+/// - [imagePath] : Path to the image to be displayed in the alert dialog.
+/// - [videoPath] : Path to the video to be displayed in the alert dialog.
+/// - [firstButtonTap] : Callback function for the first button tap.
+/// - [secondButtonTap] : Callback function for the second button tap.
+/// - [timerDelay] : Delay for the countdown timer in seconds.
+/// - [widget] : Additional widget to display in the alert dialog.
+/// - [descriptionAlign] : Text alignment for the description text.
+/// - [mainAxisAlignment] : Main axis alignment for the dialog content.
+/// - [crossAxisAlignment] : Cross axis alignment for the dialog content.
+/// - [titleSpacing] : Spacing before the title text.
+/// - [firstButtonWidth] : Width of the first button.
+/// - [secondButtonWidth] : Width of the second button.
+/// - [buttonRadius] : Radius of the buttons for rounded corners.
+/// - [buttonSpacing] : Spacing between the buttons.
+/// - [imageWidget] : A custom image widget to display.
+/// - [loading] : Whether to show a loading indicator on the buttons.
+/// - [showCloseButton] : Whether to hide the close button.
+/// - [animationType] : The type of animation to use for the dialog's appearance.
+/// - [animationDuration] : The duration of the animation effect.
+/// - [fadeBegin] : Starting value for fade animation.
+/// - [videoVolume] : Adjust video volume.
+/// - [videoPlayBackSpeed] : Adjust video speed.
+
+
 /// ## Usage:
 /// To use the [SmartPopup], simply create an instance and provide the
 /// necessary parameters. Call the `showDialog` function to display it in your app.
@@ -133,7 +133,7 @@ class SmartPopup extends StatelessWidget {
   final bool? loading;
 
   // Whether to hide the close button
-  final bool? hideCloseButton;
+  final bool? showCloseButton;
 
   // Type of animation for the dialog
   final AnimationType animationType;
@@ -143,6 +143,7 @@ class SmartPopup extends StatelessWidget {
 
   // Beginning value for the fade animation
   final double? fadeBegin;
+
   // adjust  video volume
   final double? videoVolume;
   // adjust  video speed
@@ -180,7 +181,7 @@ class SmartPopup extends StatelessWidget {
     this.animationType = AnimationType.scale,
     this.animationDuration,
     this.fadeBegin = 0.0,
-    this.hideCloseButton = true,
+    this.showCloseButton = true,
     this.videoVolume,
     this.videoPlayBackSpeed,
   });
@@ -406,7 +407,7 @@ class SmartPopup extends StatelessWidget {
               ],
             ),
           ),
-          if (hideCloseButton == true)
+          if (showCloseButton == true)
             Positioned(
               top: 16,
               right: 10,

@@ -6,6 +6,6 @@
 ///
 /// Possible values:
 ///
-/// - [TooltipPosition.top]: The tooltip will be displayed above the target widget.
-/// - [TooltipPosition.bottom]: The tooltip will be displayed below the target widget.
+/// - [TooltipPosition.top] : The tooltip will be displayed above the target widget.
+/// - [TooltipPosition.bottom] : The tooltip will be displayed below the target widget.
 enum TooltipPosition { top, bottom }

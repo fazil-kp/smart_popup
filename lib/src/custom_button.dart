@@ -17,32 +17,32 @@ import 'custom_tool_tip.dart';
 /// - **Icon support:** Include icons alongside text for better visual representation.
 ///
 /// ## Parameters:
-/// - `text`: The text to display on the button.
-/// - `icon`: An optional icon to display alongside the text.
-/// - `onTap`: Callback function triggered on button tap.
-/// - `onLongPress`: Callback function triggered on button long press.
-/// - `width`: The width of the button.
-/// - `height`: The height of the button.
-/// - `textSize`: The size of the button text.
-/// - `iconSize`: The size of the button icon.
-/// - `borderRadius`: The border radius for rounded corners.
-/// - `splashRadius`: The radius of the splash effect.
-/// - `border`: A border for the button.
-/// - `color`: The background color of the button.
-/// - `iconColor`: The color of the icon.
-/// - `textColor`: The color of the button text.
-/// - `textStyle`: Additional styles for the button text.
-/// - `fontWeight`: Font weight for the button text.
-/// - `buttonText`: A custom widget for displaying text instead of the default.
-/// - `iconWidget`: A custom widget for displaying an icon instead of the default.
-/// - `focusNode`: A focus node to manage focus behavior.
-/// - `tooltip`: Tooltip text to display on hover.
-/// - `tooltipBackground`: Background color for the tooltip.
-/// - `tooltipForeground`: Text color for the tooltip.
-/// - `isLoading`: A flag to indicate if the button is in a loading state.
-/// - `customLoading`: A custom widget to display during loading.
-/// - `ellipsisOverFlow`: A flag to control text overflow behavior.
-/// - `mouseCursor`: The mouse cursor to show on hover.
+/// - [text] : The text to display on the button.
+/// - [icon] : An optional icon to display alongside the text.
+/// - [onTap] : Callback function triggered on button tap.
+/// - [onLongPress] : Callback function triggered on button long press.
+/// - [width] : The width of the button.
+/// - [height] : The height of the button.
+/// - [textSize] : The size of the button text.
+/// - [iconSize] : The size of the button icon.
+/// - [borderRadius] : The border radius for rounded corners.
+/// - [splashRadius] : The radius of the splash effect.
+/// - [border] : A border for the button.
+/// - [color] : The background color of the button.
+/// - [iconColor] : The color of the icon.
+/// - [textColor] : The color of the button text.
+/// - [textStyle] : Additional styles for the button text.
+/// - [fontWeight] : Font weight for the button text.
+/// - [buttonText] : A custom widget for displaying text instead of the default.
+/// - [iconWidget] : A custom widget for displaying an icon instead of the default.
+/// - [focusNode] : A focus node to manage focus behavior.
+/// - [tooltip] : Tooltip text to display on hover.
+/// - [tooltipBackground] : Background color for the tooltip.
+/// - [tooltipForeground] : Text color for the tooltip.
+/// - [isLoading] : A flag to indicate if the button is in a loading state.
+/// - [customLoading] : A custom widget to display during loading.
+/// - [ellipsisOverFlow] : A flag to control text overflow behavior.
+/// - [mouseCursor] : The mouse cursor to show on hover.
 ///
 /// ## Usage:
 /// To use the [CustomButton], simply create an instance and provide the

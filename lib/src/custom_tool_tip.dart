@@ -17,12 +17,12 @@ import 'common_enums.dart';
 /// - **Corner radius:** Adjust the roundness of the tooltip corners.
 ///
 /// ## Parameters:
-/// - `child`: The widget to which the tooltip will be attached.
-/// - `content`: The content of the tooltip. If not provided, a default message is displayed.
-/// - `backgroundColor`: The background color of the tooltip.
-/// - `cornerRadius`: The radius for rounding the corners of the tooltip.
-/// - `position`: The position of the tooltip relative to the child (default is [TooltipPosition.bottom]).
-///
+/// - [child] : The widget to which the tooltip will be attached.
+/// - [content] : The content of the tooltip. If not provided, a default message is displayed.
+/// - [backgroundColor] : The background color of the tooltip.
+/// - [cornerRadius] : The radius for rounding the corners of the tooltip.
+/// - [position] : The position of the tooltip relative to the child (default is [TooltipPosition.bottom]).
+
 /// ## Usage:
 /// To use the [CustomTooltip], wrap any widget with it and provide the
 /// desired tooltip content. You can customize the appearance and behavior

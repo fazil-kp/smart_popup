@@ -14,7 +14,7 @@ import 'package:video_player/video_player.dart';
 /// - Displays a loading indicator while the video is being initialized.
 ///
 /// ## Parameters:
-/// - `videoPath`: The file path of the video to be played.
+/// - [videoPath] : The file path of the video to be played.
 ///
 /// ## Usage:
 /// To use the [PopupVideo], provide the file path of the video you want
