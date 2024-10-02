@@ -30,7 +30,7 @@ class CustomAlertPopupExample extends StatelessWidget {
               context: context,
               builder: (context) => SmartPopup(
                 title: "Smart Popup",
-                subTitle: "This is a smart popup",
+                subTitle: "This is a smart popup. It can display alerts and messages",
                 firstButtonText: "Ok",
                 secondButtonText: "Cancel",
                 firstButtonTap: () {
