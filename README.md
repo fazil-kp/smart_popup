@@ -19,7 +19,7 @@ Add this package to your `pubspec.yaml` file:
 
 ```yaml
 dependencies:
-  custom_alert_popup: ^latest_version
+  smart_popup: ^latest_version
 ```
 
 ## Usage
