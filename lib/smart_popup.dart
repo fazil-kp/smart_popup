@@ -153,6 +153,8 @@ class SmartPopup extends StatelessWidget {
   final Color? firstButtonTextColor;
   final Color? secondButtonColor;
   final Color? secondButtonTextColor;
+  final Color? closeButtonBackgroundColor;
+  final Color? closeButtonIconColor;
 
   /// Creates a [SmartPopup] widget.
   const SmartPopup({
@@ -193,6 +195,8 @@ class SmartPopup extends StatelessWidget {
     this.firstButtonTextColor,
     this.secondButtonColor,
     this.secondButtonTextColor,
+    this.closeButtonBackgroundColor,
+    this.closeButtonIconColor,
   });
 
   @override
@@ -360,8 +364,8 @@ class SmartPopup extends StatelessWidget {
                 child: Container(
                   height: 30,
                   width: 30,
-                  decoration: const BoxDecoration(shape: BoxShape.circle, color: Color(0XFFFFF1F1)),
-                  child: const Icon(Icons.close, size: 20, color: Color(0xFFC4283C)),
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: closeButtonBackgroundColor ?? const Color(0XFFFFF1F1)),
+                  child: Icon(Icons.close, size: 20, color: closeButtonIconColor ?? const Color(0xFFC4283C)),
                 ),
               ),
             ),
