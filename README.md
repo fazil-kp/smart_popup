@@ -24,7 +24,7 @@ dependencies:
 
 ## Usage
 
-To use the SmartPopup, simply create an instance of the widget and configure the desired properties, such as media paths, title, description, button texts, and animations.
+To use the Smart Popup, simply create an instance of the widget and configure the desired properties, such as media paths, title, description, button texts, and animations.
 
 ```
 showDialog(
@@ -41,7 +41,6 @@ showDialog(
     videoPlayBackSpeed: 2.5,
     timerDelay: 10,
     animationType: AnimationType.scale,
-
   ),
 );
 ```

@@ -31,8 +31,8 @@ class CustomAlertPopupExample extends StatelessWidget {
             showDialog(
               context: context,
               builder: (context) => const SmartPopup(
-                title: "Hello",
-                subTitle: "This is a custom alert dialog box",
+                title: "Smart Popup",
+                subTitle: "This is a smart popup",
                 firstButtonText: "Ok",
                 secondButtonText: "Cancel",
                 // Do not pass image and video simultaneously; pass one at a time.
@@ -43,7 +43,7 @@ class CustomAlertPopupExample extends StatelessWidget {
               ),
             );
           },
-          child: const Text("Custom Alert Box"),
+          child: const Text("Tap Here"),
         ),
       ),
     );
