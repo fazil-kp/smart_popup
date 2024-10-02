@@ -12,9 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Smart Popup Demo',
-      theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
       home: const CustomAlertPopupExample(),
     );
   }
@@ -30,11 +28,7 @@ class CustomAlertPopupExample extends StatelessWidget {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-            color: Colors.white,
-            image: DecorationImage(
-                image: AssetImage("assets/images/bg_image.png"),
-                fit: BoxFit.fill)),
+        decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
         child: Center(
           child: ElevatedButton(
             onPressed: () {
@@ -43,10 +37,7 @@ class CustomAlertPopupExample extends StatelessWidget {
                 builder: (context) => SmartPopup(
                   title: "Smart Popup",
                   subTitle: "This is a smart popup. It can display alerts and messages",
-                  // hideFirstButton: true,
-                  // showCloseButton: false,
-                  // showButtons: false,
-                  // firstButtonText: "Ok",
+                  firstButtonText: "Ok",
                   secondButtonText: "Cancel",
                   firstButtonTap: () {
                     Navigator.of(context).pop();
@@ -59,6 +50,9 @@ class CustomAlertPopupExample extends StatelessWidget {
                   // videoPath: "assets/videos/demo_video.mp4",
                   // videoVolume: 100,
                   // videoPlayBackSpeed: 2.5,
+                  // hideFirstButton: true,
+                  // showCloseButton: false,
+                  // showButtons: false,
                 ),
               );
             },
