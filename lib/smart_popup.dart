@@ -52,7 +52,6 @@ import 'src/responsive_helper.dart';
 /// - [videoVolume] : Adjust video volume.
 /// - [videoPlayBackSpeed] : Adjust video speed.
 
-
 /// ## Usage:
 /// To use the [SmartPopup], simply create an instance and provide the
 /// necessary parameters. Call the `showDialog` function to display it in your app.
