@@ -8,7 +8,7 @@ import 'src/responsive_helper.dart';
 
 /// A customizable alert dialog widget for Flutter applications.
 ///
-/// The [CustomAlertPopup] class provides a highly configurable dialog that can
+/// The [SmartPopup] class provides a highly configurable dialog that can
 /// display various types of content including images, videos, and custom widgets.
 /// It supports multiple animation types, countdown timers, and responsive design,
 /// making it suitable for a wide range of use cases in your application.
@@ -54,9 +54,9 @@ import 'src/responsive_helper.dart';
 /// - `videoPlayBackSpeed`: adjust video speed.
 ///
 /// ## Usage:
-/// To use the [CustomAlertPopup], simply create an instance and provide the
+/// To use the [SmartPopup], simply create an instance and provide the
 /// necessary parameters. Call the `showDialog` function to display it in your app.
-class CustomAlertPopup extends StatelessWidget {
+class SmartPopup extends StatelessWidget {
   // Title of the alert dialog
   final String? title;
 
@@ -149,8 +149,8 @@ class CustomAlertPopup extends StatelessWidget {
 
   final double? videoPlayBackSpeed;
 
-  /// Creates a [CustomAlertPopup] widget.
-  const CustomAlertPopup({
+  /// Creates a [SmartPopup] widget.
+  const SmartPopup({
     super.key,
     this.title,
     this.loading,

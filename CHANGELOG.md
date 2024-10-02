@@ -64,7 +64,7 @@
 
 ## 0.0.4
 
-- Enhanced CustomAlertPopup with additional configuration options for images and videos. Improved performance and responsiveness across various devices. Added new animations for a more engaging user experience.
+- Enhanced Smart Popup with additional configuration options for images and videos. Improved performance and responsiveness across various devices. Added new animations for a more engaging user experience.
 
 ## 0.0.3
 

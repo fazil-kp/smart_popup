@@ -1,6 +1,6 @@
-# CustomAlertPopup
+# Smart Popup
 
-CustomAlertPopup is a customizable alert dialog widget for Flutter applications. It offers various features, including support for Image and Video, custom widgets, animations, countdown timers,loading button and responsive design. This widget is highly configurable to fit a wide range of use cases in your application.
+Smart Popup is a customizable alert dialog widget for Flutter applications. It offers various features, including support for Image and Video, custom widgets, animations, countdown timers,loading button and responsive design. This widget is highly configurable to fit a wide range of use cases in your application.
 
 ## Features
 
@@ -24,12 +24,12 @@ dependencies:
 
 ## Usage
 
-To use the CustomAlertPopup, simply create an instance of the widget and configure the desired properties, such as media paths, title, description, button texts, and animations.
+To use the SmartPopup, simply create an instance of the widget and configure the desired properties, such as media paths, title, description, button texts, and animations.
 
 ```
 showDialog(
   context: context,
-  builder: (context) => CustomAlertPopup(
+  builder: (context) => SmartPopup(
     title: "Alert Title",
     description: "This is an alert message.",
     firstButtonText: "Confirm",

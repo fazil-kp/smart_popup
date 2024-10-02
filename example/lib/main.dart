@@ -1,5 +1,5 @@
-import 'package:custom_alert_popup/custom_alert_popup.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_popup/smart_popup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +30,7 @@ class CustomAlertPopupExample extends StatelessWidget {
           onPressed: () {
             showDialog(
               context: context,
-              builder: (context) => const CustomAlertPopup(
+              builder: (context) => const SmartPopup(
                 title: "Hello",
                 subTitle: "This is a custom alert dialog box",
                 firstButtonText: "Ok",

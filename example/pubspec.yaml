@@ -10,7 +10,7 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.6
-  custom_alert_popup:
+  smart_popup:
     path: ..
 
 dev_dependencies:
