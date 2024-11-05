@@ -141,7 +141,7 @@ class SmartPopup extends StatelessWidget {
                 if (lottieAssetPath != '') ...[
                   const SizedBox(height: 10),
                   Center(
-                    child: Lottie.asset(lottieAssetPath, fit: BoxFit.fitHeight, height: 130),
+                    child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130),
                   ),
                 ],
                 if (imageWidget != null) ...[imageWidget!],
@@ -304,19 +304,6 @@ class SmartPopup extends StatelessWidget {
   }
 }
 
-/// Enum representing the types of animations for the dialog.
-///
-/// The [AnimationType] enum allows you to specify how the dialog should animate
-/// when it appears or disappears. This adds a dynamic feel to the user interface.
-///
-/// Possible values:
-/// - [AnimationType.fade]: The dialog will fade in and out.
-/// - [AnimationType.rotate]: The dialog will rotate in and out.
-/// - [AnimationType.scale]: The dialog will scale in and out from the center.
-/// - [AnimationType.slide]: The dialog will slide in and out from the specified direction.
-/// - [AnimationType.size]: The dialog will change size during the animation.
-/// - [AnimationType.switcher]: The dialog will use a switcher effect for transitions.
-/// - [AnimationType.none]: No animation will be applied.
 enum AnimationType { fade, rotate, scale, slide, size, switcher, none }
 
 enum PopType { info, warning, success, error }
