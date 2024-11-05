@@ -7,156 +7,46 @@ import 'src/custom_button.dart';
 import 'src/popup_video.dart';
 import 'src/responsive_helper.dart';
 
-/// A customizable alert dialog widget for Flutter applications.
-///
-/// The [SmartPopup] class provides a highly configurable dialog that can
-/// display various types of content including images, videos, and custom widgets.
-/// It supports multiple animation types, countdown timers, and responsive design,
-/// making it suitable for a wide range of use cases in your application.
-///
-/// ## Features:
-/// - **Customizable content:** Display text, images, videos, or any custom widget.
-/// - **Flexible layout:** Adjust width, height, and alignments of the dialog content.
-/// - **Animation options:** Choose from multiple animation types for showing/hiding the dialog.
-/// - **Countdown timers:** Include a countdown timer that can control button visibility.
-/// - **Responsive design:** Automatically adjust to different screen sizes, especially for desktop.
-///
-/// ## Parameters:
-/// - [title] : The title of the alert dialog.
-/// - [subTitle] : The subTitle text to display in the alert dialog.
-/// - [customWidget] : A custom widget that can be displayed within the dialog.
-/// - [width] : The width of the alert dialog.
-/// - [height] : The height of the alert dialog.
-/// - [imageHeight] : Height of the image displayed in the alert dialog.
-/// - [primaryButtonText] : Text for the first action button.
-/// - [secondaryButtonText] : Text for the second action button.
-/// - [imagePath] : Path to the image to be displayed in the alert dialog.
-/// - [videoPath] : Path to the video to be displayed in the alert dialog.
-/// - [firstButtonTap] : Callback function for the first button tap.
-/// - [secondButtonTap] : Callback function for the second button tap.
-/// - [timerDelay] : Delay for the countdown timer in seconds.
-/// - [content] : Additional widget to display in the alert dialog.
-/// - [descriptionAlign] : Text alignment for the description text.
-/// - [mainAxisAlignment] : Main axis alignment for the dialog content.
-/// - [crossAxisAlignment] : Cross axis alignment for the dialog content.
-/// - [titleSpacing] : Spacing before the title text.
-/// - [firstButtonWidth] : Width of the first button.
-/// - [secondButtonWidth] : Width of the second button.
-/// - [buttonRadius] : Radius of the buttons for rounded corners.
-/// - [buttonSpacing] : Spacing between the buttons.
-/// - [imageWidget] : A custom image widget to display.
-/// - [loading] : Whether to show a loading indicator on the buttons.
-/// - [showCloseButton] : Whether to hide the close button.
-/// - [animationType] : The type of animation to use for the dialog's appearance.
-/// - [animationDuration] : The duration of the animation effect.
-/// - [fadeBegin] : Starting value for fade animation.
-/// - [videoVolume] : Adjust video volume.
-/// - [videoPlayBackSpeed] : Adjust video speed.
-
-/// ## Usage:
-/// To use the [SmartPopup], simply create an instance and provide the
-/// necessary parameters. Call the `showDialog` function to display it in your app.
 class SmartPopup extends StatelessWidget {
-  // Title of the alert dialog
   final String? title;
-
-  // SubTitle text of the alert dialog
   final String? subTitle;
-
-  // Custom widget to display in the alert dialog
   final Widget? customWidget;
-
-  // Width of the alert dialog
   final double? width;
-
-  // Height of the alert dialog
   final double? height;
-
-  // Height of the image displayed in the alert dialog
   final double? imageHeight;
-
-  // Text for the first button
   final String? primaryButtonText;
-
-  // Text for the second button
   final String? secondaryButtonText;
-
-  // Path to the image to display in the alert dialog
   final String? imagePath;
-
-  // Path to the video to display in the alert dialog
   final String? videoPath;
-
-  // Callback function for the first button tap
-  final VoidCallback? firstButtonTap;
-
-  // Callback function for the second button tap
-  final VoidCallback? secondButtonTap;
-
-  // Delay for the countdown timer in seconds
+  final VoidCallback? primaryButtonTap;
+  final VoidCallback? secondaryButtonTap;
   final int? timerDelay;
-
-  // Whether to hide the buttons
   final bool? hideFirstButton;
-
-  // Additional widget to display in the alert dialog
   final Widget? content;
-
-  // Text alignment for the description
   final TextAlign? descriptionAlign;
-
-  // MainAxisAlignment for the column
   final MainAxisAlignment? mainAxisAlignment;
-
-  // CrossAxisAlignment for the column
   final CrossAxisAlignment? crossAxisAlignment;
-
-  // Spacing before the title text
   final double? titleSpacing;
-
-  // Radius of the buttons
   final double? buttonRadius;
-
-  // Spacing between the buttons
   final double? buttonSpacing;
-
-  // Custom image widget to display
   final Widget? imageWidget;
-
-  // Whether to show a loading indicator on the buttons
   final bool? loading;
-
-  // Whether to hide the close button
   final bool? showCloseButton;
   final bool? showButtons;
-
-  // Type of animation for the dialog
   final AnimationType animationType;
-
-  // Duration of the animation
   final Duration? animationDuration;
-
-  // Beginning value for the fade animation
   final double? fadeBegin;
-
-  // adjust  video volume
   final double? videoVolume;
-  // adjust  video speed
-
   final double? videoPlayBackSpeed;
-  final Color? firstButtonColor;
-  final Color? firstButtonTextColor;
-  final Color? secondButtonColor;
-  final Color? secondButtonTextColor;
+  final Color? primaryButtonColor;
+  final Color? primaryButtonTextColor;
+  final Color? secondaryButtonColor;
+  final Color? secondaryButtonTextColor;
   final Color? closeButtonBackgroundColor;
   final Color? closeButtonIconColor;
-  // Type of popup (info, warning, success, error)
   final PopType? popType;
-
-  // Path to the Lottie animation
   final String? lottiePath;
 
-  /// Creates a [SmartPopup] widget.
   const SmartPopup({
     super.key,
     this.title,
@@ -165,8 +55,8 @@ class SmartPopup extends StatelessWidget {
     this.buttonRadius,
     this.buttonSpacing,
     this.subTitle,
-    this.firstButtonTap,
-    this.secondButtonTap,
+    this.primaryButtonTap,
+    this.secondaryButtonTap,
     this.customWidget,
     this.primaryButtonText,
     this.secondaryButtonText,
@@ -189,10 +79,10 @@ class SmartPopup extends StatelessWidget {
     this.showButtons = true,
     this.videoVolume,
     this.videoPlayBackSpeed,
-    this.firstButtonColor,
-    this.firstButtonTextColor,
-    this.secondButtonColor,
-    this.secondButtonTextColor,
+    this.primaryButtonColor,
+    this.primaryButtonTextColor,
+    this.secondaryButtonColor,
+    this.secondaryButtonTextColor,
     this.closeButtonBackgroundColor,
     this.closeButtonIconColor,
     this.popType,
@@ -249,7 +139,7 @@ class SmartPopup extends StatelessWidget {
                   )
                 ],
                 if (lottieAssetPath != '') ...[
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Center(
                     child: Lottie.asset(lottieAssetPath, fit: BoxFit.fitHeight, height: 130),
                   ),
@@ -292,13 +182,13 @@ class SmartPopup extends StatelessWidget {
                                           width: isDesktop ? 190 : null,
                                           height: 45,
                                           text: primaryButtonText ?? "Yes",
-                                          color: snapshot.data == true ? firstButtonColor ?? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
-                                          textColor: firstButtonTextColor ?? Colors.white,
+                                          color: snapshot.data == true ? primaryButtonColor ?? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
+                                          textColor: primaryButtonTextColor ?? Colors.white,
                                           border: const Border(),
                                           borderRadius: BorderRadius.circular(14),
                                           onTap: () {
                                             if (snapshot.data == true) {
-                                              firstButtonTap!();
+                                              primaryButtonTap!();
                                             }
                                           },
                                         ),
@@ -341,11 +231,11 @@ class SmartPopup extends StatelessWidget {
                                     isLoading: loading ?? false,
                                     height: 45,
                                     text: primaryButtonText ?? "Yes",
-                                    color: firstButtonColor ?? const Color(0xFFC4283C),
-                                    textColor: firstButtonTextColor ?? Colors.white,
+                                    color: primaryButtonColor ?? const Color(0xFFC4283C),
+                                    textColor: primaryButtonTextColor ?? Colors.white,
                                     border: const Border(),
                                     borderRadius: BorderRadius.circular(buttonRadius ?? 14),
-                                    onTap: () => {firstButtonTap!()},
+                                    onTap: () => {primaryButtonTap!()},
                                   ),
                                 ),
                                 const SizedBox(width: 15),
@@ -356,11 +246,11 @@ class SmartPopup extends StatelessWidget {
                                   isLoading: loading ?? false,
                                   height: 45,
                                   text: secondaryButtonText ?? "Cancel",
-                                  color: secondButtonColor ?? const Color(0XFFFFF1F1),
-                                  textColor: secondButtonTextColor ?? const Color(0xFFC4283C),
+                                  color: secondaryButtonColor ?? const Color(0XFFFFF1F1),
+                                  textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
                                   border: const Border(),
                                   borderRadius: BorderRadius.circular(buttonRadius ?? 14),
-                                  onTap: () => {secondButtonTap!()},
+                                  onTap: () => {secondaryButtonTap!()},
                                 ),
                               ),
                             ],
