@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
+import 'package:lottie/lottie.dart';
 
 import 'src/custom_button.dart';
 import 'src/popup_video.dart';
@@ -149,6 +150,11 @@ class SmartPopup extends StatelessWidget {
   final Color? secondButtonTextColor;
   final Color? closeButtonBackgroundColor;
   final Color? closeButtonIconColor;
+  // Type of popup (info, warning, success, error)
+  final PopType? popType;
+
+  // Path to the Lottie animation
+  final String? lottiePath;
 
   /// Creates a [SmartPopup] widget.
   const SmartPopup({
@@ -189,10 +195,30 @@ class SmartPopup extends StatelessWidget {
     this.secondButtonTextColor,
     this.closeButtonBackgroundColor,
     this.closeButtonIconColor,
+    this.popType,
+    this.lottiePath,
   });
 
   @override
   Widget build(BuildContext context) {
+    String lottieAssetPath;
+    switch (popType) {
+      case PopType.warning:
+        lottieAssetPath = lottiePath ?? 'assets/lottie/warning.json';
+        break;
+      case PopType.success:
+        lottieAssetPath = lottiePath ?? 'assets/lottie/success.json';
+        break;
+      case PopType.error:
+        lottieAssetPath = lottiePath ?? 'assets/lottie/error.json';
+        break;
+      case PopType.info:
+        lottieAssetPath = lottiePath ?? 'assets/lottie/info.json';
+        break;
+      default:
+        lottieAssetPath = lottiePath ?? '';
+        break;
+    }
     final Future<bool> enableYesButton = Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
     final isDesktop = ResponsiveHelper.isDesktop(context);
     Widget dialogContent = AlertDialog(
@@ -222,13 +248,12 @@ class SmartPopup extends StatelessWidget {
                     height: imageHeight ?? 210,
                   )
                 ],
-                // Container(
-                //   height: 200, // Adjust height as needed
-                //   child: Lottie.asset(
-                //     'assets/your_lottie_file.json', // Update with your Lottie file path
-                //     fit: BoxFit.cover, // Adjust fit as necessary
-                //   ),
-                // ),
+                if (lottieAssetPath != '') ...[
+                  SizedBox(height: 10),
+                  Center(
+                    child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130),
+                  ),
+                ],
                 if (imageWidget != null) ...[imageWidget!],
                 if (videoPath != null) PopupVideo(videoPath: videoPath ?? '', videoPlayBackSpeed: videoPlayBackSpeed, videoVolume: videoVolume),
                 const SizedBox(height: 20),
@@ -237,8 +262,10 @@ class SmartPopup extends StatelessWidget {
                   crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
                   children: [
                     if (widget != null) ...[const SizedBox(height: 10), widget ?? const SizedBox.shrink()],
-                    Padding(padding: EdgeInsets.only(left: titleSpacing ?? 0), child: Text(title ?? '', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 20, color: Colors.black))),
-                    const SizedBox(height: 5),
+                    if (title != null) ...[
+                      Padding(padding: EdgeInsets.only(left: titleSpacing ?? 0), child: Text(title ?? '', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 20, color: Colors.black))),
+                      const SizedBox(height: 5),
+                    ],
                     const Divider(color: Color.fromARGB(255, 238, 238, 238)),
                     if (subTitle != null) ...[
                       SizedBox(height: showButtons == true ? 20 : 10),
@@ -401,3 +428,5 @@ class SmartPopup extends StatelessWidget {
 /// - [AnimationType.switcher]: The dialog will use a switcher effect for transitions.
 /// - [AnimationType.none]: No animation will be applied.
 enum AnimationType { fade, rotate, scale, slide, size, switcher, none }
+
+enum PopType { info, warning, success, error }
