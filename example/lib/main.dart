@@ -45,8 +45,8 @@ class SmartPopupExample extends StatelessWidget {
                   secondButtonTap: () {
                     Navigator.of(context).pop();
                   },
-                  // popType: PopType.success,
-                  lottiePath: "assets/lottie/info.json",
+                  popType: PopType.success,
+                  // lottiePath: "assets/lottie/info.json",
                   // Do not pass image and video path 5simultaneously; pass one at a time.
                   // imagePath: "assets/images/demo_image.png",
                   // videoPath: "assets/videos/demo_video.mp4",

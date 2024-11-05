@@ -35,7 +35,7 @@ import 'src/responsive_helper.dart';
 /// - [firstButtonTap] : Callback function for the first button tap.
 /// - [secondButtonTap] : Callback function for the second button tap.
 /// - [timerDelay] : Delay for the countdown timer in seconds.
-/// - [widget] : Additional widget to display in the alert dialog.
+/// - [content] : Additional widget to display in the alert dialog.
 /// - [descriptionAlign] : Text alignment for the description text.
 /// - [mainAxisAlignment] : Main axis alignment for the dialog content.
 /// - [crossAxisAlignment] : Cross axis alignment for the dialog content.
@@ -100,7 +100,7 @@ class SmartPopup extends StatelessWidget {
   final bool? hideFirstButton;
 
   // Additional widget to display in the alert dialog
-  final Widget? widget;
+  final Widget? content;
 
   // Text alignment for the description
   final TextAlign? descriptionAlign;
@@ -177,7 +177,7 @@ class SmartPopup extends StatelessWidget {
     this.imageHeight,
     this.timerDelay,
     this.hideFirstButton,
-    this.widget,
+    this.content,
     this.mainAxisAlignment,
     this.crossAxisAlignment,
     this.descriptionAlign,
@@ -251,7 +251,7 @@ class SmartPopup extends StatelessWidget {
                 if (lottieAssetPath != '') ...[
                   SizedBox(height: 10),
                   Center(
-                    child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130),
+                    child: Lottie.asset(lottieAssetPath, fit: BoxFit.fitHeight, height: 130),
                   ),
                 ],
                 if (imageWidget != null) ...[imageWidget!],
@@ -261,7 +261,7 @@ class SmartPopup extends StatelessWidget {
                   mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
                   crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
                   children: [
-                    if (widget != null) ...[const SizedBox(height: 10), widget ?? const SizedBox.shrink()],
+                    if (content != null) ...[const SizedBox(height: 10), content ?? const SizedBox.shrink()],
                     if (title != null) ...[
                       Padding(padding: EdgeInsets.only(left: titleSpacing ?? 0), child: Text(title ?? '', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 20, color: Colors.black))),
                       const SizedBox(height: 5),
