@@ -13,13 +13,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Smart Popup Demo',
       theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
-      home: const CustomAlertPopupExample(),
+      home: const SmartPopupExample(),
     );
   }
 }
 
-class CustomAlertPopupExample extends StatelessWidget {
-  const CustomAlertPopupExample({super.key});
+class SmartPopupExample extends StatelessWidget {
+  const SmartPopupExample({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,8 @@ class CustomAlertPopupExample extends StatelessWidget {
                 builder: (context) => SmartPopup(
                   title: "Smart Popup",
                   subTitle: "This is a smart popup. It can display alerts and messages",
-                  firstButtonText: "Ok",
-                  secondButtonText: "Cancel",
+                  primaryButtonText: "Ok",
+                  secondaryButtonText: "Cancel",
                   firstButtonTap: () {
                     Navigator.of(context).pop();
                   },
