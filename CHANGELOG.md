@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Lottie Added
+
 ## 2.0.1
 
 - Improved user interface for video controls, providing a more intuitive and seamless experience.
