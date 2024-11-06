@@ -5,6 +5,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:lottie/lottie.dart';
+import 'package:smart_popup/src/helper.dart';
 
 import 'src/custom_button.dart';
 import 'src/popup_video.dart';
@@ -99,31 +100,6 @@ class SmartPopup extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    String lottieAssetPath;
-    switch (popType) {
-      case PopType.warning:
-        lottieAssetPath = lottiePath ?? 'assets/lottie/warning.json';
-        break;
-      case PopType.success:
-        lottieAssetPath = lottiePath ?? 'assets/lottie/success.json';
-        break;
-      case PopType.error:
-        lottieAssetPath = lottiePath ?? 'assets/lottie/error.json';
-        break;
-      case PopType.info:
-        lottieAssetPath = lottiePath ?? 'assets/lottie/info.json';
-        break;
-      case PopType.delay:
-        lottieAssetPath = lottiePath ?? 'assets/lottie/delay.json';
-        break;
-      case PopType.loading:
-        lottieAssetPath = lottiePath ?? 'assets/lottie/loading.json';
-        break;
-      default:
-        lottieAssetPath = lottiePath ?? '';
-        break;
-    }
-
     useEffect(() {
       if (openDuration != null) {
         final timer = Timer(openDuration!, () {
@@ -133,6 +109,7 @@ class SmartPopup extends HookWidget {
       }
       return null;
     }, [openDuration]);
+    final String lottieAssetPath = LottieAssetHelper.getLottieAssetPath(popType, lottiePath);
 
     final Future<bool> enableYesButton = Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
     Widget dialogContent = AlertDialog(
