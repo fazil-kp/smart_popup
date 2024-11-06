@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:lottie/lottie.dart';
 import 'package:smart_popup/smart_popup.dart';
 
 void main() {
@@ -31,42 +30,35 @@ class SmartPopupExample extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
         child: Center(
-          child: Column(
-            children: [
-              Center(
-                child: Lottie.asset("assets/lottie/loading_lottie.json", fit: BoxFit.cover, height: 130, width: 130),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) => SmartPopup(
-                      // title: "Smart Popup",
-                      subTitle: "This is a smart popup. It can display alerts and messages",
-                      primaryButtonText: "Ok",
-                      secondaryButtonText: "Cancel",
-                      primaryButtonTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      secondaryButtonTap: () {
-                        Navigator.of(context).pop();
-                      },
-                      popType: PopType.error,
-                      // lottiePath: "assets/lottie/info.json",
-                      // Do not pass image and video path 5simultaneously; pass one at a time.
-                      // imagePath: "assets/images/demo_image.png",
-                      // videoPath: "assets/videos/demo_video.mp4",
-                      // videoVolume: 100,
-                      // videoPlayBackSpeed: 2.5,
-                      // hideFirstButton: true,
-                      // showCloseButton: false,
-                      // showButtons: false,
-                    ),
-                  );
-                },
-                child: const Text("Tap Here"),
-              ),
-            ],
+          child: ElevatedButton(
+            onPressed: () {
+              showDialog(
+                context: context,
+                builder: (context) => SmartPopup(
+                  // title: "Smart Popup",
+                  subTitle: "This is a smart popup. It can display alerts and messages",
+                  primaryButtonText: "Ok",
+                  secondaryButtonText: "Cancel",
+                  primaryButtonTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  secondaryButtonTap: () {
+                    Navigator.of(context).pop();
+                  },
+                  popType: PopType.info,
+                  // lottiePath: "assets/lottie/info.json",
+                  // Do not pass image and video path 5simultaneously; pass one at a time.
+                  // imagePath: "assets/images/demo_image.png",
+                  // videoPath: "assets/videos/demo_video.mp4",
+                  // videoVolume: 100,
+                  // videoPlayBackSpeed: 2.5,
+                  // hideFirstButton: true,
+                  // showCloseButton: false,
+                  // showButtons: false,
+                ),
+              );
+            },
+            child: const Text("Tap Here"),
           ),
         ),
       ),

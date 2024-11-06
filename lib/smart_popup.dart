@@ -104,8 +104,10 @@ class SmartPopup extends StatelessWidget {
         break;
       case PopType.info:
         lottieAssetPath = lottiePath ?? 'assets/lottie/info.json';
+        break;
       case PopType.delay:
         lottieAssetPath = lottiePath ?? 'assets/lottie/delay.json';
+        break;
       case PopType.loading:
         lottieAssetPath = lottiePath ?? 'assets/lottie/loading.json';
         break;
@@ -142,12 +144,12 @@ class SmartPopup extends StatelessWidget {
                     height: imageHeight ?? 210,
                   )
                 ],
-                // if (lottieAssetPath != '') ...[
-                const SizedBox(height: 10),
-                Center(
-                  child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130),
-                ),
-                // ],
+                if (lottieAssetPath != '') ...[
+                  const SizedBox(height: 10),
+                  Center(
+                    child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130),
+                  ),
+                ],
                 if (imageWidget != null) ...[imageWidget!],
                 if (videoPath != null) PopupVideo(videoPath: videoPath ?? '', videoPlayBackSpeed: videoPlayBackSpeed, videoVolume: videoVolume),
                 const SizedBox(height: 20),
