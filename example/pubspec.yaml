@@ -12,7 +12,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   smart_popup:
     path: ..
-  lottie: ^2.7.0
+  lottie: 
 
 dev_dependencies:
   flutter_test:

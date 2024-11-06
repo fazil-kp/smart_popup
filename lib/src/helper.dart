@@ -40,7 +40,8 @@ class LottieAssetHelper {
     }
   }
 
-  static Color getPrimaryButtonTextColor(PopType? popType, Color? defaultColor) {
+  static Color getPrimaryButtonTextColor(
+      PopType? popType, Color? defaultColor) {
     switch (popType) {
       case PopType.warning:
         return defaultColor ?? Colors.white;
@@ -78,7 +79,8 @@ class LottieAssetHelper {
     }
   }
 
-  static Color getSecondaryButtonTextColor(PopType? popType, Color? defaultColor) {
+  static Color getSecondaryButtonTextColor(
+      PopType? popType, Color? defaultColor) {
     switch (popType) {
       case PopType.warning:
         return defaultColor ?? Colors.orange;

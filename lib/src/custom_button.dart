@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'common_enums.dart';
-import 'custom_tool_tip.dart';
-
 /// A customizable button widget for Flutter applications.
 ///
 /// The [CustomButton] class provides a highly configurable button that can
@@ -68,7 +65,6 @@ class CustomButton extends StatelessWidget {
   final Widget? buttonText;
   final Widget? iconWidget;
   final FocusNode? focusNode;
-  final String? tooltip;
   final Color? tooltipBackground;
   final Color? tooltipForeground;
   final bool? isLoading;
@@ -97,7 +93,6 @@ class CustomButton extends StatelessWidget {
     this.buttonText,
     this.iconWidget,
     this.focusNode,
-    this.tooltip,
     this.tooltipBackground,
     this.tooltipForeground,
     this.isLoading,
@@ -109,24 +104,7 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return tooltip != null
-        ? CustomTooltip(
-            position: TooltipPosition.bottom,
-            cornerRadius: 8,
-            content: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                tooltip!,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: tooltipForeground ?? Colors.white,
-                      fontSize: 12,
-                    ),
-              ),
-            ),
-            backgroundColor: (tooltipBackground ?? Colors.black),
-            child: buttonWidget(context),
-          )
-        : buttonWidget(context);
+    return buttonWidget(context);
   }
 
   Color _getTextColor(BuildContext context, Color? buttonColor) {
