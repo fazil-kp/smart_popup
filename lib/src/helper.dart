@@ -28,7 +28,7 @@ class LottieAssetHelper {
       case PopType.success:
         return defaultColor ?? Colors.green;
       case PopType.error:
-        return defaultColor ?? Colors.red;
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
       case PopType.info:
         return defaultColor ?? Colors.blue;
       case PopType.delay:
@@ -62,11 +62,11 @@ class LottieAssetHelper {
   static Color? getSecondaryButtonColor(PopType? popType, Color? defaultColor) {
     switch (popType) {
       case PopType.warning:
-        return defaultColor ?? Colors.orangeAccent;
+        return defaultColor ?? const Color.fromARGB(255, 255, 246, 230);
       case PopType.success:
         return defaultColor ?? Colors.lightGreen;
       case PopType.error:
-        return defaultColor ?? Colors.redAccent;
+        return defaultColor ?? const Color(0XFFFFF1F1);
       case PopType.info:
         return defaultColor ?? const Color(0XFFE0F2FE);
       case PopType.delay:
@@ -81,11 +81,11 @@ class LottieAssetHelper {
   static Color getSecondaryButtonTextColor(PopType? popType, Color? defaultColor) {
     switch (popType) {
       case PopType.warning:
-        return defaultColor ?? Colors.black;
+        return defaultColor ?? Colors.orange;
       case PopType.success:
         return defaultColor ?? Colors.black;
       case PopType.error:
-        return defaultColor ?? Colors.black;
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
       case PopType.info:
         return defaultColor ?? Colors.blue;
       case PopType.delay:
