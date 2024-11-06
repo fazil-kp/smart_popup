@@ -32,9 +32,9 @@ class LottieAssetHelper {
       case PopType.info:
         return defaultColor ?? Colors.blue;
       case PopType.delay:
-        return defaultColor ?? Colors.yellow;
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
       case PopType.loading:
-        return defaultColor ?? Colors.grey;
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
       default:
         return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
     }
@@ -51,9 +51,9 @@ class LottieAssetHelper {
       case PopType.info:
         return defaultColor ?? Colors.white;
       case PopType.delay:
-        return defaultColor ?? Colors.black;
+        return defaultColor ?? Colors.white;
       case PopType.loading:
-        return defaultColor ?? Colors.black;
+        return defaultColor ?? Colors.white;
       default:
         return defaultColor ?? const Color(0XFFFFF1F1);
     }
@@ -70,9 +70,9 @@ class LottieAssetHelper {
       case PopType.info:
         return defaultColor ?? const Color(0XFFE0F2FE);
       case PopType.delay:
-        return defaultColor ?? Colors.yellowAccent;
+        return defaultColor ?? const Color(0XFFFFF1F1);
       case PopType.loading:
-        return defaultColor ?? Colors.grey[400];
+        return defaultColor ?? const Color(0XFFFFF1F1);
       default:
         return defaultColor ?? const Color(0XFFFFF1F1);
     }
@@ -89,9 +89,9 @@ class LottieAssetHelper {
       case PopType.info:
         return defaultColor ?? Colors.blue;
       case PopType.delay:
-        return defaultColor ?? Colors.black;
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
       case PopType.loading:
-        return defaultColor ?? Colors.black;
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
       default:
         return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
     }
