@@ -227,7 +227,7 @@ class SmartPopup extends HookWidget {
                                     isLoading: loading ?? false,
                                     height: 45,
                                     text: primaryButtonText ?? "Yes",
-                                    color: primaryButtonColor ?? const Color(0xFFC4283C),
+                                    color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
                                     textColor: primaryButtonTextColor ?? Colors.white,
                                     border: const Border(),
                                     fontWeight: buttonsFontWeight ?? FontWeight.w600,
@@ -242,7 +242,7 @@ class SmartPopup extends HookWidget {
                                 child: CustomButton(
                                   height: 45,
                                   text: secondaryButtonText ?? "No",
-                                  color: secondaryButtonColor ?? const Color(0XFFFFF1F1),
+                                  color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
                                   textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
                                   border: const Border(),
                                   fontWeight: buttonsFontWeight ?? FontWeight.w600,
