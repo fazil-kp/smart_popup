@@ -36,7 +36,7 @@ class LottieAssetHelper {
       case PopType.loading:
         return defaultColor ?? Colors.grey;
       default:
-        return defaultColor ?? const Color(0xFFC4283C);
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
     }
   }
 
@@ -93,7 +93,7 @@ class LottieAssetHelper {
       case PopType.loading:
         return defaultColor ?? Colors.black;
       default:
-        return defaultColor ?? const Color(0xFFC4283C);
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
     }
   }
 }
