@@ -99,6 +99,9 @@ class SmartPopup extends StatelessWidget {
       case PopType.success:
         lottieAssetPath = lottiePath ?? 'assets/lottie/success.json';
         break;
+      case PopType.errorPerson:
+        lottieAssetPath = lottiePath ?? 'assets/lottie/error_person.json';
+        break;
       case PopType.error:
         lottieAssetPath = lottiePath ?? 'assets/lottie/error.json';
         break;
@@ -138,12 +141,12 @@ class SmartPopup extends StatelessWidget {
                     height: imageHeight ?? 210,
                   )
                 ],
-                if (lottieAssetPath != '') ...[
-                  const SizedBox(height: 10),
-                  Center(
-                    child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130),
-                  ),
-                ],
+                // if (lottieAssetPath != '') ...[
+                const SizedBox(height: 10),
+                Center(
+                  child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130),
+                ),
+                // ],
                 if (imageWidget != null) ...[imageWidget!],
                 if (videoPath != null) PopupVideo(videoPath: videoPath ?? '', videoPlayBackSpeed: videoPlayBackSpeed, videoVolume: videoVolume),
                 const SizedBox(height: 20),
@@ -306,4 +309,4 @@ class SmartPopup extends StatelessWidget {
 
 enum AnimationType { fade, rotate, scale, slide, size, switcher, none }
 
-enum PopType { info, warning, success, error }
+enum PopType { info, warning, success, error, errorPerson }
