@@ -182,7 +182,7 @@ class SmartPopup extends HookWidget {
                                         CustomButton(
                                           height: 45,
                                           text: primaryButtonText ?? "Yes",
-                                          color: snapshot.data == true ? primaryButtonColor ?? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
+                                          color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
                                           textColor: primaryButtonTextColor ?? Colors.white,
                                           border: const Border(),
                                           fontWeight: buttonsFontWeight ?? FontWeight.w600,
