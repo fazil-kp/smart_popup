@@ -12,7 +12,7 @@ import 'src/popup_video.dart';
 class SmartPopup extends HookWidget {
   final String? title;
   final String? subTitle;
-  final Widget? customWidget;
+  final Widget? content;
   final double? width;
   final double? height;
   final double? imageHeight;
@@ -23,7 +23,7 @@ class SmartPopup extends HookWidget {
   final VoidCallback? primaryButtonTap;
   final VoidCallback? secondaryButtonTap;
   final int? timerDelay;
-  final Widget? content;
+  final Widget? titleWidget;
   final TextAlign? descriptionAlign;
   final MainAxisAlignment? mainAxisAlignment;
   final CrossAxisAlignment? crossAxisAlignment;
@@ -62,7 +62,7 @@ class SmartPopup extends HookWidget {
     this.subTitle,
     this.primaryButtonTap,
     this.secondaryButtonTap,
-    this.customWidget,
+    this.content,
     this.primaryButtonText,
     this.secondaryButtonText,
     this.width,
@@ -71,7 +71,7 @@ class SmartPopup extends HookWidget {
     this.videoPath,
     this.imageHeight,
     this.timerDelay,
-    this.content,
+    this.titleWidget,
     this.mainAxisAlignment,
     this.crossAxisAlignment,
     this.descriptionAlign,
@@ -175,7 +175,7 @@ class SmartPopup extends HookWidget {
                   mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
                   crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
                   children: [
-                    if (content != null) ...[const SizedBox(height: 10), content ?? const SizedBox.shrink()],
+                    if (titleWidget != null) ...[const SizedBox(height: 10), titleWidget ?? const SizedBox.shrink()],
                     if (title != null) ...[
                       Padding(padding: EdgeInsets.only(left: titleSpacing ?? 0), child: Text(title ?? '', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 20, color: Colors.black))),
                       const SizedBox(height: 5),
@@ -188,7 +188,7 @@ class SmartPopup extends HookWidget {
                         child: Text(subTitle.toString(), style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400, fontSize: 14, color: const Color(0xFF909090)), textAlign: TextAlign.center),
                       ),
                     ],
-                    if (customWidget != null) ...[const SizedBox(height: 10), customWidget ?? const SizedBox.shrink()],
+                    if (content != null) ...[const SizedBox(height: 10), content ?? const SizedBox.shrink()],
                     if (showButtons == true) ...[
                       const SizedBox(height: 30),
                       Padding(
