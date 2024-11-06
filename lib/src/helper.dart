@@ -68,7 +68,7 @@ class LottieAssetHelper {
       case PopType.error:
         return defaultColor ?? Colors.redAccent;
       case PopType.info:
-        return defaultColor ?? Colors.lightBlue;
+        return defaultColor ?? const Color(0XFFE0F2FE);
       case PopType.delay:
         return defaultColor ?? Colors.yellowAccent;
       case PopType.loading:
