@@ -273,8 +273,8 @@ class SmartPopup extends HookWidget {
                 child: Container(
                   height: 30,
                   width: 30,
-                  decoration: BoxDecoration(shape: BoxShape.circle, color: closeButtonBackgroundColor ?? const Color(0XFFFFF1F1)),
-                  child: Icon(Icons.close, size: 20, color: closeButtonIconColor ?? const Color(0xFFC4283C)),
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: LottieAssetHelper.getSecondaryButtonColor(popType, closeButtonBackgroundColor)),
+                  child: Icon(Icons.close, size: 20, color: LottieAssetHelper.getPrimaryButtonColor(popType, closeButtonIconColor)),
                 ),
               ),
             ),

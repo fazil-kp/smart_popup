@@ -64,7 +64,7 @@ class LottieAssetHelper {
       case PopType.warning:
         return defaultColor ?? const Color.fromARGB(255, 255, 246, 230);
       case PopType.success:
-        return defaultColor ?? Colors.lightGreen;
+        return defaultColor ?? const Color.fromARGB(255, 237, 255, 217);
       case PopType.error:
         return defaultColor ?? const Color(0XFFFFF1F1);
       case PopType.info:
@@ -83,7 +83,7 @@ class LottieAssetHelper {
       case PopType.warning:
         return defaultColor ?? Colors.orange;
       case PopType.success:
-        return defaultColor ?? Colors.black;
+        return defaultColor ?? Colors.green;
       case PopType.error:
         return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
       case PopType.info:
