@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:lottie/lottie.dart';
 
@@ -7,7 +8,7 @@ import 'src/custom_button.dart';
 import 'src/popup_video.dart';
 import 'src/responsive_helper.dart';
 
-class SmartPopup extends StatelessWidget {
+class SmartPopup extends HookWidget {
   final String? title;
   final String? subTitle;
   final Widget? customWidget;
@@ -21,7 +22,6 @@ class SmartPopup extends StatelessWidget {
   final VoidCallback? primaryButtonTap;
   final VoidCallback? secondaryButtonTap;
   final int? timerDelay;
-  final bool? hideFirstButton;
   final Widget? content;
   final TextAlign? descriptionAlign;
   final MainAxisAlignment? mainAxisAlignment;
@@ -33,6 +33,7 @@ class SmartPopup extends StatelessWidget {
   final bool? loading;
   final bool? showCloseButton;
   final bool? showButtons;
+  final bool? showDivider;
   final AnimationType animationType;
   final Duration? animationDuration;
   final double? fadeBegin;
@@ -66,7 +67,6 @@ class SmartPopup extends StatelessWidget {
     this.videoPath,
     this.imageHeight,
     this.timerDelay,
-    this.hideFirstButton,
     this.content,
     this.mainAxisAlignment,
     this.crossAxisAlignment,
@@ -87,6 +87,7 @@ class SmartPopup extends StatelessWidget {
     this.closeButtonIconColor,
     this.popType,
     this.lottiePath,
+    this.showDivider = true,
   });
 
   @override
@@ -162,7 +163,7 @@ class SmartPopup extends StatelessWidget {
                       Padding(padding: EdgeInsets.only(left: titleSpacing ?? 0), child: Text(title ?? '', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 20, color: Colors.black))),
                       const SizedBox(height: 5),
                     ],
-                    const Divider(color: Color.fromARGB(255, 238, 238, 238)),
+                    if (showDivider == true) const Divider(color: Color.fromARGB(255, 238, 238, 238)),
                     if (subTitle != null) ...[
                       SizedBox(height: showButtons == true ? 20 : 10),
                       Padding(
@@ -231,7 +232,7 @@ class SmartPopup extends StatelessWidget {
                                 ),
                               ),
                             if (timerDelay == null)
-                              if (hideFirstButton != true) ...[
+                              if (primaryButtonText != null) ...[
                                 Expanded(
                                   child: CustomButton(
                                     isLoading: loading ?? false,
@@ -246,12 +247,11 @@ class SmartPopup extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 15),
                               ],
-                            if (secondaryButtonText?.isNotEmpty == true) ...[
+                            if (secondaryButtonText != null)
                               Expanded(
                                 child: CustomButton(
-                                  isLoading: loading ?? false,
                                   height: 45,
-                                  text: secondaryButtonText ?? "Cancel",
+                                  text: secondaryButtonText ?? "No",
                                   color: secondaryButtonColor ?? const Color(0XFFFFF1F1),
                                   textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
                                   border: const Border(),
@@ -259,14 +259,14 @@ class SmartPopup extends StatelessWidget {
                                   onTap: () => {secondaryButtonTap!()},
                                 ),
                               ),
-                            ],
                           ],
                         ),
                       ),
+                      if (height == null && secondaryButtonText != null && primaryButtonText != null) const SizedBox(height: 20),
                     ],
+                    if (showButtons == false) const SizedBox(height: 20),
                   ],
                 ),
-                if (height == null) const SizedBox(height: 20),
               ],
             ),
           ),

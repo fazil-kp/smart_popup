@@ -136,12 +136,11 @@ class CustomButton extends StatelessWidget {
   }
 
   Widget buttonWidget(BuildContext context) {
-    final buttonColor =
-        isLoading == true ? Colors.white : color ?? Colors.white;
+    final buttonColor = isLoading == true ? Colors.white : color ?? Colors.white;
     final resolvedTextColor = textColor ?? _getTextColor(context, buttonColor);
     return InkWell(
       focusNode: focusNode ?? FocusNode(),
-      borderRadius: splashRadius ?? BorderRadius.circular(6),
+      borderRadius: BorderRadius.circular(12),
       onTap: isLoading == true ? null : onTap,
       onLongPress: isLoading == true ? null : onLongPress,
       mouseCursor: mouseCursor ?? SystemMouseCursors.click,
@@ -150,7 +149,7 @@ class CustomButton extends StatelessWidget {
         height: height ?? 40,
         decoration: BoxDecoration(
           color: buttonColor,
-          borderRadius: borderRadius ?? BorderRadius.circular(6),
+          borderRadius: BorderRadius.circular(12),
           border: isLoading == true ? null : border ?? const Border(),
         ),
         child: Padding(
@@ -170,17 +169,10 @@ class CustomButton extends StatelessWidget {
                         )
                   ]
                 : [
-                    if (iconWidget != null)
-                      iconWidget!
-                    else if (icon != null)
-                      Icon(icon,
-                          size: iconSize ?? 20,
-                          color: iconColor ?? resolvedTextColor),
+                    if (iconWidget != null) iconWidget! else if (icon != null) Icon(icon, size: iconSize ?? 20, color: iconColor ?? resolvedTextColor),
                     if (text != null || buttonText != null) ...[
-                      if (icon != null || iconWidget != null)
-                        const SizedBox(width: 8),
-                      if (buttonText != null)
-                        buttonText ?? const SizedBox.shrink(),
+                      if (icon != null || iconWidget != null) const SizedBox(width: 8),
+                      if (buttonText != null) buttonText ?? const SizedBox.shrink(),
                       if (buttonText == null && ellipsisOverFlow == false)
                         Text(
                           text!,
