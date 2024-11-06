@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -47,6 +49,7 @@ class SmartPopup extends HookWidget {
   final Color? closeButtonIconColor;
   final PopType? popType;
   final String? lottiePath;
+  final Duration? openDuration;
 
   const SmartPopup({
     super.key,
@@ -88,6 +91,7 @@ class SmartPopup extends HookWidget {
     this.popType,
     this.lottiePath,
     this.showDivider = true,
+    this.openDuration,
   });
 
   @override
@@ -116,6 +120,17 @@ class SmartPopup extends HookWidget {
         lottieAssetPath = lottiePath ?? '';
         break;
     }
+
+    useEffect(() {
+      if (openDuration != null) {
+        final timer = Timer(openDuration!, () {
+          if (Navigator.of(context).canPop()) Navigator.of(context).pop();
+        });
+        return timer.cancel;
+      }
+      return null;
+    }, [openDuration]);
+
     final Future<bool> enableYesButton = Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
     final isDesktop = ResponsiveHelper.isDesktop(context);
     Widget dialogContent = AlertDialog(
