@@ -243,7 +243,9 @@ class SmartPopup extends HookWidget {
                                   height: 45,
                                   text: secondaryButtonText ?? "No",
                                   color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
-                                  textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
+
+                                  // textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
+                                  textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
                                   border: const Border(),
                                   fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                   textSize: buttonsFontSize ?? 14,

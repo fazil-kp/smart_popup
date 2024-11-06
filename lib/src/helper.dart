@@ -87,13 +87,13 @@ class LottieAssetHelper {
       case PopType.error:
         return defaultColor ?? Colors.black;
       case PopType.info:
-        return defaultColor ?? Colors.black;
+        return defaultColor ?? Colors.blue;
       case PopType.delay:
         return defaultColor ?? Colors.black;
       case PopType.loading:
         return defaultColor ?? Colors.black;
       default:
-        return defaultColor ?? Colors.white;
+        return defaultColor ?? const Color(0xFFC4283C);
     }
   }
 }
