@@ -8,7 +8,6 @@ import 'package:lottie/lottie.dart';
 
 import 'src/custom_button.dart';
 import 'src/popup_video.dart';
-import 'src/responsive_helper.dart';
 
 class SmartPopup extends HookWidget {
   final String? title;
@@ -50,6 +49,8 @@ class SmartPopup extends HookWidget {
   final PopType? popType;
   final String? lottiePath;
   final Duration? openDuration;
+  final FontWeight? buttonsFontWeight;
+  final double? buttonsFontSize;
 
   const SmartPopup({
     super.key,
@@ -92,6 +93,8 @@ class SmartPopup extends HookWidget {
     this.lottiePath,
     this.showDivider = true,
     this.openDuration,
+    this.buttonsFontWeight,
+    this.buttonsFontSize,
   });
 
   @override
@@ -132,7 +135,6 @@ class SmartPopup extends HookWidget {
     }, [openDuration]);
 
     final Future<bool> enableYesButton = Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
-    final isDesktop = ResponsiveHelper.isDesktop(context);
     Widget dialogContent = AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       backgroundColor: Colors.white,
@@ -201,13 +203,13 @@ class SmartPopup extends HookWidget {
                                     return Stack(
                                       children: [
                                         CustomButton(
-                                          width: isDesktop ? 190 : null,
                                           height: 45,
                                           text: primaryButtonText ?? "Yes",
                                           color: snapshot.data == true ? primaryButtonColor ?? const Color(0xFFC4283C) : Colors.grey.withOpacity(.5),
                                           textColor: primaryButtonTextColor ?? Colors.white,
                                           border: const Border(),
-                                          borderRadius: BorderRadius.circular(14),
+                                          fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                          textSize: buttonsFontSize ?? 14,
                                           onTap: () {
                                             if (snapshot.data == true) {
                                               primaryButtonTap!();
@@ -225,11 +227,6 @@ class SmartPopup extends HookWidget {
                                                 color: snapshot.data == true ? Colors.white : const Color(0xFFC4283C),
                                                 borderRadius: BorderRadius.circular(14),
                                               ),
-                                              width: isDesktop
-                                                  ? width == null
-                                                      ? MediaQuery.of(context).size.width * 0.13
-                                                      : (width! - 150)
-                                                  : 100,
                                               height: 40,
                                               child: Center(
                                                 child: TimerCountdown(
@@ -256,8 +253,9 @@ class SmartPopup extends HookWidget {
                                     color: primaryButtonColor ?? const Color(0xFFC4283C),
                                     textColor: primaryButtonTextColor ?? Colors.white,
                                     border: const Border(),
-                                    fontWeight: FontWeight.w600,
-                                    onTap: () => {primaryButtonTap!()},
+                                    fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                    textSize: buttonsFontSize ?? 14,
+                                    onTap: primaryButtonTap ?? () => {Navigator.of(context).pop()},
                                   ),
                                 ),
                                 const SizedBox(width: 15),
@@ -270,8 +268,9 @@ class SmartPopup extends HookWidget {
                                   color: secondaryButtonColor ?? const Color(0XFFFFF1F1),
                                   textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
                                   border: const Border(),
-                                  fontWeight: FontWeight.w600,
-                                  onTap: () => {secondaryButtonTap!()},
+                                  fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                  textSize: buttonsFontSize ?? 14,
+                                  onTap: secondaryButtonTap ?? () => {Navigator.of(context).pop()},
                                 ),
                               ),
                           ],

@@ -40,7 +40,8 @@ class SmartPopupExample extends StatelessWidget {
                   primaryButtonText: "Ok",
                   secondaryButtonText: "Cancel",
                   primaryButtonTap: () {
-                    Navigator.of(context).pop();
+                    // Navigator.of(context).pop();
+                    print("object");
                   },
                   secondaryButtonTap: () {
                     Navigator.of(context).pop();
