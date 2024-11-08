@@ -24,6 +24,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/lottie/
     - assets/lottie/warning.json
     - assets/lottie/success.json
     - assets/lottie/error.json
