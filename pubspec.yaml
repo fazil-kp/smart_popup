@@ -4,7 +4,7 @@ version: 2.0.3
 homepage: https://github.com/fazil-kp/smart_popup.git
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ">=3.4.3 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -13,9 +13,7 @@ dependencies:
   flutter_animate: ^4.5.0
   flutter_hooks: ^0.20.5
   flutter_timer_countdown: ^1.0.7
-  lottie: any
-  video_player: ^2.9.1
-  video_player_win: ^2.3.11
+  lottie: ^3.1.3
 
 dev_dependencies:
   flutter_test:
