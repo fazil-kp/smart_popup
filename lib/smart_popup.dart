@@ -183,7 +183,7 @@ class SmartPopup extends HookWidget {
                                                 height: 45,
                                                 text: primaryButtonText ?? "Yes",
                                                 color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
-                                                textColor: primaryButtonTextColor ?? Colors.white,
+                                                textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
                                                 border: const Border(),
                                                 fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                                 textSize: buttonsFontSize ?? 14,
@@ -231,7 +231,7 @@ class SmartPopup extends HookWidget {
                                           height: 45,
                                           text: primaryButtonText ?? "Yes",
                                           color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                          textColor: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonTextColor),
+                                          textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
                                           border: const Border(),
                                           fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                           textSize: buttonsFontSize ?? 14,
@@ -269,7 +269,7 @@ class SmartPopup extends HookWidget {
                                               height: 45,
                                               text: primaryButtonText ?? "Yes",
                                               color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
-                                              textColor: primaryButtonTextColor ?? Colors.white,
+                                              textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
                                               border: const Border(),
                                               fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                               textSize: buttonsFontSize ?? 14,
@@ -315,7 +315,7 @@ class SmartPopup extends HookWidget {
                                         height: 45,
                                         text: primaryButtonText ?? "Yes",
                                         color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                        textColor: primaryButtonTextColor ?? Colors.white,
+                                        textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
                                         border: const Border(),
                                         fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                         textSize: buttonsFontSize ?? 14,
@@ -326,12 +326,9 @@ class SmartPopup extends HookWidget {
                                   if (secondaryButtonText != null)
                                     CustomButton(
                                       popType: popType,
-
                                       height: 45,
                                       text: secondaryButtonText ?? "No",
                                       color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
-
-                                      // textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
                                       textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
                                       border: const Border(),
                                       fontWeight: buttonsFontWeight ?? FontWeight.w600,
