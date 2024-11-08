@@ -8,7 +8,6 @@ import 'package:lottie/lottie.dart';
 import 'package:smart_popup/src/helper.dart';
 
 import 'src/custom_button.dart';
-import 'src/popup_video.dart';
 
 class SmartPopup extends HookWidget {
   final String? title;
@@ -52,6 +51,7 @@ class SmartPopup extends HookWidget {
   final Duration? openDuration;
   final FontWeight? buttonsFontWeight;
   final double? buttonsFontSize;
+  final ButtonAlignment? buttonAlignment;
 
   const SmartPopup({
     super.key,
@@ -96,6 +96,7 @@ class SmartPopup extends HookWidget {
     this.openDuration,
     this.buttonsFontWeight,
     this.buttonsFontSize,
+    this.buttonAlignment = ButtonAlignment.horizontal,
   });
 
   @override
@@ -109,17 +110,13 @@ class SmartPopup extends HookWidget {
       }
       return null;
     }, [openDuration]);
-    final String lottieAssetPath =
-        LottieAssetHelper.getLottieAssetPath(popType, lottiePath);
+    final String lottieAssetPath = LottieAssetHelper.getLottieAssetPath(popType, lottiePath);
 
-    final Future<bool> enableYesButton =
-        Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
+    final Future<bool> enableYesButton = Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
     Widget dialogContent = AlertDialog(
       contentPadding: const EdgeInsets.all(0),
       backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(22),
-          side: const BorderSide(color: Color(0xFFD9D9D9), width: 0.1)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(22), side: const BorderSide(color: Color(0xFFD9D9D9), width: 0.1)),
       shadowColor: const Color.fromARGB(255, 238, 238, 238).withOpacity(0.4),
       elevation: 15,
       content: Stack(
@@ -135,13 +132,9 @@ class SmartPopup extends HookWidget {
                 if (imagePath != null) ...[
                   Container(
                     decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(22),
-                          topRight: Radius.circular(22)),
+                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22)),
                       color: Colors.white,
-                      image: DecorationImage(
-                          image: AssetImage(imagePath ?? ''),
-                          fit: BoxFit.cover),
+                      image: DecorationImage(image: AssetImage(imagePath ?? ''), fit: BoxFit.cover),
                     ),
                     width: width ?? 430,
                     height: imageHeight ?? 210,
@@ -149,187 +142,197 @@ class SmartPopup extends HookWidget {
                 ],
                 if (lottieAssetPath != '') ...[
                   const SizedBox(height: 10),
-                  Center(
-                    child: Lottie.asset(lottieAssetPath,
-                        fit: BoxFit.cover, height: 130),
-                  ),
+                  Center(child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130)),
                 ],
                 if (imageWidget != null) ...[imageWidget!],
-                if (videoPath != null)
-                  PopupVideo(
-                      videoPath: videoPath ?? '',
-                      videoPlayBackSpeed: videoPlayBackSpeed,
-                      videoVolume: videoVolume),
                 const SizedBox(height: 20),
                 Column(
-                  mainAxisAlignment:
-                      mainAxisAlignment ?? MainAxisAlignment.center,
-                  crossAxisAlignment:
-                      crossAxisAlignment ?? CrossAxisAlignment.center,
+                  mainAxisAlignment: mainAxisAlignment ?? MainAxisAlignment.center,
+                  crossAxisAlignment: crossAxisAlignment ?? CrossAxisAlignment.center,
                   children: [
-                    if (titleWidget != null) ...[
-                      const SizedBox(height: 10),
-                      titleWidget ?? const SizedBox.shrink()
-                    ],
+                    if (titleWidget != null) ...[const SizedBox(height: 10), titleWidget ?? const SizedBox.shrink()],
                     if (title != null) ...[
-                      Padding(
-                          padding: EdgeInsets.only(left: titleSpacing ?? 0),
-                          child: Text(title ?? '',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge
-                                  ?.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 20,
-                                      color: Colors.black))),
+                      Padding(padding: EdgeInsets.only(left: titleSpacing ?? 0), child: Text(title ?? '', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600, fontSize: 20, color: Colors.black))),
                       const SizedBox(height: 5),
                     ],
-                    if (showDivider == true)
-                      const Divider(color: Color.fromARGB(255, 238, 238, 238)),
+                    if (showDivider == true) const Divider(color: Color.fromARGB(255, 238, 238, 238)),
                     if (subTitle != null) ...[
                       SizedBox(height: showButtons == true ? 20 : 10),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Text(subTitle.toString(),
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleLarge
-                                ?.copyWith(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
-                                    color: const Color(0xFF909090)),
-                            textAlign: TextAlign.center),
+                        padding: const EdgeInsets.symmetric(horizontal: 15),
+                        child: Text(subTitle.toString(), style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400, fontSize: 14, color: const Color(0xFF909090)), textAlign: TextAlign.center),
                       ),
                     ],
-                    if (content != null) ...[
-                      const SizedBox(height: 10),
-                      content ?? const SizedBox.shrink()
-                    ],
+                    if (content != null) ...[const SizedBox(height: 10), content ?? const SizedBox.shrink()],
                     if (showButtons == true) ...[
                       const SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                          children: [
-                            if (timerDelay != null)
-                              Expanded(
-                                child: FutureBuilder(
-                                  future: enableYesButton,
-                                  builder: (context, snapshot) {
-                                    return Stack(
-                                      children: [
-                                        CustomButton(
+                        child: buttonAlignment == ButtonAlignment.horizontal
+                            ? Row(
+                                children: [
+                                  if (timerDelay != null)
+                                    Expanded(
+                                      child: FutureBuilder(
+                                        future: enableYesButton,
+                                        builder: (context, snapshot) {
+                                          return Stack(
+                                            children: [
+                                              CustomButton(
+                                                height: 45,
+                                                text: primaryButtonText ?? "Yes",
+                                                color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
+                                                textColor: primaryButtonTextColor ?? Colors.white,
+                                                border: const Border(),
+                                                fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                                textSize: buttonsFontSize ?? 14,
+                                                onTap: () {
+                                                  if (snapshot.data == true) {
+                                                    primaryButtonTap!();
+                                                  }
+                                                },
+                                              ),
+                                              if (snapshot.data != true)
+                                                Positioned(
+                                                  top: 0,
+                                                  right: 0,
+                                                  left: 0,
+                                                  bottom: 0,
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color: snapshot.data == true ? Colors.white : const Color(0xFFC4283C),
+                                                      borderRadius: BorderRadius.circular(14),
+                                                    ),
+                                                    height: 40,
+                                                    child: Center(
+                                                      child: TimerCountdown(
+                                                        enableDescriptions: false,
+                                                        timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                                                        format: CountDownTimerFormat.secondsOnly,
+                                                        endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                            ],
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  if (timerDelay == null)
+                                    if (primaryButtonText != null) ...[
+                                      Expanded(
+                                        child: CustomButton(
+                                          isLoading: loading ?? false,
                                           height: 45,
                                           text: primaryButtonText ?? "Yes",
-                                          color: snapshot.data == true
-                                              ? LottieAssetHelper
-                                                  .getPrimaryButtonColor(
-                                                      popType,
-                                                      primaryButtonColor)
-                                              : Colors.grey.withOpacity(.5),
-                                          textColor: primaryButtonTextColor ??
-                                              Colors.white,
+                                          color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
+                                          textColor: primaryButtonTextColor ?? Colors.white,
                                           border: const Border(),
-                                          fontWeight: buttonsFontWeight ??
-                                              FontWeight.w600,
+                                          fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                           textSize: buttonsFontSize ?? 14,
-                                          onTap: () {
-                                            if (snapshot.data == true) {
-                                              primaryButtonTap!();
-                                            }
-                                          },
+                                          onTap: primaryButtonTap ?? () => {Navigator.of(context).pop()},
                                         ),
-                                        if (snapshot.data != true)
-                                          Positioned(
-                                            top: 0,
-                                            right: 0,
-                                            left: 0,
-                                            bottom: 0,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: snapshot.data == true
-                                                    ? Colors.white
-                                                    : const Color(0xFFC4283C),
-                                                borderRadius:
-                                                    BorderRadius.circular(14),
-                                              ),
-                                              height: 40,
-                                              child: Center(
-                                                child: TimerCountdown(
-                                                  enableDescriptions: false,
-                                                  timeTextStyle: Theme.of(
-                                                          context)
-                                                      .textTheme
-                                                      .titleSmall!
-                                                      .copyWith(
-                                                          color: Colors.white,
-                                                          fontWeight:
-                                                              FontWeight.bold),
-                                                  format: CountDownTimerFormat
-                                                      .secondsOnly,
-                                                  endTime: DateTime.now().add(
-                                                      Duration(
-                                                          seconds: timerDelay ??
-                                                              10)),
+                                      ),
+                                      const SizedBox(width: 15),
+                                    ],
+                                  if (secondaryButtonText != null)
+                                    Expanded(
+                                      child: CustomButton(
+                                        height: 45,
+                                        text: secondaryButtonText ?? "No",
+                                        color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
+
+                                        // textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
+                                        textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
+                                        border: const Border(),
+                                        fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                        textSize: buttonsFontSize ?? 14,
+                                        onTap: secondaryButtonTap ?? () => {Navigator.of(context).pop()},
+                                      ),
+                                    ),
+                                ],
+                              )
+                            : Column(
+                                children: [
+                                  if (timerDelay != null)
+                                    FutureBuilder(
+                                      future: enableYesButton,
+                                      builder: (context, snapshot) {
+                                        return Stack(
+                                          children: [
+                                            CustomButton(
+                                              height: 45,
+                                              text: primaryButtonText ?? "Yes",
+                                              color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
+                                              textColor: primaryButtonTextColor ?? Colors.white,
+                                              border: const Border(),
+                                              fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                              textSize: buttonsFontSize ?? 14,
+                                              onTap: () {
+                                                if (snapshot.data == true) {
+                                                  primaryButtonTap!();
+                                                }
+                                              },
+                                            ),
+                                            if (snapshot.data != true)
+                                              Positioned(
+                                                top: 0,
+                                                right: 0,
+                                                left: 0,
+                                                bottom: 0,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: snapshot.data == true ? Colors.white : const Color(0xFFC4283C),
+                                                    borderRadius: BorderRadius.circular(14),
+                                                  ),
+                                                  height: 40,
+                                                  child: Center(
+                                                    child: TimerCountdown(
+                                                      enableDescriptions: false,
+                                                      timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                                                      format: CountDownTimerFormat.secondsOnly,
+                                                      endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
+                                                    ),
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ),
-                                      ],
-                                    );
-                                  },
-                                ),
-                              ),
-                            if (timerDelay == null)
-                              if (primaryButtonText != null) ...[
-                                Expanded(
-                                  child: CustomButton(
-                                    isLoading: loading ?? false,
-                                    height: 45,
-                                    text: primaryButtonText ?? "Yes",
-                                    color:
-                                        LottieAssetHelper.getPrimaryButtonColor(
-                                            popType, primaryButtonColor),
-                                    textColor:
-                                        primaryButtonTextColor ?? Colors.white,
-                                    border: const Border(),
-                                    fontWeight:
-                                        buttonsFontWeight ?? FontWeight.w600,
-                                    textSize: buttonsFontSize ?? 14,
-                                    onTap: primaryButtonTap ??
-                                        () => {Navigator.of(context).pop()},
-                                  ),
-                                ),
-                                const SizedBox(width: 15),
-                              ],
-                            if (secondaryButtonText != null)
-                              Expanded(
-                                child: CustomButton(
-                                  height: 45,
-                                  text: secondaryButtonText ?? "No",
-                                  color:
-                                      LottieAssetHelper.getSecondaryButtonColor(
-                                          popType, secondaryButtonColor),
+                                          ],
+                                        );
+                                      },
+                                    ),
+                                  if (timerDelay == null)
+                                    if (primaryButtonText != null) ...[
+                                      CustomButton(
+                                        isLoading: loading ?? false,
+                                        height: 45,
+                                        text: primaryButtonText ?? "Yes",
+                                        color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
+                                        textColor: primaryButtonTextColor ?? Colors.white,
+                                        border: const Border(),
+                                        fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                        textSize: buttonsFontSize ?? 14,
+                                        onTap: primaryButtonTap ?? () => {Navigator.of(context).pop()},
+                                      ),
+                                      const SizedBox(height: 15),
+                                    ],
+                                  if (secondaryButtonText != null)
+                                    CustomButton(
+                                      height: 45,
+                                      text: secondaryButtonText ?? "No",
+                                      color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
 
-                                  // textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
-                                  textColor: LottieAssetHelper
-                                      .getSecondaryButtonTextColor(
-                                          popType, secondaryButtonTextColor),
-                                  border: const Border(),
-                                  fontWeight:
-                                      buttonsFontWeight ?? FontWeight.w600,
-                                  textSize: buttonsFontSize ?? 14,
-                                  onTap: secondaryButtonTap ??
-                                      () => {Navigator.of(context).pop()},
-                                ),
+                                      // textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
+                                      textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
+                                      border: const Border(),
+                                      fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                      textSize: buttonsFontSize ?? 14,
+                                      onTap: secondaryButtonTap ?? () => {Navigator.of(context).pop()},
+                                    ),
+                                ],
                               ),
-                          ],
-                        ),
                       ),
-                      if (height == null &&
-                          secondaryButtonText != null &&
-                          primaryButtonText != null)
-                        const SizedBox(height: 20),
+                      if (height == null && secondaryButtonText != null && primaryButtonText != null) const SizedBox(height: 20),
                     ],
                     if (showButtons == false) const SizedBox(height: 20),
                   ],
@@ -347,14 +350,8 @@ class SmartPopup extends HookWidget {
                 child: Container(
                   height: 30,
                   width: 30,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: LottieAssetHelper.getSecondaryButtonColor(
-                          popType, closeButtonBackgroundColor)),
-                  child: Icon(Icons.close,
-                      size: 20,
-                      color: LottieAssetHelper.getPrimaryButtonColor(
-                          popType, closeButtonIconColor)),
+                  decoration: BoxDecoration(shape: BoxShape.circle, color: LottieAssetHelper.getSecondaryButtonColor(popType, closeButtonBackgroundColor)),
+                  child: Icon(Icons.close, size: 20, color: LottieAssetHelper.getPrimaryButtonColor(popType, closeButtonIconColor)),
                 ),
               ),
             ),
@@ -364,36 +361,13 @@ class SmartPopup extends HookWidget {
 
     switch (animationType) {
       case AnimationType.fade:
-        dialogContent = dialogContent.animate().fade(
-            duration: animationDuration ?? const Duration(milliseconds: 500),
-            begin: fadeBegin ?? 0.0,
-            end: 1.0,
-            curve: Curves.easeIn);
+        dialogContent = dialogContent.animate().fade(duration: animationDuration ?? const Duration(milliseconds: 500), begin: fadeBegin ?? 0.0, end: 1.0, curve: Curves.easeIn);
         break;
       case AnimationType.scale:
-        dialogContent = dialogContent
-            .animate()
-            .fade(begin: 0, end: 1, duration: const Duration(microseconds: 300))
-            .scale(
-                duration:
-                    animationDuration ?? const Duration(milliseconds: 140),
-                begin: const Offset(.8, .8),
-                end: const Offset(1, 1),
-                curve: Curves.easeIn);
+        dialogContent = dialogContent.animate().fade(begin: 0, end: 1, duration: const Duration(microseconds: 300)).scale(duration: animationDuration ?? const Duration(milliseconds: 140), begin: const Offset(.8, .8), end: const Offset(1, 1), curve: Curves.easeIn);
         break;
       case AnimationType.slide:
-        dialogContent = dialogContent
-            .animate()
-            .scale(
-                duration:
-                    animationDuration ?? const Duration(milliseconds: 250),
-                begin: const Offset(.95, .95),
-                end: const Offset(1, 1),
-                curve: Curves.easeInOut)
-            .fade(
-                begin: 0.2,
-                end: 1,
-                duration: const Duration(milliseconds: 200));
+        dialogContent = dialogContent.animate().scale(duration: animationDuration ?? const Duration(milliseconds: 250), begin: const Offset(.95, .95), end: const Offset(1, 1), curve: Curves.easeInOut).fade(begin: 0.2, end: 1, duration: const Duration(milliseconds: 200));
         break;
       case AnimationType.none:
         dialogContent = dialogContent;
@@ -409,3 +383,5 @@ class SmartPopup extends HookWidget {
 enum AnimationType { fade, rotate, scale, slide, size, switcher, none }
 
 enum PopType { info, warning, success, error, delay, loading }
+
+enum ButtonAlignment { horizontal, vertical }
