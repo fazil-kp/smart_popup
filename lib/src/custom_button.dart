@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:smart_popup/smart_popup.dart';
+import 'package:smart_popup/src/helper.dart';
 
 class CustomButton extends StatelessWidget {
   final String? text;
@@ -26,6 +28,7 @@ class CustomButton extends StatelessWidget {
   final Widget? customLoading;
   final bool? ellipsisOverFlow;
   final MouseCursor? mouseCursor;
+  final PopType? popType;
 
   const CustomButton({
     super.key,
@@ -54,6 +57,7 @@ class CustomButton extends StatelessWidget {
     this.onLongPress,
     this.ellipsisOverFlow = false,
     this.mouseCursor,
+    this.popType,
   });
 
   @override
@@ -91,12 +95,12 @@ class CustomButton extends StatelessWidget {
             children: isLoading == true
                 ? [
                     customLoading ??
-                        const SizedBox(
+                        SizedBox(
                           width: 20,
                           height: 20,
                           child: CircularProgressIndicator(
                             strokeWidth: 3,
-                            color: Colors.amber,
+                            color: LottieAssetHelper.getPrimaryButtonTextColor(popType, const Color.fromARGB(255, 196, 40, 60)),
                           ),
                         )
                   ]

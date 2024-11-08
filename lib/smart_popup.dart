@@ -283,7 +283,7 @@ class SmartPopup extends HookWidget {
                                                 bottom: 0,
                                                 child: Container(
                                                   decoration: BoxDecoration(
-                                                    color: snapshot.data == true ? Colors.white : const Color(0xFFC4283C),
+                                                    color: snapshot.data == true ? Colors.white : LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
                                                     borderRadius: BorderRadius.circular(14),
                                                   ),
                                                   height: 40,
