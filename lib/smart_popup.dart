@@ -200,8 +200,8 @@ class SmartPopup extends HookWidget {
                                                   bottom: 0,
                                                   child: Container(
                                                     decoration: BoxDecoration(
-                                                      color: snapshot.data == true ? Colors.white : const Color(0xFFC4283C),
-                                                      borderRadius: BorderRadius.circular(14),
+                                                      color: snapshot.data == true ? Colors.white : LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
+                                                      borderRadius: BorderRadius.circular(12),
                                                     ),
                                                     height: 40,
                                                     child: Center(
@@ -229,7 +229,7 @@ class SmartPopup extends HookWidget {
                                           height: 45,
                                           text: primaryButtonText ?? "Yes",
                                           color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                          textColor: primaryButtonTextColor ?? Colors.white,
+                                          textColor: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonTextColor),
                                           border: const Border(),
                                           fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                           textSize: buttonsFontSize ?? 14,
@@ -244,8 +244,6 @@ class SmartPopup extends HookWidget {
                                         height: 45,
                                         text: secondaryButtonText ?? "No",
                                         color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
-
-                                        // textColor: secondaryButtonTextColor ?? const Color(0xFFC4283C),
                                         textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
                                         border: const Border(),
                                         fontWeight: buttonsFontWeight ?? FontWeight.w600,

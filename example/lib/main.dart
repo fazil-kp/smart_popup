@@ -46,7 +46,7 @@ class SmartPopupExample extends StatelessWidget {
                   secondaryButtonTap: () {
                     Navigator.of(context).pop();
                   },
-                  popType: PopType.delay,
+                  popType: PopType.success,
                   // openDuration: Duration(seconds: 2),
                   // showButtons: false,
                   timerDelay: 5,
