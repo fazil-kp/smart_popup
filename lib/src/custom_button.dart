@@ -29,6 +29,7 @@ class CustomButton extends StatelessWidget {
   final bool? ellipsisOverFlow;
   final MouseCursor? mouseCursor;
   final PopType? popType;
+  final Color? primaryButtonColor;
 
   const CustomButton({
     super.key,
@@ -58,6 +59,7 @@ class CustomButton extends StatelessWidget {
     this.ellipsisOverFlow = false,
     this.mouseCursor,
     this.popType,
+    this.primaryButtonColor,
   });
 
   @override
@@ -72,7 +74,7 @@ class CustomButton extends StatelessWidget {
   }
 
   Widget buttonWidget(BuildContext context) {
-    final buttonColor = isLoading == true ? Colors.white : color ?? Colors.white;
+    final buttonColor = isLoading == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : color ?? Colors.white;
     final resolvedTextColor = textColor ?? _getTextColor(context, buttonColor);
     return InkWell(
       focusNode: focusNode ?? FocusNode(),
@@ -82,7 +84,7 @@ class CustomButton extends StatelessWidget {
       mouseCursor: mouseCursor ?? SystemMouseCursors.click,
       child: Container(
         width: width,
-        height: height ?? 40,
+        height: height ?? 45,
         decoration: BoxDecoration(
           color: buttonColor,
           borderRadius: BorderRadius.circular(12),
@@ -100,7 +102,7 @@ class CustomButton extends StatelessWidget {
                           height: 20,
                           child: CircularProgressIndicator(
                             strokeWidth: 3,
-                            color: LottieAssetHelper.getPrimaryButtonTextColor(popType, const Color.fromARGB(255, 196, 40, 60)),
+                            color: LottieAssetHelper.getPrimaryButtonTextColor(popType, Colors.white),
                           ),
                         )
                   ]

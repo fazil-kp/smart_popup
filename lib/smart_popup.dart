@@ -179,6 +179,7 @@ class SmartPopup extends HookWidget {
                                           return Stack(
                                             children: [
                                               CustomButton(
+                                                popType: popType,
                                                 height: 45,
                                                 text: primaryButtonText ?? "Yes",
                                                 color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
@@ -225,6 +226,7 @@ class SmartPopup extends HookWidget {
                                     if (primaryButtonText != null) ...[
                                       Expanded(
                                         child: CustomButton(
+                                          popType: popType,
                                           isLoading: loading ?? false,
                                           height: 45,
                                           text: primaryButtonText ?? "Yes",
@@ -241,6 +243,7 @@ class SmartPopup extends HookWidget {
                                   if (secondaryButtonText != null)
                                     Expanded(
                                       child: CustomButton(
+                                        popType: popType,
                                         height: 45,
                                         text: secondaryButtonText ?? "No",
                                         color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
@@ -262,6 +265,7 @@ class SmartPopup extends HookWidget {
                                         return Stack(
                                           children: [
                                             CustomButton(
+                                              popType: popType,
                                               height: 45,
                                               text: primaryButtonText ?? "Yes",
                                               color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
@@ -306,6 +310,7 @@ class SmartPopup extends HookWidget {
                                   if (timerDelay == null)
                                     if (primaryButtonText != null) ...[
                                       CustomButton(
+                                        popType: popType,
                                         isLoading: loading ?? false,
                                         height: 45,
                                         text: primaryButtonText ?? "Yes",
@@ -320,6 +325,8 @@ class SmartPopup extends HookWidget {
                                     ],
                                   if (secondaryButtonText != null)
                                     CustomButton(
+                                      popType: popType,
+
                                       height: 45,
                                       text: secondaryButtonText ?? "No",
                                       color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),

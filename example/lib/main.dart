@@ -47,7 +47,7 @@ class SmartPopupExample extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   loading: true,
-                  // popType: PopType.success,
+                  popType: PopType.success,
                   // openDuration: Duration(seconds: 2),
                   // showButtons: false,
                   // timerDelay: 5,
