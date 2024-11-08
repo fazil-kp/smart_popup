@@ -35,7 +35,7 @@ class SmartPopupExample extends StatelessWidget {
               showDialog(
                 context: context,
                 builder: (context) => SmartPopup(
-                  buttonAlignment: ButtonAlignment.vertical,
+                  buttonAlignment: ButtonAlignment.horizontal,
                   title: "Smart Popup",
                   subTitle: "This is a smart popup. It can display alerts and messages",
                   primaryButtonText: "Ok",
@@ -46,10 +46,10 @@ class SmartPopupExample extends StatelessWidget {
                   secondaryButtonTap: () {
                     Navigator.of(context).pop();
                   },
-                  popType: PopType.loading,
+                  popType: PopType.delay,
                   // openDuration: Duration(seconds: 2),
                   // showButtons: false,
-                  // timerDelay: 5,
+                  timerDelay: 5,
                   // lottiePath: "assets/lottie/info.json",
                   // Do not pass image and video path 5simultaneously; pass one at a time.
                   // imagePath: "assets/images/demo_image.png",

@@ -171,7 +171,7 @@ class SmartPopup extends HookWidget {
                         child: buttonAlignment == ButtonAlignment.horizontal
                             ? Row(
                                 children: [
-                                  if (timerDelay != null)
+                                  if (timerDelay != null) ...[
                                     Expanded(
                                       child: FutureBuilder(
                                         future: enableYesButton,
@@ -219,6 +219,8 @@ class SmartPopup extends HookWidget {
                                         },
                                       ),
                                     ),
+                                    const SizedBox(width: 15),
+                                  ],
                                   if (timerDelay == null)
                                     if (primaryButtonText != null) ...[
                                       Expanded(
@@ -255,7 +257,7 @@ class SmartPopup extends HookWidget {
                               )
                             : Column(
                                 children: [
-                                  if (timerDelay != null)
+                                  if (timerDelay != null) ...[
                                     FutureBuilder(
                                       future: enableYesButton,
                                       builder: (context, snapshot) {
@@ -301,6 +303,8 @@ class SmartPopup extends HookWidget {
                                         );
                                       },
                                     ),
+                                    const SizedBox(height: 15),
+                                  ],
                                   if (timerDelay == null)
                                     if (primaryButtonText != null) ...[
                                       CustomButton(
