@@ -13,12 +13,12 @@ Smart Popup is a customizable alert dialog widget for Flutter applications. It o
 - `Custom Widgets:` Include additional custom widgets within the dialog for enhanced functionality.
 - `Responsive Design:` The widget adapts to different screen sizes, ensuring a seamless experience on both mobile and desktop platforms.
 
-## Examples
+<!-- ## Examples -->
 
-![main 1](https://github.com/user-attachments/assets/29d22597-c8b4-4e06-bc3e-fe9a26bcbb2a)
+<!-- ![main 1](https://github.com/user-attachments/assets/29d22597-c8b4-4e06-bc3e-fe9a26bcbb2a)
 ![main 2](https://github.com/user-attachments/assets/f0f68d86-9f20-4baf-b799-820c4302fc0f)
 ![main 3](https://github.com/user-attachments/assets/9cdf89d3-e69d-4ba7-89d2-fe3ea4d08a7c)
-![main 4](https://github.com/user-attachments/assets/35278189-5b87-4e0f-bb60-47a7fe79e39f)
+![main 4](https://github.com/user-attachments/assets/35278189-5b87-4e0f-bb60-47a7fe79e39f) -->
 
 
 ## Installation
