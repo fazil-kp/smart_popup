@@ -64,18 +64,18 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return buttonWidget(context);
+    return smartButtonWidget(context);
   }
 
-  Color _getTextColor(BuildContext context, Color? buttonColor) {
+  Color smartTextColor(BuildContext context, Color? buttonColor) {
     if (buttonColor == null) return Colors.black;
     final double luminance = buttonColor.computeLuminance();
     return luminance > 0.8 ? Colors.black : Colors.white;
   }
 
-  Widget buttonWidget(BuildContext context) {
+  Widget smartButtonWidget(BuildContext context) {
     final buttonColor = isLoading == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : color ?? Colors.white;
-    final resolvedTextColor = textColor ?? _getTextColor(context, buttonColor);
+    final resolvedTextColor = textColor ?? smartTextColor(context, buttonColor);
     return InkWell(
       focusNode: focusNode ?? FocusNode(),
       borderRadius: BorderRadius.circular(12),
