@@ -74,8 +74,8 @@ class CustomButton extends StatelessWidget {
   }
 
   Widget smartButtonWidget(BuildContext context) {
-    final buttonColor = isLoading == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : color ?? Colors.white;
-    final resolvedTextColor = textColor ?? smartTextColor(context, buttonColor);
+    final smartButtonColor = isLoading == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : color ?? Colors.white;
+    final smartAllTextColor = textColor ?? smartTextColor(context, smartButtonColor);
     return InkWell(
       focusNode: focusNode ?? FocusNode(),
       borderRadius: BorderRadius.circular(12),
@@ -86,7 +86,7 @@ class CustomButton extends StatelessWidget {
         width: width,
         height: height ?? 45,
         decoration: BoxDecoration(
-          color: buttonColor,
+          color: smartButtonColor,
           borderRadius: BorderRadius.circular(12),
           border: isLoading == true ? null : border ?? const Border(),
         ),
@@ -107,7 +107,7 @@ class CustomButton extends StatelessWidget {
                         )
                   ]
                 : [
-                    if (iconWidget != null) iconWidget! else if (icon != null) Icon(icon, size: iconSize ?? 20, color: iconColor ?? resolvedTextColor),
+                    if (iconWidget != null) iconWidget! else if (icon != null) Icon(icon, size: iconSize ?? 20, color: iconColor ?? smartAllTextColor),
                     if (text != null || buttonText != null) ...[
                       if (icon != null || iconWidget != null) const SizedBox(width: 8),
                       if (buttonText != null) buttonText ?? const SizedBox.shrink(),
@@ -119,7 +119,7 @@ class CustomButton extends StatelessWidget {
                               Theme.of(context).textTheme.bodySmall?.copyWith(
                                     fontWeight: fontWeight ?? FontWeight.w500,
                                     fontSize: textSize ?? 14,
-                                    color: resolvedTextColor,
+                                    color: smartAllTextColor,
                                   ),
                         ),
                       if (buttonText == null && ellipsisOverFlow == true)
@@ -132,7 +132,7 @@ class CustomButton extends StatelessWidget {
                                 Theme.of(context).textTheme.bodySmall?.copyWith(
                                       fontWeight: fontWeight ?? FontWeight.w500,
                                       fontSize: textSize ?? 14,
-                                      color: resolvedTextColor,
+                                      color: smartAllTextColor,
                                     ),
                           ),
                         ),
