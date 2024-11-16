@@ -143,7 +143,7 @@ class SmartPopup extends HookWidget {
                 ],
                 if (lottieUrlPath != '') ...[
                   const SizedBox(height: 10),
-                  Center(child: Lottie.network(lottieUrlPath, fit: BoxFit.cover, height: 130)),
+                  Uri.parse(lottieUrlPath).isAbsolute ? Center(child: Lottie.network(lottieUrlPath, fit: BoxFit.cover, height: 130)) : Center(child: Lottie.asset(lottieUrlPath, fit: BoxFit.cover, height: 130)),
                 ],
                 if (imageWidget != null) ...[imageWidget!],
                 const SizedBox(height: 20),
