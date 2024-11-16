@@ -1,6 +1,6 @@
 name: smart_popup
 description: "A versatile Flutter alert dialog with lotties, images, animations, countdown timer, Loading and open duration state for buttons etc."
-version: 2.0.4
+version: 2.0.5
 homepage: https://github.com/fazil-kp/smart_popup.git
 
 environment:

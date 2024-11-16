@@ -1,3 +1,7 @@
+## 2.0.5
+
+- Lottie Types Updated
+
 ## 2.0.4
 
 - Lottie Types Updated
