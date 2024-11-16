@@ -50,6 +50,7 @@ showDialog(
     },
     // Do not pass popType and Image simultaneously; pass one at a time.
     popType: PopType.info,
+    loading: true,
     //imagePath: "assets/images/your_image.png",
     timerDelay: 10,
     animationType: AnimationType.scale,
