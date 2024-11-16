@@ -112,8 +112,7 @@ class SmartPopup extends HookWidget {
       }
       return null;
     }, [openDuration]);
-    final String lottieAssetPath = LottieAssetHelper.getLottieAssetPath(popType, lottiePath);
-
+    final String lottieUrlPath = LottieAssetHelper.getLottieAssetPath(popType, lottiePath);
     final Future<bool> enableYesButton = Future.delayed(Duration(seconds: timerDelay ?? 10), () => true);
     Widget dialogContent = AlertDialog(
       contentPadding: const EdgeInsets.all(0),
@@ -142,9 +141,9 @@ class SmartPopup extends HookWidget {
                     height: imageHeight ?? 210,
                   )
                 ],
-                if (lottieAssetPath != '') ...[
+                if (lottieUrlPath != '') ...[
                   const SizedBox(height: 10),
-                  Center(child: Lottie.network(lottieAssetPath, fit: BoxFit.cover, height: 130)),
+                  Center(child: Lottie.network(lottieUrlPath, fit: BoxFit.cover, height: 130)),
                 ],
                 if (imageWidget != null) ...[imageWidget!],
                 const SizedBox(height: 20),
