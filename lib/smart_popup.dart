@@ -21,7 +21,7 @@ class SmartPopup extends HookWidget {
   final String? primaryButtonText;
   final String? secondaryButtonText;
   final String? imagePath;
-  final String? videoPath; // Commmmming sooooooon!
+  final String? videoPath; // commmmming sooooooon!
   final VoidCallback? primaryButtonTap;
   final VoidCallback? secondaryButtonTap;
   final int? timerDelay;
