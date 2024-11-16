@@ -48,11 +48,9 @@ showDialog(
     secondButtonTap: () {
       Navigator.of(context).pop();
     },
-    // Do not pass image and video simultaneously; pass one at a time.
+    // Do not pass popType and Image simultaneously; pass one at a time.
+    popType: PopType.info,
     //imagePath: "assets/images/your_image.png",
-    videoPath: "assets/videos/your_video.mp4",
-    videoVolume: 100,
-    videoPlayBackSpeed: 2.5,
     timerDelay: 10,
     animationType: AnimationType.scale,
   ),
