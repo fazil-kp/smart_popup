@@ -38,14 +38,15 @@ To use the Smart Popup, simply create an instance of the widget and configure th
 showDialog(
   context: context,
   builder: (context) => SmartPopup(
-    title: "Alert Title",
-    subTitle: "This is an alert message.",
-    firstButtonText: "Confirm",
-    secondButtonText: "Cancel",
-    firstButtonTap: () {
+    buttonAlignment: ButtonAlignment.vertical,  // Default Vertical 
+    title: "Smart Popup",
+    subTitle: "This is a smart popup. It can display alerts and messages",
+    primaryButtonText: "Ok",
+    secondaryButtonText: "Cancel",
+    primaryButtonTap: () {
       Navigator.of(context).pop();
     },
-    secondButtonTap: () {
+    secondaryButtonTap: () {
       Navigator.of(context).pop();
     },
     // Do not pass popType and Image simultaneously; pass one at a time.
@@ -56,5 +57,6 @@ showDialog(
     animationType: AnimationType.scale,
   ),
 );
+
 ```
 
