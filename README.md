@@ -49,10 +49,11 @@ showDialog(
     secondaryButtonTap: () {
       Navigator.of(context).pop();
     },
-    // Do not pass popType and Image simultaneously; pass one at a time.
-    popType: PopType.info,
+    // Do not pass popType, Image and lottie simultaneously; pass one at a time.
+    popType: PopType.info, 
     loading: true,
-    //imagePath: "assets/images/your_image.png",
+    // imagePath: "assets/images/your_image.png",  // Both asset and network images are supported
+    // lottiePath : "assets/images/your_lottie.json" // Both asset and network lotties are supported
     timerDelay: 10,
     animationType: AnimationType.scale,
   ),
