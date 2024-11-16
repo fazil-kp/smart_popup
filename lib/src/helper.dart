@@ -5,15 +5,15 @@ class LottieAssetHelper {
   static String getLottieAssetPath(PopType? popType, String? lottiePath) {
     switch (popType) {
       case PopType.warning:
-        return lottiePath ?? 'assets/lottie/warning.json';
+        return lottiePath ?? 'https://lottie.host/1bfbe051-ddcf-4be9-b736-494e41f053ce/A9qYeDHwl6.json';
       case PopType.success:
-        return lottiePath ?? 'assets/lottie/success.json';
+        return lottiePath ?? 'https://lottie.host/f78748c3-18ed-43c7-a611-bbfbd46b687e/2SgjCx5Qzq.json';
       case PopType.error:
-        return lottiePath ?? 'assets/lottie/error.json';
+        return lottiePath ?? 'https://lottie.host/c9c7f0d7-ded2-4ec3-b3c3-69d138523891/QoeOJH5gsp.json';
       case PopType.info:
-        return lottiePath ?? 'assets/lottie/info.json';
+        return lottiePath ?? 'https://lottie.host/726e43d1-4aa9-46ff-bca1-651de9c8274d/O6PneKPFVx.json';
       case PopType.delay:
-        return lottiePath ?? 'assets/lottie/delay.json';
+        return lottiePath ?? 'https://lottie.host/09d168d0-8283-4f38-96e4-0e0fab63b2d2/8ywI5bOUVl.json';
       case PopType.loading:
         return lottiePath ?? 'assets/lottie/loading.json';
       default:

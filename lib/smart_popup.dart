@@ -6,6 +6,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:lottie/lottie.dart';
 import 'package:smart_popup/src/helper.dart';
+import 'package:smart_wrap/smart_expand.dart';
+import 'package:smart_wrap/smart_wrap.dart';
 
 import 'src/custom_button.dart';
 
@@ -142,7 +144,7 @@ class SmartPopup extends HookWidget {
                 ],
                 if (lottieAssetPath != '') ...[
                   const SizedBox(height: 10),
-                  Center(child: Lottie.asset(lottieAssetPath, fit: BoxFit.cover, height: 130)),
+                  Center(child: Lottie.network(lottieAssetPath, fit: BoxFit.cover, height: 130)),
                 ],
                 if (imageWidget != null) ...[imageWidget!],
                 const SizedBox(height: 20),
@@ -167,177 +169,98 @@ class SmartPopup extends HookWidget {
                     if (showButtons == true) ...[
                       const SizedBox(height: 30),
                       Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: buttonAlignment == ButtonAlignment.horizontal
-                            ? Row(
-                                children: [
-                                  if (timerDelay != null) ...[
-                                    Expanded(
-                                      child: FutureBuilder(
-                                        future: enableYesButton,
-                                        builder: (context, snapshot) {
-                                          return Stack(
-                                            children: [
-                                              CustomButton(
-                                                popType: popType,
-                                                height: 45,
-                                                text: primaryButtonText ?? "Yes",
-                                                color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
-                                                textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
-                                                border: const Border(),
-                                                fontWeight: buttonsFontWeight ?? FontWeight.w600,
-                                                textSize: buttonsFontSize ?? 14,
-                                                onTap: () {
-                                                  if (snapshot.data == true) {
-                                                    primaryButtonTap!();
-                                                  }
-                                                },
-                                              ),
-                                              if (snapshot.data != true)
-                                                Positioned(
-                                                  top: 0,
-                                                  right: 0,
-                                                  left: 0,
-                                                  bottom: 0,
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color: snapshot.data == true ? Colors.white : LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                                      borderRadius: BorderRadius.circular(12),
-                                                    ),
-                                                    height: 40,
-                                                    child: Center(
-                                                      child: TimerCountdown(
-                                                        enableDescriptions: false,
-                                                        timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-                                                        format: CountDownTimerFormat.secondsOnly,
-                                                        endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
-                                                      ),
-                                                    ),
+                          padding: const EdgeInsets.only(left: 20, right: 20),
+                          child: SmartWrap(
+                            type: buttonAlignment == ButtonAlignment.horizontal ? WrapType.row : WrapType.column,
+                            children: [
+                              if (timerDelay != null) ...[
+                                SmartExpand(
+                                  disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
+                                  child: FutureBuilder(
+                                    future: enableYesButton,
+                                    builder: (context, snapshot) {
+                                      return Stack(
+                                        children: [
+                                          CustomButton(
+                                            popType: popType,
+                                            height: 45,
+                                            text: primaryButtonText ?? "Yes",
+                                            color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
+                                            textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
+                                            border: const Border(),
+                                            fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                            textSize: buttonsFontSize ?? 14,
+                                            onTap: () {
+                                              if (snapshot.data == true) {
+                                                primaryButtonTap!();
+                                              }
+                                            },
+                                          ),
+                                          if (snapshot.data != true)
+                                            Positioned(
+                                              top: 0,
+                                              right: 0,
+                                              left: 0,
+                                              bottom: 0,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  color: snapshot.data == true ? Colors.white : LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
+                                                  borderRadius: BorderRadius.circular(12),
+                                                ),
+                                                height: 40,
+                                                child: Center(
+                                                  child: TimerCountdown(
+                                                    enableDescriptions: false,
+                                                    timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                                                    format: CountDownTimerFormat.secondsOnly,
+                                                    endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
                                                   ),
                                                 ),
-                                            ],
-                                          );
-                                        },
-                                      ),
-                                    ),
-                                    const SizedBox(width: 15),
-                                  ],
-                                  if (timerDelay == null)
-                                    if (primaryButtonText != null) ...[
-                                      Expanded(
-                                        child: CustomButton(
-                                          popType: popType,
-                                          isLoading: loading ?? false,
-                                          height: 45,
-                                          text: primaryButtonText ?? "Yes",
-                                          color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                          textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
-                                          border: const Border(),
-                                          fontWeight: buttonsFontWeight ?? FontWeight.w600,
-                                          textSize: buttonsFontSize ?? 14,
-                                          onTap: primaryButtonTap ?? () => {Navigator.of(context).pop()},
-                                        ),
-                                      ),
-                                      const SizedBox(width: 15),
-                                    ],
-                                  if (secondaryButtonText != null)
-                                    Expanded(
-                                      child: CustomButton(
-                                        popType: popType,
-                                        height: 45,
-                                        text: secondaryButtonText ?? "No",
-                                        color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
-                                        textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
-                                        border: const Border(),
-                                        fontWeight: buttonsFontWeight ?? FontWeight.w600,
-                                        textSize: buttonsFontSize ?? 14,
-                                        onTap: secondaryButtonTap ?? () => {Navigator.of(context).pop()},
-                                      ),
-                                    ),
-                                ],
-                              )
-                            : Column(
-                                children: [
-                                  if (timerDelay != null) ...[
-                                    FutureBuilder(
-                                      future: enableYesButton,
-                                      builder: (context, snapshot) {
-                                        return Stack(
-                                          children: [
-                                            CustomButton(
-                                              popType: popType,
-                                              height: 45,
-                                              text: primaryButtonText ?? "Yes",
-                                              color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
-                                              textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
-                                              border: const Border(),
-                                              fontWeight: buttonsFontWeight ?? FontWeight.w600,
-                                              textSize: buttonsFontSize ?? 14,
-                                              onTap: () {
-                                                if (snapshot.data == true) {
-                                                  primaryButtonTap!();
-                                                }
-                                              },
+                                              ),
                                             ),
-                                            if (snapshot.data != true)
-                                              Positioned(
-                                                top: 0,
-                                                right: 0,
-                                                left: 0,
-                                                bottom: 0,
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                    color: snapshot.data == true ? Colors.white : LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                                    borderRadius: BorderRadius.circular(14),
-                                                  ),
-                                                  height: 40,
-                                                  child: Center(
-                                                    child: TimerCountdown(
-                                                      enableDescriptions: false,
-                                                      timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-                                                      format: CountDownTimerFormat.secondsOnly,
-                                                      endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                          ],
-                                        );
-                                      },
-                                    ),
-                                    const SizedBox(height: 15),
-                                  ],
-                                  if (timerDelay == null)
-                                    if (primaryButtonText != null) ...[
-                                      CustomButton(
-                                        popType: popType,
-                                        isLoading: loading ?? false,
-                                        height: 45,
-                                        text: primaryButtonText ?? "Yes",
-                                        color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                        textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
-                                        border: const Border(),
-                                        fontWeight: buttonsFontWeight ?? FontWeight.w600,
-                                        textSize: buttonsFontSize ?? 14,
-                                        onTap: primaryButtonTap ?? () => {Navigator.of(context).pop()},
-                                      ),
-                                      const SizedBox(height: 15),
-                                    ],
-                                  if (secondaryButtonText != null)
-                                    CustomButton(
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                                buttonAlignment == ButtonAlignment.horizontal ? const SizedBox(width: 15) : const SizedBox(height: 15),
+                              ],
+                              if (timerDelay == null)
+                                if (primaryButtonText != null) ...[
+                                  SmartExpand(
+                                    disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
+                                    child: CustomButton(
                                       popType: popType,
+                                      isLoading: loading ?? false,
                                       height: 45,
-                                      text: secondaryButtonText ?? "No",
-                                      color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
-                                      textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
+                                      text: primaryButtonText ?? "Yes",
+                                      color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
+                                      textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
                                       border: const Border(),
                                       fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                       textSize: buttonsFontSize ?? 14,
-                                      onTap: secondaryButtonTap ?? () => {Navigator.of(context).pop()},
+                                      onTap: primaryButtonTap ?? () => {Navigator.of(context).pop()},
                                     ),
+                                  ),
+                                  buttonAlignment == ButtonAlignment.horizontal ? const SizedBox(width: 15) : const SizedBox(height: 15),
                                 ],
-                              ),
-                      ),
+                              if (secondaryButtonText != null)
+                                SmartExpand(
+                                  disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
+                                  child: CustomButton(
+                                    popType: popType,
+                                    height: 45,
+                                    text: secondaryButtonText ?? "No",
+                                    color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
+                                    textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
+                                    border: const Border(),
+                                    fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                    textSize: buttonsFontSize ?? 14,
+                                    onTap: secondaryButtonTap ?? () => {Navigator.of(context).pop()},
+                                  ),
+                                ),
+                            ],
+                          )),
                       if (height == null && secondaryButtonText != null && primaryButtonText != null) const SizedBox(height: 20),
                     ],
                     if (showButtons == false) const SizedBox(height: 20),

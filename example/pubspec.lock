@@ -222,7 +222,15 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "2.0.3"
+    version: "2.0.4"
+  smart_wrap:
+    dependency: transitive
+    description:
+      name: smart_wrap
+      sha256: "365b813755905077b5705a80bd60c96bb96cc2d0dc934c4c6a305f0b03197074"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.7"
   source_span:
     dependency: transitive
     description:
