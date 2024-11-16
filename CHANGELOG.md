@@ -1,5 +1,8 @@
 ## 2.0.5
 
+- Asset Image Added
+## 2.0.5
+
 - Lottie Types Updated
 
 ## 2.0.4

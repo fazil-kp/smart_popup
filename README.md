@@ -1,10 +1,10 @@
 # Smart Popup
 
-Smart Popup is a customizable alert dialog widget for Flutter applications. It offers various features, including support for Image and Video, custom widgets, animations, countdown timers,loading button and responsive design. This widget is highly configurable to fit a wide range of use cases in your application.
+Smart Popup is a customizable alert dialog widget for Flutter applications. It offers various features, including support for Image and Lottie, custom widgets, animations, countdown timers, loading button and responsive design. This widget is highly configurable to fit a wide range of use cases in your application.
 
 ## Features
 
-- `Media Support:` Display images or videos within the dialog, providing rich content experiences.
+- `Media Support:` Display images or lotties within the dialog, providing rich content experiences.
 - `Customizable Dialog:` Easily adjust the title, description, and buttons to fit your app's needs.
 - `Animations:` Choose from various animation types (fade, scale, slide) to create engaging transitions.
 - `Countdown Timer:` Integrate a countdown timer to add urgency to user interactions.
