@@ -54,7 +54,7 @@ showDialog(
     loading: true,
     // imagePath: "assets/images/your_image.png",  // Both asset and network images are supported
     // lottiePath : "assets/images/your_lottie.json" // Both asset and network lotties are supported
-    timerDelay: 10,
+    // timerDelay: 10,
     animationType: AnimationType.scale,
   ),
 );
