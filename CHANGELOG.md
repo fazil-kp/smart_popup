@@ -1,3 +1,7 @@
+## 2.0.9
+
+- timer delay and loading Updated
+
 ## 2.0.8
 
 - Asset and Network Image Updated
