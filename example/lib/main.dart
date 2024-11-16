@@ -47,7 +47,9 @@ class SmartPopupExample extends StatelessWidget {
                     Navigator.of(context).pop();
                   },
                   // loading: true,
-                  popType: PopType.info,
+                  // popType: PopType.info,
+                  imagePath: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-C_UAhXq9GfuGO452EEzfbKnh1viQB9EDBQ&s",
+
                   // openDuration: Duration(seconds: 2),
                   // showButtons: false,
                   // timerDelay: 5,

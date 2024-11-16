@@ -135,7 +135,7 @@ class SmartPopup extends HookWidget {
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.only(topLeft: Radius.circular(22), topRight: Radius.circular(22)),
                       color: Colors.white,
-                      image: DecorationImage(image: AssetImage(imagePath ?? ''), fit: BoxFit.cover),
+                      image: Uri.parse(imagePath.toString()).isAbsolute ? DecorationImage(image: NetworkImage(imagePath ?? ''), fit: BoxFit.cover) : DecorationImage(image: AssetImage(imagePath ?? ''), fit: BoxFit.cover),
                     ),
                     width: width ?? 430,
                     height: imageHeight ?? 210,
