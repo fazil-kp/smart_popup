@@ -1,6 +1,10 @@
 ## 2.0.6
 
-- Asset Image Added
+- Asset and Network Image Updated
+
+## 2.0.6
+
+- Network Image Added
 
 ## 2.0.5
 
