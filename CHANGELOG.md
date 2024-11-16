@@ -1,3 +1,7 @@
+## 2.0.8
+
+- Asset and Network Image Updated
+
 ## 2.0.7
 
 - Asset and Network Image Updated
