@@ -15,7 +15,7 @@ class LottieAssetHelper {
       case PopType.delay:
         return lottiePath ?? 'https://lottie.host/09d168d0-8283-4f38-96e4-0e0fab63b2d2/8ywI5bOUVl.json';
       case PopType.loading:
-        return lottiePath ?? 'assets/lottie/loading.json';
+        return lottiePath ?? 'https://lottie.host/09d168d0-8283-4f38-96e4-0e0fab63b2d2/8ywI5bOUVl.json';
       default:
         return lottiePath ?? '';
     }
@@ -40,8 +40,7 @@ class LottieAssetHelper {
     }
   }
 
-  static Color getPrimaryButtonTextColor(
-      PopType? popType, Color? defaultColor) {
+  static Color getPrimaryButtonTextColor(PopType? popType, Color? defaultColor) {
     switch (popType) {
       case PopType.warning:
         return defaultColor ?? Colors.white;
@@ -79,8 +78,7 @@ class LottieAssetHelper {
     }
   }
 
-  static Color getSecondaryButtonTextColor(
-      PopType? popType, Color? defaultColor) {
+  static Color getSecondaryButtonTextColor(PopType? popType, Color? defaultColor) {
     switch (popType) {
       case PopType.warning:
         return defaultColor ?? Colors.orange;

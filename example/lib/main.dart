@@ -33,11 +33,22 @@ class SmartPopupExample extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // ! 1- Normal Popup Styles ......................................
+            Text("Normal Popup Styles", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
             DefaultPopup(),
             WithoutButtons(),
             HideCloseButton(),
             WithSingleButton(),
             VerticalButtonPopup(),
+            // ! 2- Popup Types  ......................................
+            Text("Popup Types", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            InfoPopup(),
+            WarningPopup(),
+            SuccessPopup(),
+            ErrorPopup(),
+            LoadingPopup(),
           ],
         ),
       ),
@@ -45,6 +56,9 @@ class SmartPopupExample extends StatelessWidget {
   }
 }
 
+// ! 1- Normal Popup Styles Below......................................
+
+// Default Popup
 class DefaultPopup extends StatelessWidget {
   const DefaultPopup({super.key});
 
@@ -70,6 +84,7 @@ class DefaultPopup extends StatelessWidget {
   }
 }
 
+// Popup Without Buttons
 class WithoutButtons extends StatelessWidget {
   const WithoutButtons({super.key});
 
@@ -94,6 +109,7 @@ class WithoutButtons extends StatelessWidget {
   }
 }
 
+// Popup with hiding the close button in the corner
 class HideCloseButton extends StatelessWidget {
   const HideCloseButton({super.key});
 
@@ -119,6 +135,7 @@ class HideCloseButton extends StatelessWidget {
   }
 }
 
+// Popup With Single Button
 class WithSingleButton extends StatelessWidget {
   const WithSingleButton({super.key});
 
@@ -143,6 +160,7 @@ class WithSingleButton extends StatelessWidget {
   }
 }
 
+// Popup buttons aligning vertically
 class VerticalButtonPopup extends StatelessWidget {
   const VerticalButtonPopup({super.key});
 
@@ -164,6 +182,143 @@ class VerticalButtonPopup extends StatelessWidget {
           );
         },
         child: const Text("Vertical Buttons"),
+      ),
+    );
+  }
+}
+
+//! 2- Popup Types.......................................................
+
+// Info Popup
+class InfoPopup extends StatelessWidget {
+  const InfoPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              popType: PopType.info,
+            ),
+          );
+        },
+        child: const Text("Info Popup"),
+      ),
+    );
+  }
+}
+
+// Warning Popup
+class WarningPopup extends StatelessWidget {
+  const WarningPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              popType: PopType.warning,
+            ),
+          );
+        },
+        child: const Text("Warning Popup"),
+      ),
+    );
+  }
+}
+
+// Success Popup
+class SuccessPopup extends StatelessWidget {
+  const SuccessPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              popType: PopType.success,
+            ),
+          );
+        },
+        child: const Text("Success Popup"),
+      ),
+    );
+  }
+}
+
+// Error Popup
+class ErrorPopup extends StatelessWidget {
+  const ErrorPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              popType: PopType.error,
+            ),
+          );
+        },
+        child: const Text("Error Popup"),
+      ),
+    );
+  }
+}
+
+// Loading Popup
+class LoadingPopup extends StatelessWidget {
+  const LoadingPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              popType: PopType.loading,
+            ),
+          );
+        },
+        child: const Text("Loading Popup"),
       ),
     );
   }
