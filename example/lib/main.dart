@@ -29,44 +29,40 @@ class SmartPopupExample extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
-        child: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              showDialog(
-                context: context,
-                builder: (context) => SmartPopup(
-                  buttonAlignment: ButtonAlignment.vertical,
-                  title: "Smart Popup",
-                  subTitle: "This is a smart popup. It can display alerts and messages",
-                  primaryButtonText: "Ok",
-                  secondaryButtonText: "Cancel",
-                  primaryButtonTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  secondaryButtonTap: () {
-                    Navigator.of(context).pop();
-                  },
-                  // loading: true,
-                  // popType: PopType.info,
-                  imagePath: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-C_UAhXq9GfuGO452EEzfbKnh1viQB9EDBQ&s",
-
-                  // openDuration: Duration(seconds: 2),
-                  // showButtons: false,
-                  // timerDelay: 5,
-                  // lottiePath: "assets/lottie/info.json",
-                  // Do not pass image and video path 5simultaneously; pass one at a time.
-                  // imagePath: "assets/images/demo_image.png",
-                  // videoPath: "assets/videos/demo_video.mp4",
-                  // videoVolume: 100,
-                  // videoPlayBackSpeed: 2.5,
-                  // hideFirstButton: true,
-                  // showCloseButton: false,
-                  // showButtons: false,
-                ),
-              );
-            },
-            child: const Text("Tap Here"),
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => const SmartPopup(
+                    title: "Smart Popup",
+                    subTitle: "This is a smart popup. It can display alerts and messages",
+                    // primaryButtonText: "Ok",
+                    secondaryButtonText: "Cancel",
+                    // loading: true,
+                  ),
+                );
+              },
+              child: const Text("Tap Here"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => const SmartPopup(
+                    title: "Smart Popup",
+                    subTitle: "This is a smart popup. It can display alerts and messages",
+                    primaryButtonText: "Ok",
+                    secondaryButtonText: "Cancel",
+                  ),
+                );
+              },
+              child: const Text("Tap Here"),
+            ),
+          ],
         ),
       ),
     );
