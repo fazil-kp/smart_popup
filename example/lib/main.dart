@@ -29,35 +29,49 @@ class SmartPopupExample extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // ! 1- Normal Popup Styles ......................................
-            Text("Normal Popup Styles", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
-            DefaultPopup(),
-            WithoutButtons(),
-            HideCloseButton(),
-            WithSingleButton(),
-            VerticalButtonPopup(),
-            // ! 2- Popup Types  ......................................
-            Text("Popup Types", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
-            InfoPopup(),
-            WarningPopup(),
-            SuccessPopup(),
-            ErrorPopup(),
-            LoadingPopup(),
-            //! 3 - Lottie Popup
-            Text("Lottie Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
-            LottiePopup(),
-            //! 3 - Lottie Popup
-            Text("Image Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
-            SizedBox(height: 10),
-            ImagePopup(),
-          ],
+        child: const SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // ! 1- Normal Popup Styles ......................................
+              Text("Normal Popup Styles", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              DefaultPopup(),
+              WithoutButtons(),
+              HideCloseButton(),
+              WithSingleButton(),
+              VerticalButtonPopup(),
+              // ! 2- Popup Types  ......................................
+              Text("Popup Types", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              InfoPopup(),
+              WarningPopup(),
+              SuccessPopup(),
+              ErrorPopup(),
+              LoadingPopup(),
+              //! 3 - Lottie Popup ....................................................
+              Text("Lottie Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              LottiePopup(),
+              //! 4 - Lottie Popup .................................................
+              Text("Image Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              ImagePopup(),
+              //! 5 - Timer Delay Button Popup ................................
+              Text("Timer Delay Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              TimerDelayButtonPopup(),
+              //! 6 - Loading Button Popup .............................................
+              Text("Loading Button Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              LoadingButtonPopup(),
+              //! 7 - Open Duration Popup.............................................
+              Text("Open Duration Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              SizedBox(height: 10),
+              OpenDurationPopup(),
+            ],
+          ),
         ),
       ),
     );
@@ -381,6 +395,87 @@ class ImagePopup extends StatelessWidget {
           );
         },
         child: const Text("Image Popup"),
+      ),
+    );
+  }
+}
+
+// Timer Delay Button Popup
+class TimerDelayButtonPopup extends StatelessWidget {
+  const TimerDelayButtonPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              timerDelay: 10,
+            ),
+          );
+        },
+        child: const Text("Timer Delay Button Popup"),
+      ),
+    );
+  }
+}
+
+// Loading Button Popup
+class LoadingButtonPopup extends StatelessWidget {
+  const LoadingButtonPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              loading: true,
+            ),
+          );
+        },
+        child: const Text("Loading Button Popup"),
+      ),
+    );
+  }
+}
+
+// Open Duration Popup
+class OpenDurationPopup extends StatelessWidget {
+  const OpenDurationPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              openDuration: Duration(seconds: 2),
+            ),
+          );
+        },
+        child: const Text("Open Duration Popup"),
       ),
     );
   }
