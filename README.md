@@ -13,7 +13,10 @@ Smart Popup is a customizable alert dialog widget for Flutter applications. It o
 - `Custom Widgets:` Include additional custom widgets within the dialog for enhanced functionality.
 - `Responsive Design:` The widget adapts to different screen sizes, ensuring a seamless experience on both mobile and desktop platforms.
 
-<!-- ## Examples -->
+## Examples
+
+Check out the [Demo Smart Popup](https://fazil-kp.github.io/smart_popup_demo/) to see Smart Popup in action!
+
 
 <!-- ![main 1](https://github.com/user-attachments/assets/29d22597-c8b4-4e06-bc3e-fe9a26bcbb2a)
 ![main 2](https://github.com/user-attachments/assets/f0f68d86-9f20-4baf-b799-820c4302fc0f)
@@ -51,7 +54,7 @@ showDialog(
     },
     // Do not pass popType, Image and lottie simultaneously; pass one at a time.
     popType: PopType.info, 
-    loading: true,
+    // loading: true,
     // imagePath: "assets/images/your_image.png",  // Both asset and network images are supported
     // lottiePath : "assets/images/your_lottie.json" // Both asset and network lotties are supported
     // timerDelay: 10,
