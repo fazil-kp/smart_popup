@@ -38,9 +38,11 @@ class SmartPopupExample extends StatelessWidget {
                 showDialog(
                   context: context,
                   builder: (context) => const SmartPopup(
-                    // buttonAlignment: ButtonAlignment.vertical,
+                    buttonAlignment: ButtonAlignment.vertical,
                     title: "Smart Popup",
                     subTitle: "This is a smart popup. It can display alerts and messages",
+                    primaryButtonText: "Ok",
+                    secondaryButtonText: "Cancel",
                   ),
                 );
               },
