@@ -158,7 +158,7 @@ class SmartPopup extends HookWidget {
                     ],
                     if (showDivider == true) const Divider(color: Color.fromARGB(255, 238, 238, 238)),
                     if (subTitle != null) ...[
-                      SizedBox(height: showButtons == true ? 20 : 10),
+                      (primaryButtonText == null || secondaryButtonText == null) ? const SizedBox(height: 10) : SizedBox(height: showButtons == true ? 20 : 10),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(subTitle.toString(), style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400, fontSize: 14, color: const Color(0xFF909090)), textAlign: TextAlign.center),
@@ -166,7 +166,7 @@ class SmartPopup extends HookWidget {
                     ],
                     if (content != null) ...[const SizedBox(height: 10), content ?? const SizedBox.shrink()],
                     if (showButtons == true) ...[
-                      const SizedBox(height: 30),
+                      if (primaryButtonText != null || secondaryButtonText != null) const SizedBox(height: 30),
                       Padding(
                         padding: const EdgeInsets.only(left: 20, right: 20),
                         child: SmartWrap(
