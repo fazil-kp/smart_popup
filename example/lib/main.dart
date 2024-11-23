@@ -26,8 +26,8 @@ class SmartPopupExample extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.sizeOf(context).height,
+        width: MediaQuery.sizeOf(context).width,
         decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
         child: Center(
           child: ElevatedButton(
