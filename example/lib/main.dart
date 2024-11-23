@@ -29,41 +29,141 @@ class SmartPopupExample extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
         decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
-        child: Column(
+        child: const Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const SmartPopup(
-                    buttonAlignment: ButtonAlignment.vertical,
-                    title: "Smart Popup",
-                    subTitle: "This is a smart popup. It can display alerts and messages",
-                    primaryButtonText: "Ok",
-                    secondaryButtonText: "Cancel",
-                  ),
-                );
-              },
-              child: const Text("Tap Here"),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                showDialog(
-                  context: context,
-                  builder: (context) => const SmartPopup(
-                    title: "Smart Popup",
-                    subTitle: "This is a smart popup. It can display alerts and messages",
-                    primaryButtonText: "Ok",
-                    secondaryButtonText: "Cancel",
-                  ),
-                );
-              },
-              child: const Text("Tap Here"),
-            ),
+            DefaultPopup(),
+            WithoutButtons(),
+            HideCloseButton(),
+            WithSingleButton(),
+            VerticalButtonPopup(),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class DefaultPopup extends StatelessWidget {
+  const DefaultPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+            ),
+          );
+        },
+        child: const Text("Default Popup"),
+      ),
+    );
+  }
+}
+
+class WithoutButtons extends StatelessWidget {
+  const WithoutButtons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              buttonAlignment: ButtonAlignment.vertical,
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+            ),
+          );
+        },
+        child: const Text("With Out Buttons"),
+      ),
+    );
+  }
+}
+
+class HideCloseButton extends StatelessWidget {
+  const HideCloseButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              buttonAlignment: ButtonAlignment.vertical,
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              showCloseButton: false,
+            ),
+          );
+        },
+        child: const Text("Hide Close Button"),
+      ),
+    );
+  }
+}
+
+class WithSingleButton extends StatelessWidget {
+  const WithSingleButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok", // You can pass primaryButton or secondaryButton
+            ),
+          );
+        },
+        child: const Text("With Single Button"),
+      ),
+    );
+  }
+}
+
+class VerticalButtonPopup extends StatelessWidget {
+  const VerticalButtonPopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              buttonAlignment: ButtonAlignment.vertical,
+            ),
+          );
+        },
+        child: const Text("Vertical Buttons"),
       ),
     );
   }

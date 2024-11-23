@@ -35,7 +35,6 @@ class SmartPopup extends HookWidget {
   final Widget? imageWidget;
   final bool? loading;
   final bool? showCloseButton;
-  final bool? showButtons;
   final bool? showDivider;
   final AnimationType animationType;
   final Duration? animationDuration;
@@ -83,7 +82,6 @@ class SmartPopup extends HookWidget {
     this.animationDuration,
     this.fadeBegin = 0.0,
     this.showCloseButton = true,
-    this.showButtons = true,
     this.videoVolume,
     this.videoPlayBackSpeed,
     this.primaryButtonColor,
@@ -158,112 +156,110 @@ class SmartPopup extends HookWidget {
                     ],
                     if (showDivider == true) const Divider(color: Color.fromARGB(255, 238, 238, 238)),
                     if (subTitle != null) ...[
-                      (primaryButtonText == null || secondaryButtonText == null) ? const SizedBox(height: 10) : SizedBox(height: showButtons == true ? 20 : 10),
+                      (primaryButtonText == null || secondaryButtonText == null) ? const SizedBox(height: 10) : const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 15),
                         child: Text(subTitle.toString(), style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w400, fontSize: 14, color: const Color(0xFF909090)), textAlign: TextAlign.center),
                       ),
                     ],
                     if (content != null) ...[const SizedBox(height: 10), content ?? const SizedBox.shrink()],
-                    if (showButtons == true) ...[
-                      if (primaryButtonText != null || secondaryButtonText != null) const SizedBox(height: 30),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: SmartWrap(
-                          type: buttonAlignment == ButtonAlignment.horizontal ? WrapType.row : WrapType.column,
-                          children: [
-                            if (timerDelay != null) ...[
-                              SmartExpand(
-                                disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
-                                child: FutureBuilder(
-                                  future: enableYesButton,
-                                  builder: (context, snapshot) {
-                                    return Stack(
-                                      children: [
-                                        CustomButton(
-                                          popType: popType,
-                                          height: 45,
-                                          text: primaryButtonText ?? "Yes",
-                                          color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
-                                          textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
-                                          border: const Border(),
-                                          fontWeight: buttonsFontWeight ?? FontWeight.w600,
-                                          textSize: buttonsFontSize ?? 14,
-                                          onTap: () {
-                                            if (snapshot.data == true) {
-                                              primaryButtonTap!();
-                                            }
-                                          },
-                                        ),
-                                        if (snapshot.data != true)
-                                          Positioned(
-                                            top: 0,
-                                            right: 0,
-                                            left: 0,
-                                            bottom: 0,
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: snapshot.data == true ? Colors.white : LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                                borderRadius: BorderRadius.circular(12),
-                                              ),
-                                              height: 40,
-                                              child: Center(
-                                                child: TimerCountdown(
-                                                  enableDescriptions: false,
-                                                  timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-                                                  format: CountDownTimerFormat.secondsOnly,
-                                                  endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
-                                                ),
+                    if (primaryButtonText != null || secondaryButtonText != null) const SizedBox(height: 30),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20),
+                      child: SmartWrap(
+                        type: buttonAlignment == ButtonAlignment.horizontal ? WrapType.row : WrapType.column,
+                        children: [
+                          if (timerDelay != null) ...[
+                            SmartExpand(
+                              disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
+                              child: FutureBuilder(
+                                future: enableYesButton,
+                                builder: (context, snapshot) {
+                                  return Stack(
+                                    children: [
+                                      CustomButton(
+                                        popType: popType,
+                                        height: 45,
+                                        text: primaryButtonText ?? "Yes",
+                                        color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
+                                        textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
+                                        border: const Border(),
+                                        fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                        textSize: buttonsFontSize ?? 14,
+                                        onTap: () {
+                                          if (snapshot.data == true) {
+                                            primaryButtonTap!();
+                                          }
+                                        },
+                                      ),
+                                      if (snapshot.data != true)
+                                        Positioned(
+                                          top: 0,
+                                          right: 0,
+                                          left: 0,
+                                          bottom: 0,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: snapshot.data == true ? Colors.white : LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
+                                              borderRadius: BorderRadius.circular(12),
+                                            ),
+                                            height: 40,
+                                            child: Center(
+                                              child: TimerCountdown(
+                                                enableDescriptions: false,
+                                                timeTextStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                                                format: CountDownTimerFormat.secondsOnly,
+                                                endTime: DateTime.now().add(Duration(seconds: timerDelay ?? 10)),
                                               ),
                                             ),
                                           ),
-                                      ],
-                                    );
-                                  },
-                                ),
+                                        ),
+                                    ],
+                                  );
+                                },
                               ),
-                              if (secondaryButtonText == null) buttonAlignment == ButtonAlignment.horizontal ? const SizedBox(width: 15) : const SizedBox(height: 15),
-                            ],
-                            if (timerDelay == null)
-                              if (primaryButtonText != null) ...[
-                                SmartExpand(
-                                  disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
-                                  child: CustomButton(
-                                    popType: popType,
-                                    isLoading: loading ?? false,
-                                    height: 45,
-                                    text: primaryButtonText ?? "Yes",
-                                    color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
-                                    textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
-                                    border: const Border(),
-                                    fontWeight: buttonsFontWeight ?? FontWeight.w600,
-                                    textSize: buttonsFontSize ?? 14,
-                                    onTap: primaryButtonTap ?? () => {Navigator.of(context).pop()},
-                                  ),
-                                ),
-                                if (secondaryButtonText != null) buttonAlignment == ButtonAlignment.horizontal ? const SizedBox(width: 15) : const SizedBox(height: 15),
-                              ],
-                            if (secondaryButtonText != null)
+                            ),
+                            if (secondaryButtonText == null) buttonAlignment == ButtonAlignment.horizontal ? const SizedBox(width: 15) : const SizedBox(height: 15),
+                          ],
+                          if (timerDelay == null)
+                            if (primaryButtonText != null) ...[
                               SmartExpand(
                                 disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
                                 child: CustomButton(
                                   popType: popType,
+                                  isLoading: loading ?? false,
                                   height: 45,
-                                  text: secondaryButtonText ?? "No",
-                                  color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
-                                  textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
+                                  text: primaryButtonText ?? "Yes",
+                                  color: LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor),
+                                  textColor: LottieAssetHelper.getPrimaryButtonTextColor(popType, primaryButtonTextColor),
                                   border: const Border(),
                                   fontWeight: buttonsFontWeight ?? FontWeight.w600,
                                   textSize: buttonsFontSize ?? 14,
-                                  onTap: secondaryButtonTap ?? () => {Navigator.of(context).pop()},
+                                  onTap: primaryButtonTap ?? () => {Navigator.of(context).pop()},
                                 ),
                               ),
-                          ],
-                        ),
+                              if (secondaryButtonText != null) buttonAlignment == ButtonAlignment.horizontal ? const SizedBox(width: 15) : const SizedBox(height: 15),
+                            ],
+                          if (secondaryButtonText != null)
+                            SmartExpand(
+                              disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
+                              child: CustomButton(
+                                popType: popType,
+                                height: 45,
+                                text: secondaryButtonText ?? "No",
+                                color: LottieAssetHelper.getSecondaryButtonColor(popType, secondaryButtonColor),
+                                textColor: LottieAssetHelper.getSecondaryButtonTextColor(popType, secondaryButtonTextColor),
+                                border: const Border(),
+                                fontWeight: buttonsFontWeight ?? FontWeight.w600,
+                                textSize: buttonsFontSize ?? 14,
+                                onTap: secondaryButtonTap ?? () => {Navigator.of(context).pop()},
+                              ),
+                            ),
+                        ],
                       ),
-                      if (height == null && secondaryButtonText != null && primaryButtonText != null) const SizedBox(height: 20),
-                      if (primaryButtonText == null || secondaryButtonText == null) const SizedBox(height: 20),
-                    ],
+                    ),
+                    if (height == null && secondaryButtonText != null && primaryButtonText != null) const SizedBox(height: 20),
+                    if (primaryButtonText == null || secondaryButtonText == null) const SizedBox(height: 20),
                   ],
                 ),
               ],
