@@ -49,6 +49,14 @@ class SmartPopupExample extends StatelessWidget {
             SuccessPopup(),
             ErrorPopup(),
             LoadingPopup(),
+            //! 3 - Lottie Popup
+            Text("Lottie Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            LottiePopup(),
+            //! 3 - Lottie Popup
+            Text("Image Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+            SizedBox(height: 10),
+            ImagePopup(),
           ],
         ),
       ),
@@ -319,6 +327,60 @@ class LoadingPopup extends StatelessWidget {
           );
         },
         child: const Text("Loading Popup"),
+      ),
+    );
+  }
+}
+
+// Lottie Popup
+class LottiePopup extends StatelessWidget {
+  const LottiePopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              lottiePath: "assets/lottie/loading.json", // Pass your Lottie path here. Both asset and network Lottie are supported.
+            ),
+          );
+        },
+        child: const Text("Lottie Popup"),
+      ),
+    );
+  }
+}
+
+// Image Popup
+class ImagePopup extends StatelessWidget {
+  const ImagePopup({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 10.0),
+      child: ElevatedButton(
+        onPressed: () {
+          showDialog(
+            context: context,
+            builder: (context) => const SmartPopup(
+              title: "Smart Popup",
+              subTitle: "This is a smart popup. It can display alerts and messages",
+              primaryButtonText: "Ok",
+              secondaryButtonText: "Cancel",
+              imagePath: "assets/images/demo_image.png", // Pass your Image path here. Both asset and network Image are supported.
+            ),
+          );
+        },
+        child: const Text("Image Popup"),
       ),
     );
   }
