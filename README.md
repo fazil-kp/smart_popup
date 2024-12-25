@@ -41,7 +41,7 @@ To use the Smart Popup, simply create an instance of the widget and configure th
 showDialog(
   context: context,
   builder: (context) => SmartPopup(
-    buttonAlignment: ButtonAlignment.vertical,  // Default Vertical 
+    buttonAlignment: ButtonAlignment.horizontal,  // Default Horizontal 
     title: "Smart Popup",
     subTitle: "This is a smart popup. It can display alerts and messages",
     primaryButtonText: "Ok",
