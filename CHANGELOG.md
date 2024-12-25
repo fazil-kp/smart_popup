@@ -1,3 +1,7 @@
+## 3.0.4
+
+- Lottie Updated
+
 ## 3.0.3
 
 - Timer Delay Updated
