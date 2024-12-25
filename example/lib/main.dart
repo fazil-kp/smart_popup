@@ -54,7 +54,7 @@ class SmartPopupExample extends StatelessWidget {
               Text("Lottie Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               LottiePopup(),
-              //! 4 - Lottie Popup .................................................
+              //! 4 - Image Popup .................................................
               Text("Image Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               ImagePopup(),
