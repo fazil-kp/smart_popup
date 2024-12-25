@@ -363,7 +363,7 @@ class LottiePopup extends StatelessWidget {
               subTitle: "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
-              lottiePath: "assets/lottie/loading.json", // Pass your Lottie path here. Both asset and network Lottie are supported.
+              lottiePath: "https://lottie.host/726e43d1-4aa9-46ff-bca1-651de9c8274d/O6PneKPFVx.json", // Pass your Lottie path here. Both asset and network Lottie are supported.
             ),
           );
         },
@@ -390,7 +390,7 @@ class ImagePopup extends StatelessWidget {
               subTitle: "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
-              imagePath: "assets/images/demo_image.png", // Pass your Image path here. Both asset and network Image are supported.
+              imagePath: "assets/images/demo_image.jpg", // Pass your Image path here. Both asset and network Image are supported.
             ),
           );
         },
