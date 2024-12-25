@@ -1,3 +1,7 @@
+## 3.0.2
+
+- Timer Delay Updated
+
 ## 3.0.0
 
 - demo smart popup deployed
