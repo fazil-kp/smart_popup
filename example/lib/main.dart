@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Smart Popup Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true),
       home: const SmartPopupExample(),
     );
   }
@@ -28,14 +30,22 @@ class SmartPopupExample extends StatelessWidget {
       body: Container(
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
-        decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
+        decoration: const BoxDecoration(
+            color: Colors.white,
+            image: DecorationImage(
+                image: AssetImage("assets/images/bg_image.png"),
+                fit: BoxFit.fill)),
         child: const SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // ! 1- Normal Popup Styles ......................................
-              Text("Normal Popup Styles", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Normal Popup Styles",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               DefaultPopup(),
               WithoutButtons(),
@@ -43,7 +53,11 @@ class SmartPopupExample extends StatelessWidget {
               WithSingleButton(),
               VerticalButtonPopup(),
               // ! 2- Popup Types  ......................................
-              Text("Popup Types", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Popup Types",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               InfoPopup(),
               WarningPopup(),
@@ -51,23 +65,43 @@ class SmartPopupExample extends StatelessWidget {
               ErrorPopup(),
               LoadingPopup(),
               //! 3 - Lottie Popup ....................................................
-              Text("Lottie Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Lottie Popup",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               LottiePopup(),
               //! 4 - Lottie Popup .................................................
-              Text("Image Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Image Popup",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               ImagePopup(),
               //! 5 - Timer Delay Button Popup ................................
-              Text("Timer Delay Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Timer Delay Popup",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               TimerDelayButtonPopup(),
               //! 6 - Loading Button Popup .............................................
-              Text("Loading Button Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Loading Button Popup",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               LoadingButtonPopup(),
               //! 7 - Open Duration Popup.............................................
-              Text("Open Duration Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Open Duration Popup",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold)),
               SizedBox(height: 10),
               OpenDurationPopup(),
             ],
@@ -94,7 +128,8 @@ class DefaultPopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
             ),
@@ -121,7 +156,8 @@ class WithoutButtons extends StatelessWidget {
             builder: (context) => const SmartPopup(
               buttonAlignment: ButtonAlignment.vertical,
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
             ),
           );
         },
@@ -146,7 +182,8 @@ class HideCloseButton extends StatelessWidget {
             builder: (context) => const SmartPopup(
               buttonAlignment: ButtonAlignment.vertical,
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               showCloseButton: false,
             ),
           );
@@ -171,8 +208,10 @@ class WithSingleButton extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
-              primaryButtonText: "Ok", // You can pass primaryButton or secondaryButton
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
+              primaryButtonText:
+                  "Ok", // You can pass primaryButton or secondaryButton
             ),
           );
         },
@@ -196,7 +235,8 @@ class VerticalButtonPopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               buttonAlignment: ButtonAlignment.vertical,
@@ -225,7 +265,8 @@ class InfoPopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               popType: PopType.info,
@@ -252,7 +293,8 @@ class WarningPopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               popType: PopType.warning,
@@ -279,7 +321,8 @@ class SuccessPopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               popType: PopType.success,
@@ -306,7 +349,8 @@ class ErrorPopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               popType: PopType.error,
@@ -333,7 +377,8 @@ class LoadingPopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               popType: PopType.loading,
@@ -360,10 +405,12 @@ class LottiePopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
-              lottiePath: "assets/lottie/loading.json", // Pass your Lottie path here. Both asset and network Lottie are supported.
+              lottiePath:
+                  "assets/lottie/loading.json", // Pass your Lottie path here. Both asset and network Lottie are supported.
             ),
           );
         },
@@ -387,10 +434,12 @@ class ImagePopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
-              imagePath: "assets/images/demo_image.png", // Pass your Image path here. Both asset and network Image are supported.
+              imagePath:
+                  "assets/images/demo_image.png", // Pass your Image path here. Both asset and network Image are supported.
             ),
           );
         },
@@ -415,7 +464,8 @@ class TimerDelayButtonPopup extends StatelessWidget {
             builder: (context) => SmartPopup(
               // buttonAlignment: ButtonAlignment.horizontal,
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               timerDelay: 10,
@@ -445,7 +495,8 @@ class LoadingButtonPopup extends StatelessWidget {
             context: context,
             builder: (context) => SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               loading: true,
@@ -475,7 +526,8 @@ class OpenDurationPopup extends StatelessWidget {
             context: context,
             builder: (context) => const SmartPopup(
               title: "Smart Popup",
-              subTitle: "This is a smart popup. It can display alerts and messages",
+              subTitle:
+                  "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               openDuration: Duration(seconds: 2),
