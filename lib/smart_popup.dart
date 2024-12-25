@@ -1,15 +1,13 @@
 import 'dart:async';
+import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_timer_countdown/flutter_timer_countdown.dart';
 import 'package:lottie/lottie.dart';
-import 'package:smart_popup/src/helper.dart';
 import 'package:smart_wrap/smart_expand.dart';
 import 'package:smart_wrap/smart_wrap.dart';
-
-import 'src/custom_button.dart';
 
 class SmartPopup extends HookWidget {
   final String? title;
@@ -178,7 +176,7 @@ class SmartPopup extends HookWidget {
                                   return Stack(
                                     children: [
                                       SmartButton(
-                                        popType: popType,
+                                        mouseCursor: snapshot.connectionState == ConnectionState.waiting ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
                                         height: 45,
                                         text: primaryButtonText ?? "Yes",
                                         color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
@@ -310,3 +308,239 @@ enum AnimationType { fade, rotate, scale, slide, size, switcher, none }
 enum PopType { info, warning, success, error, delay, loading }
 
 enum ButtonAlignment { horizontal, vertical }
+
+class SmartButton extends StatelessWidget {
+  final String? text;
+  final IconData? icon;
+  final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
+  final double? width;
+  final double? height;
+  final double? textSize;
+  final double? iconSize;
+  final BorderRadiusGeometry? borderRadius;
+  final BorderRadius? splashRadius;
+  final BoxBorder? border;
+  final Color? color;
+  final Color? iconColor;
+  final Color? textColor;
+  final TextStyle? textStyle;
+  final FontWeight? fontWeight;
+  final Widget? buttonText;
+  final Widget? iconWidget;
+  final FocusNode? focusNode;
+  final Color? tooltipBackground;
+  final Color? tooltipForeground;
+  final bool? isLoading;
+  final Widget? customLoading;
+  final bool? ellipsisOverFlow;
+  final MouseCursor? mouseCursor;
+  final PopType? popType;
+  final Color? primaryButtonColor;
+
+  const SmartButton({
+    super.key,
+    this.text,
+    this.icon,
+    this.onTap,
+    this.width,
+    this.height,
+    this.textSize,
+    this.iconSize,
+    this.borderRadius,
+    this.splashRadius,
+    this.border,
+    this.color,
+    this.iconColor,
+    this.textColor,
+    this.textStyle,
+    this.fontWeight,
+    this.buttonText,
+    this.iconWidget,
+    this.focusNode,
+    this.tooltipBackground,
+    this.tooltipForeground,
+    this.isLoading,
+    this.customLoading,
+    this.onLongPress,
+    this.ellipsisOverFlow = false,
+    this.mouseCursor,
+    this.popType,
+    this.primaryButtonColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return smartButtonWidget(context);
+  }
+
+  Color smartTextColor(BuildContext context, Color? buttonColor) {
+    if (buttonColor == null) return Colors.black;
+    final double luminance = buttonColor.computeLuminance();
+    return luminance > 0.8 ? Colors.black : Colors.white;
+  }
+
+  Widget smartButtonWidget(BuildContext context) {
+    final smartButtonColor = isLoading == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : color ?? Colors.white;
+    final smartAllTextColor = textColor ?? smartTextColor(context, smartButtonColor);
+    return InkWell(
+      focusNode: focusNode ?? FocusNode(),
+      borderRadius: BorderRadius.circular(12),
+      onTap: isLoading == true ? null : onTap,
+      onLongPress: isLoading == true ? null : onLongPress,
+      mouseCursor: isLoading == true ? SystemMouseCursors.forbidden : (mouseCursor ?? SystemMouseCursors.click),
+      child: Container(
+        width: width,
+        height: height ?? 45,
+        decoration: BoxDecoration(color: smartButtonColor, borderRadius: BorderRadius.circular(12), border: isLoading == true ? null : border ?? const Border()),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: isLoading == true
+                ? [
+                    customLoading ??
+                        SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 3,
+                            color: LottieAssetHelper.getPrimaryButtonTextColor(popType, Colors.white),
+                          ),
+                        )
+                  ]
+                : [
+                    if (iconWidget != null) iconWidget! else if (icon != null) Icon(icon, size: iconSize ?? 20, color: iconColor ?? smartAllTextColor),
+                    if (text != null || buttonText != null) ...[
+                      if (icon != null || iconWidget != null) const SizedBox(width: 8),
+                      if (buttonText != null) buttonText ?? const SizedBox.shrink(),
+                      if (buttonText == null && ellipsisOverFlow == false)
+                        Text(
+                          text!,
+                          overflow: TextOverflow.ellipsis,
+                          style: textStyle ??
+                              Theme.of(context).textTheme.bodySmall?.copyWith(
+                                    fontWeight: fontWeight ?? FontWeight.w500,
+                                    fontSize: textSize ?? 14,
+                                    color: smartAllTextColor,
+                                  ),
+                        ),
+                      if (buttonText == null && ellipsisOverFlow == true)
+                        SizedBox(
+                          width: ((width ?? 0) - 22),
+                          child: Text(
+                            text!,
+                            overflow: TextOverflow.ellipsis,
+                            style: textStyle ??
+                                Theme.of(context).textTheme.bodySmall?.copyWith(
+                                      fontWeight: fontWeight ?? FontWeight.w500,
+                                      fontSize: textSize ?? 14,
+                                      color: smartAllTextColor,
+                                    ),
+                          ),
+                        ),
+                    ],
+                  ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class LottieAssetHelper {
+  static String getLottieAssetPath(PopType? popType, String? lottiePath) {
+    switch (popType) {
+      case PopType.warning:
+        return lottiePath ?? 'https://lottie.host/1bfbe051-ddcf-4be9-b736-494e41f053ce/A9qYeDHwl6.json';
+      case PopType.success:
+        return lottiePath ?? 'https://lottie.host/f78748c3-18ed-43c7-a611-bbfbd46b687e/2SgjCx5Qzq.json';
+      case PopType.error:
+        return lottiePath ?? 'https://lottie.host/c9c7f0d7-ded2-4ec3-b3c3-69d138523891/QoeOJH5gsp.json';
+      case PopType.info:
+        return lottiePath ?? 'https://lottie.host/726e43d1-4aa9-46ff-bca1-651de9c8274d/O6PneKPFVx.json';
+      case PopType.delay:
+        return lottiePath ?? 'https://lottie.host/09d168d0-8283-4f38-96e4-0e0fab63b2d2/8ywI5bOUVl.json';
+      case PopType.loading:
+        return lottiePath ?? 'https://lottie.host/09d168d0-8283-4f38-96e4-0e0fab63b2d2/8ywI5bOUVl.json';
+      default:
+        return lottiePath ?? '';
+    }
+  }
+
+  static Color getPrimaryButtonColor(PopType? popType, Color? defaultColor) {
+    switch (popType) {
+      case PopType.warning:
+        return defaultColor ?? Colors.orange;
+      case PopType.success:
+        return defaultColor ?? Colors.green;
+      case PopType.error:
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
+      case PopType.info:
+        return defaultColor ?? Colors.blue;
+      case PopType.delay:
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
+      case PopType.loading:
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
+      default:
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
+    }
+  }
+
+  static Color getPrimaryButtonTextColor(PopType? popType, Color? defaultColor) {
+    switch (popType) {
+      case PopType.warning:
+        return defaultColor ?? Colors.white;
+      case PopType.success:
+        return defaultColor ?? Colors.white;
+      case PopType.error:
+        return defaultColor ?? Colors.white;
+      case PopType.info:
+        return defaultColor ?? Colors.white;
+      case PopType.delay:
+        return defaultColor ?? Colors.white;
+      case PopType.loading:
+        return defaultColor ?? Colors.white;
+      default:
+        return defaultColor ?? const Color(0XFFFFF1F1);
+    }
+  }
+
+  static Color? getSecondaryButtonColor(PopType? popType, Color? defaultColor) {
+    switch (popType) {
+      case PopType.warning:
+        return defaultColor ?? const Color.fromARGB(255, 255, 246, 230);
+      case PopType.success:
+        return defaultColor ?? const Color.fromARGB(255, 237, 255, 217);
+      case PopType.error:
+        return defaultColor ?? const Color(0XFFFFF1F1);
+      case PopType.info:
+        return defaultColor ?? const Color(0XFFE0F2FE);
+      case PopType.delay:
+        return defaultColor ?? const Color(0XFFFFF1F1);
+      case PopType.loading:
+        return defaultColor ?? const Color(0XFFFFF1F1);
+      default:
+        return defaultColor ?? const Color(0XFFFFF1F1);
+    }
+  }
+
+  static Color getSecondaryButtonTextColor(PopType? popType, Color? defaultColor) {
+    switch (popType) {
+      case PopType.warning:
+        return defaultColor ?? Colors.orange;
+      case PopType.success:
+        return defaultColor ?? Colors.green;
+      case PopType.error:
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
+      case PopType.info:
+        return defaultColor ?? Colors.blue;
+      case PopType.delay:
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
+      case PopType.loading:
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
+      default:
+        return defaultColor ?? const Color.fromARGB(255, 196, 40, 60);
+    }
+  }
+}

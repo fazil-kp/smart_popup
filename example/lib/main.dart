@@ -412,13 +412,16 @@ class TimerDelayButtonPopup extends StatelessWidget {
         onPressed: () {
           showDialog(
             context: context,
-            builder: (context) => const SmartPopup(
+            builder: (context) => SmartPopup(
               // buttonAlignment: ButtonAlignment.horizontal,
               title: "Smart Popup",
               subTitle: "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
               secondaryButtonText: "Cancel",
               timerDelay: 10,
+              primaryButtonTap: () {
+                Navigator.pop(context);
+              },
             ),
           );
         },
