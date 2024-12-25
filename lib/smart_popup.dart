@@ -175,7 +175,6 @@ class SmartPopup extends HookWidget {
                                   return Stack(
                                     children: [
                                       SmartButton(
-                                        mouseCursor: SystemMouseCursors.forbidden,
                                         height: 45,
                                         text: primaryButtonText ?? "Yes",
                                         color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
