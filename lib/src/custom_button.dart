@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_popup/smart_popup.dart';
 import 'package:smart_popup/src/helper.dart';
 
-class CustomButton extends StatelessWidget {
+class SmartButton extends StatelessWidget {
   final String? text;
   final IconData? icon;
   final VoidCallback? onTap;
@@ -31,7 +31,7 @@ class CustomButton extends StatelessWidget {
   final PopType? popType;
   final Color? primaryButtonColor;
 
-  const CustomButton({
+  const SmartButton({
     super.key,
     this.text,
     this.icon,
@@ -85,11 +85,7 @@ class CustomButton extends StatelessWidget {
       child: Container(
         width: width,
         height: height ?? 45,
-        decoration: BoxDecoration(
-          color: smartButtonColor,
-          borderRadius: BorderRadius.circular(12),
-          border: isLoading == true ? null : border ?? const Border(),
-        ),
+        decoration: BoxDecoration(color: smartButtonColor, borderRadius: BorderRadius.circular(12), border: isLoading == true ? null : border ?? const Border()),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(

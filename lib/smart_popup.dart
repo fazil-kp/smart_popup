@@ -177,7 +177,7 @@ class SmartPopup extends HookWidget {
                                 builder: (context, snapshot) {
                                   return Stack(
                                     children: [
-                                      CustomButton(
+                                      SmartButton(
                                         popType: popType,
                                         height: 45,
                                         text: primaryButtonText ?? "Yes",
@@ -225,7 +225,7 @@ class SmartPopup extends HookWidget {
                             if (primaryButtonText != null) ...[
                               SmartExpand(
                                 disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
-                                child: CustomButton(
+                                child: SmartButton(
                                   popType: popType,
                                   isLoading: loading ?? false,
                                   height: 45,
@@ -243,7 +243,7 @@ class SmartPopup extends HookWidget {
                           if (secondaryButtonText != null)
                             SmartExpand(
                               disableExpand: buttonAlignment == ButtonAlignment.horizontal ? true : false,
-                              child: CustomButton(
+                              child: SmartButton(
                                 popType: popType,
                                 height: 45,
                                 text: secondaryButtonText ?? "No",
