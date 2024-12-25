@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:nativewrappers/_internal/vm/lib/ffi_allocation_patch.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -176,7 +175,7 @@ class SmartPopup extends HookWidget {
                                   return Stack(
                                     children: [
                                       SmartButton(
-                                        mouseCursor: snapshot.connectionState == ConnectionState.waiting ? SystemMouseCursors.forbidden : SystemMouseCursors.click,
+                                        mouseCursor: SystemMouseCursors.forbidden,
                                         height: 45,
                                         text: primaryButtonText ?? "Yes",
                                         color: snapshot.data == true ? LottieAssetHelper.getPrimaryButtonColor(popType, primaryButtonColor) : Colors.grey.withOpacity(.5),
