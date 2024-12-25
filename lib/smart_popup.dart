@@ -219,7 +219,7 @@ class SmartPopup extends HookWidget {
                                 },
                               ),
                             ),
-                            if (secondaryButtonText == null) buttonAlignment == ButtonAlignment.horizontal ? const SizedBox(width: 15) : const SizedBox(height: 15),
+                            if (secondaryButtonText != null) buttonAlignment == ButtonAlignment.horizontal ? const SizedBox(width: 15) : const SizedBox(height: 15),
                           ],
                           if (timerDelay == null)
                             if (primaryButtonText != null) ...[

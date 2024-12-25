@@ -413,6 +413,7 @@ class TimerDelayButtonPopup extends StatelessWidget {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
+              // buttonAlignment: ButtonAlignment.horizontal,
               title: "Smart Popup",
               subTitle: "This is a smart popup. It can display alerts and messages",
               primaryButtonText: "Ok",
