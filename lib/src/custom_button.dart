@@ -81,7 +81,7 @@ class CustomButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
       onTap: isLoading == true ? null : onTap,
       onLongPress: isLoading == true ? null : onLongPress,
-      mouseCursor: mouseCursor ?? SystemMouseCursors.click,
+      mouseCursor: isLoading == true ? SystemMouseCursors.forbidden : (mouseCursor ?? SystemMouseCursors.click),
       child: Container(
         width: width,
         height: height ?? 45,
