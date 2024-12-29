@@ -25,54 +25,101 @@ class SmartPopupExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Container(
-        height: MediaQuery.sizeOf(context).height,
-        width: MediaQuery.sizeOf(context).width,
-        decoration: const BoxDecoration(color: Colors.white),
-        child: const SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // ! 1- Normal Popup Styles ......................................
-              Text("Normal Popup Styles", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
-              SizedBox(height: 10),
-              DefaultPopup(),
-              WithoutButtons(),
-              HideCloseButton(),
-              WithSingleButton(),
-              VerticalButtonPopup(),
-              // ! 2- Popup Types  ......................................
-              Text("Popup Types", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
-              SizedBox(height: 10),
-              InfoPopup(),
-              WarningPopup(),
-              SuccessPopup(),
-              ErrorPopup(),
-              LoadingPopup(),
-              //! 3 - Lottie Popup ....................................................
-              Text("Lottie Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
-              SizedBox(height: 10),
-              LottiePopup(),
-              //! 4 - Image Popup .................................................
-              Text("Image Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
-              SizedBox(height: 10),
-              ImagePopup(),
-              //! 5 - Timer Delay Button Popup ................................
-              Text("Timer Delay Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
-              SizedBox(height: 10),
-              TimerDelayButtonPopup(),
-              //! 6 - Loading Button Popup .............................................
-              Text("Loading Button Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
-              SizedBox(height: 10),
-              LoadingButtonPopup(),
-              //! 7 - Open Duration Popup.............................................
-              Text("Open Duration Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
-              SizedBox(height: 10),
-              OpenDurationPopup(),
-            ],
-          ),
+      appBar: AppBar(
+        title: const Text("Smart Popup Example"),
+        backgroundColor: Colors.deepPurple,
+        elevation: 0,
+      ),
+      body: const SingleChildScrollView(
+        padding: EdgeInsets.all(16.0),
+        child: Wrap(
+          spacing: 20,
+          runSpacing: 20,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Section(
+              title: "Normal Popup Styles",
+              children: [
+                DefaultPopup(),
+                WithoutButtons(),
+                HideCloseButton(),
+                WithSingleButton(),
+                VerticalButtonPopup(),
+              ],
+            ),
+            Section(
+              title: "Popup Types",
+              children: [
+                InfoPopup(),
+                WarningPopup(),
+                SuccessPopup(),
+                ErrorPopup(),
+                LoadingPopup(),
+              ],
+            ),
+            Section(
+              title: "Lottie Popup",
+              children: [
+                LottiePopup(),
+              ],
+            ),
+            Section(
+              title: "Image Popup",
+              children: [
+                ImagePopup(),
+              ],
+            ),
+            Section(
+              title: "Timer Delay Popup",
+              children: [
+                TimerDelayButtonPopup(),
+              ],
+            ),
+            Section(
+              title: "Loading Button Popup",
+              children: [
+                LoadingButtonPopup(),
+              ],
+            ),
+            Section(
+              title: "Open Duration Popup",
+              children: [
+                OpenDurationPopup(),
+              ],
+            ),
+          ],
         ),
+      ),
+    );
+  }
+}
+
+class Section extends StatelessWidget {
+  final String title;
+  final List<Widget> children;
+  const Section({super.key, required this.title, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 20),
+      padding: const EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: const LinearGradient(
+          colors: [Colors.deepPurple, Colors.purpleAccent],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(16),
+        boxShadow: const [BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 10)],
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title, style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
+          const SizedBox(height: 20),
+          Column(children: children.map((child) => child).toList()),
+        ],
       ),
     );
   }
@@ -88,8 +135,9 @@ class DefaultPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        color: Colors.red,
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -100,7 +148,7 @@ class DefaultPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Default Popup"),
+        buttonText: const Text("Default Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -114,8 +162,8 @@ class WithoutButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -125,7 +173,7 @@ class WithoutButtons extends StatelessWidget {
             ),
           );
         },
-        child: const Text("With Out Buttons"),
+        buttonText: const Text("With Out Buttons", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -139,8 +187,8 @@ class HideCloseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -151,7 +199,7 @@ class HideCloseButton extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Hide Close Button"),
+        buttonText: const Text("Hide Close Button", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -165,8 +213,8 @@ class WithSingleButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -176,7 +224,7 @@ class WithSingleButton extends StatelessWidget {
             ),
           );
         },
-        child: const Text("With Single Button"),
+        buttonText: const Text("With Single Button", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -190,8 +238,8 @@ class VerticalButtonPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -203,7 +251,7 @@ class VerticalButtonPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Vertical Buttons"),
+        buttonText: const Text("Vertical Buttons", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -219,8 +267,8 @@ class InfoPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -232,7 +280,7 @@ class InfoPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Info Popup"),
+        buttonText: const Text("Info Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -246,8 +294,8 @@ class WarningPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -259,7 +307,7 @@ class WarningPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Warning Popup"),
+        buttonText: const Text("Warning Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -273,8 +321,8 @@ class SuccessPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -286,7 +334,7 @@ class SuccessPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Success Popup"),
+        buttonText: const Text("Success Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -300,8 +348,8 @@ class ErrorPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -313,7 +361,7 @@ class ErrorPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Error Popup"),
+        buttonText: const Text("Error Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -327,8 +375,8 @@ class LoadingPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -340,7 +388,7 @@ class LoadingPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Loading Popup"),
+        buttonText: const Text("Loading Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -354,8 +402,8 @@ class LottiePopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -367,7 +415,7 @@ class LottiePopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Lottie Popup"),
+        buttonText: const Text("Lottie Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -381,8 +429,8 @@ class ImagePopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -394,7 +442,7 @@ class ImagePopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Image Popup"),
+        buttonText: const Text("Image Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -408,8 +456,8 @@ class TimerDelayButtonPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => SmartPopup(
@@ -425,7 +473,7 @@ class TimerDelayButtonPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Timer Delay Button Popup"),
+        buttonText: const Text("Timer Delay Button Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -439,8 +487,8 @@ class LoadingButtonPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => SmartPopup(
@@ -455,7 +503,7 @@ class LoadingButtonPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Loading Button Popup"),
+        buttonText: const Text("Loading Button Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
@@ -469,8 +517,8 @@ class OpenDurationPopup extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10.0),
-      child: ElevatedButton(
-        onPressed: () {
+      child: SmartButton(
+        onTap: () {
           showDialog(
             context: context,
             builder: (context) => const SmartPopup(
@@ -482,7 +530,7 @@ class OpenDurationPopup extends StatelessWidget {
             ),
           );
         },
-        child: const Text("Open Duration Popup"),
+        buttonText: const Text("Open Duration Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
       ),
     );
   }
