@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Smart Popup Demo',
-      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple), useMaterial3: true),
+      theme: ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue), useMaterial3: true),
       home: const SmartPopupExample(),
     );
   }
@@ -28,14 +28,14 @@ class SmartPopupExample extends StatelessWidget {
       body: Container(
         height: MediaQuery.sizeOf(context).height,
         width: MediaQuery.sizeOf(context).width,
-        decoration: const BoxDecoration(color: Colors.white, image: DecorationImage(image: AssetImage("assets/images/bg_image.png"), fit: BoxFit.fill)),
+        decoration: const BoxDecoration(color: Colors.white),
         child: const SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // ! 1- Normal Popup Styles ......................................
-              Text("Normal Popup Styles", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Normal Popup Styles", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
               SizedBox(height: 10),
               DefaultPopup(),
               WithoutButtons(),
@@ -43,7 +43,7 @@ class SmartPopupExample extends StatelessWidget {
               WithSingleButton(),
               VerticalButtonPopup(),
               // ! 2- Popup Types  ......................................
-              Text("Popup Types", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Popup Types", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
               SizedBox(height: 10),
               InfoPopup(),
               WarningPopup(),
@@ -51,23 +51,23 @@ class SmartPopupExample extends StatelessWidget {
               ErrorPopup(),
               LoadingPopup(),
               //! 3 - Lottie Popup ....................................................
-              Text("Lottie Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Lottie Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
               SizedBox(height: 10),
               LottiePopup(),
               //! 4 - Image Popup .................................................
-              Text("Image Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Image Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
               SizedBox(height: 10),
               ImagePopup(),
               //! 5 - Timer Delay Button Popup ................................
-              Text("Timer Delay Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Timer Delay Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
               SizedBox(height: 10),
               TimerDelayButtonPopup(),
               //! 6 - Loading Button Popup .............................................
-              Text("Loading Button Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Loading Button Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
               SizedBox(height: 10),
               LoadingButtonPopup(),
               //! 7 - Open Duration Popup.............................................
-              Text("Open Duration Popup", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold)),
+              Text("Open Duration Popup", style: TextStyle(color: Colors.blue, fontSize: 25, fontWeight: FontWeight.w500)),
               SizedBox(height: 10),
               OpenDurationPopup(),
             ],
