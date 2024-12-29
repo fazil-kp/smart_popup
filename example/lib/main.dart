@@ -26,11 +26,7 @@ class SmartPopupExample extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text("Smart Popup Example"),
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
+      appBar: AppBar(title: const Text("Smart Popup Example"), backgroundColor: Colors.white, elevation: 0),
       body: const SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Wrap(
