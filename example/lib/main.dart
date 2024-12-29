@@ -1,3 +1,4 @@
+import 'package:example/elements/section.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_popup/smart_popup.dart';
 
@@ -27,7 +28,7 @@ class SmartPopupExample extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Smart Popup Example"),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: const SingleChildScrollView(
@@ -35,7 +36,6 @@ class SmartPopupExample extends StatelessWidget {
         child: Wrap(
           spacing: 20,
           runSpacing: 20,
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Section(
               title: "Normal Popup Styles",
@@ -83,43 +83,10 @@ class SmartPopupExample extends StatelessWidget {
             ),
             Section(
               title: "Open Duration Popup",
-              children: [
-                OpenDurationPopup(),
-              ],
+              children: [OpenDurationPopup()],
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class Section extends StatelessWidget {
-  final String title;
-  final List<Widget> children;
-  const Section({super.key, required this.title, required this.children});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 20),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Colors.deepPurple, Colors.purpleAccent],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [BoxShadow(color: Colors.black26, offset: Offset(0, 4), blurRadius: 10)],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(title, style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 20),
-          Column(children: children.map((child) => child).toList()),
-        ],
       ),
     );
   }
@@ -136,7 +103,6 @@ class DefaultPopup extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: SmartButton(
-        color: Colors.red,
         onTap: () {
           showDialog(
             context: context,
@@ -148,7 +114,7 @@ class DefaultPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Default Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Default Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -173,7 +139,7 @@ class WithoutButtons extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("With Out Buttons", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("With Out Buttons", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -199,7 +165,7 @@ class HideCloseButton extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Hide Close Button", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Hide Close Button", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -224,7 +190,7 @@ class WithSingleButton extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("With Single Button", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("With Single Button", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -251,7 +217,7 @@ class VerticalButtonPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Vertical Buttons", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Vertical Buttons", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -280,7 +246,7 @@ class InfoPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Info Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Info Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -307,7 +273,7 @@ class WarningPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Warning Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Warning Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -334,7 +300,7 @@ class SuccessPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Success Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Success Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -361,7 +327,7 @@ class ErrorPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Error Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Error Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -388,7 +354,7 @@ class LoadingPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Loading Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Loading Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -415,7 +381,7 @@ class LottiePopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Lottie Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Lottie Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -442,7 +408,7 @@ class ImagePopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Image Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Image Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -473,7 +439,7 @@ class TimerDelayButtonPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Timer Delay Button Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Timer Delay Button Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -503,7 +469,7 @@ class LoadingButtonPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Loading Button Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Loading Button Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
@@ -530,7 +496,7 @@ class OpenDurationPopup extends StatelessWidget {
             ),
           );
         },
-        buttonText: const Text("Open Duration Popup", style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500)),
+        buttonText: const Text("Open Duration Popup", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600)),
       ),
     );
   }
